@@ -1,0 +1,65 @@
+menu-item {
+	.box {
+        border-bottom: none;
+        padding: 8px;
+        &:last-child {
+            border: none;
+        }
+        .head {
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            align-items: center;
+            .all {
+                color: #acacac;
+                ion-icon {
+                    margin-left: 3px;
+                }
+            }
+        }
+        .body {
+            border-bottom: 1px solid #e6e6e6;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            padding-bottom: 10px;
+            >div {
+                padding: 8px 0;
+                margin: 8px 2% 0 0;
+                border-radius: 3px;
+                background-color: #ededed;
+                text-align: center;
+                width: 32%;
+                color: #0a0a0a;
+                font-size: 1.2rem;
+                &:nth-child(3n) {
+                    margin-right: 0;
+                }
+                &.selected {
+                    background: #2196f3 right bottom no-repeat;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    &:last-child .body {
+        border: 0;
+    }
+    .range-ios .range-knob {
+        border: 1px solid #bbb;
+        background: #fff url(../assets/icon/menu_shoplist_03.png) center center no-repeat;
+        background-size: 64%;
+    }
+    ion-footer {
+        display: flex;
+    }
+    ion-footer .button {
+        margin: 0;
+        width: 50%;
+        background: map_get($colors, primary);
+    }
+    ion-footer .button:first-child {
+        background: #607d8b;
+    }
+}

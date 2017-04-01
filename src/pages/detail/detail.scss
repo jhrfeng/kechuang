@@ -1,0 +1,39 @@
+page-detail {
+	.content{
+		background: color($colors, whites);
+	}
+	.tag{
+		height: 100px;
+		background: color($colors, headers);
+		margin-top: -20px;
+		p{
+			padding-top: 50px;
+			padding-left: 20px;
+		}
+		span{
+			border: 1px solid #fff;
+			color: #fff;
+			padding: 3px;
+		}
+	}
+
+	.main{
+		padding-top: 10px;
+		margin-top: 2px;
+		background: #fff;
+	}
+	ion-col{
+		font-size: 1.5rem;
+	}
+	ion-col[width-20]{
+		font-size: 1.6rem;
+		padding-left: 10px;
+    	font-weight: bold;
+	}
+	.pcontent{
+		padding: 0 10px;
+		line-height: 2rem;
+    	margin-top: -5px;
+	}
+
+}

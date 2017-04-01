@@ -1,0 +1,15 @@
+item-list {
+	p{
+	    font-size: 1.5rem;
+    	margin-bottom: 0.5rem;
+	}
+	.item-md{
+		border-bottom: 1px solid #ddd;
+	}
+	ion-app.md [padding-left]{
+	    padding-left: 26px;
+	}
+	.item-inner > ion-icon {
+	    font-size: 1.8rem;
+	}
+}

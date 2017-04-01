@@ -1,0 +1,35 @@
+search-list {
+	ion-input, ion-textarea {
+	    margin-left: 10px;
+	    height: 40px;
+	    width: 95%;
+	}
+	ion-item p{
+		padding-left:10px;
+	}
+	ion-row{
+		margin: 8px 10px 15px 0px;
+	}
+	.result{
+		background:#FFC107;
+		color: #f3f3f3;
+	}
+	.title{
+		color: #28a28a;
+		font-size: 1.7rem;
+		line-height: 1.6rem;
+	}
+	.tag{
+		color: #28a28a;
+		font-size: 1.4rem;
+		margin: 4px 0;
+	}
+	.source{
+
+	}
+	ion-input, ion-textarea {
+	    color: #fff;
+	    background: #424242;
+	}
+	$text-input-placeholder-color:#fff;
+}

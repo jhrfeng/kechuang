@@ -1,0 +1,46 @@
+<ion-content>
+    <div class="box">
+        <div class="head">
+            <span class="title">技术领域</span>
+        </div>
+        <div class="body">
+            <div *ngFor="let tech of data.tech"
+                (click)="checklist.toggleItem(tech)"
+                [ngClass]="tech.selected?'selected':''">{{tech.name}}</div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="head">
+            <span class="title">年份</span>
+        </div>
+        <div class="body">
+            <div  *ngFor="let year of data.year"
+                (click)="checklist.toggleItem(year)"
+                [ngClass]="year.selected?'selected':''">{{year.name}}</div>
+        </div>
+      </div>
+     <div class="box">
+        <div class="head">
+            <span class="title">所在地区</span>
+        </div>
+        <div class="body">
+            <div  *ngFor="let area of data.area"
+                (click)="checklist.toggleItem(area)"
+                [ngClass]="area.selected?'selected':''">{{area.name}}</div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="head">
+            <span class="title">排序规则</span>
+        </div>
+        <div class="body">
+            <div  *ngFor="let sort of data.sort"
+                (click)="checklist.toggleItem(sort)"
+                [ngClass]="sort.selected?'selected':''">{{sort.name}}</div>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <button full ion-button (click)="reset()">重置</button>
+    <button full ion-button (click)="dismiss()">确定</button>
+</ion-footer>

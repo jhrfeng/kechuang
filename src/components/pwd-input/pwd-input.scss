@@ -1,0 +1,14 @@
+pwd-input {
+	.item-ios,.item-md {
+        border: 0.5px solid #ddd;
+        margin-bottom: 12px;
+    }
+    .item-md.item-block .item-inner,
+    .item-ios.item-block .item-inner{
+        border: 0;
+    }
+    .item-md.item-input.input-has-focus .item-inner,
+    .item-ios.item-input.input-has-focus .item-inner {
+        box-shadow: inset 0 -1px 0 0 #fff;
+    }
+}
