@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ExactPage } from '../../pages/exact/exact';
+// import { ExactPage } from '../../pages/exact/exact';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class HeaderSearchComponent {
   }
 
   search() {
-  	this.navCtrl.push(ExactPage);
+  	// this.navCtrl.push(ExactPage);
   }
 
 }

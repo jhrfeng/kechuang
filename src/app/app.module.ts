@@ -10,8 +10,17 @@ import { LoginPage } from '../pages/login/login';
 import { MePage } from '../pages/me/me';
 import { DetailPage } from '../pages/detail/detail';
 import { ExactPage } from '../pages/exact/exact';
+import { ForgetPage } from '../pages/forget/forget';
+import { LixiangPage } from '../pages/lixiang/lixiang';
+import { CollectPage } from '../pages/collect/collect';
+import { CompanyPage } from '../pages/company/company';
+import { FollowPage } from '../pages/follow/follow';
+import { PersonalPage } from '../pages/personal/personal';
+import { PersonalEditPage } from '../pages/personal-edit/personal-edit';
+
 
 import { AuthService } from '../providers/auth-service';
+import { UtilProvider } from '../providers/util-provider';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,6 +33,8 @@ import { ItemListComponent } from '../components/item-list/item-list';
 import { MenuItemComponent } from '../components/menu-item/menu-item';
 import { HeaderSearchComponent } from '../components/header-search/header-search';
 import { SearchListComponent } from '../components/search-list/search-list';
+import { BackgroundComponent } from '../components/background/background';
+import { ForgetInputComponent } from '../components/forget-input/forget-input';
 
 @NgModule({
   declarations: [
@@ -37,6 +48,13 @@ import { SearchListComponent } from '../components/search-list/search-list';
     MePage,
     DetailPage,
     ExactPage,
+    ForgetPage,
+    LixiangPage,
+    CollectPage,
+    CompanyPage,
+    PersonalPage,
+    PersonalEditPage,
+    FollowPage,
     LineInputComponent,
     PwdInputComponent,
     RegInputComponent,
@@ -44,7 +62,9 @@ import { SearchListComponent } from '../components/search-list/search-list';
     ItemListComponent,
     MenuItemComponent,
     HeaderSearchComponent,
-    SearchListComponent
+    SearchListComponent,
+    BackgroundComponent,
+    ForgetInputComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -67,6 +87,13 @@ import { SearchListComponent } from '../components/search-list/search-list';
     MePage,
     DetailPage,
     ExactPage,
+    ForgetPage,
+    LixiangPage,
+    CollectPage,
+    CompanyPage,
+    PersonalPage,
+    PersonalEditPage,
+    FollowPage,
     LineInputComponent,
     PwdInputComponent,
     RegInputComponent,
@@ -74,12 +101,15 @@ import { SearchListComponent } from '../components/search-list/search-list';
     ItemListComponent,
     MenuItemComponent,
     HeaderSearchComponent,
-    SearchListComponent
+    SearchListComponent,
+    BackgroundComponent,
+    ForgetInputComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthService,
+    UtilProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

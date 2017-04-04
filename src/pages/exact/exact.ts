@@ -8,7 +8,7 @@ import { NavController, ModalController, NavParams } from 'ionic-angular';
 })
 export class ExactPage {
 
-    constructor(public navCtrl: NavController,public modalCtrl: ModalController) {
+    constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController) {
 
     }
 

@@ -1,0 +1,36 @@
+page-follow {
+	ion-card{
+		.item-md{
+			background: color($colors, headers);
+	     	height: 90px;
+		}
+	}
+
+	ion-icon {
+	    font-size: 2.8em;
+	    color: #fff;
+	}
+	.select-md .select-icon {
+	    display: none;
+	}
+
+	.label-md {
+	    padding: 43%;
+	}
+	.list-md {
+	    background: #fff;
+	}
+	.row{
+		height: 10rem;
+    	border-bottom: 1px solid color($colors, headers);
+	}
+	.col{
+		padding-top: 2rem;
+		font-weight: bold;
+		font-size: 1.8rem;
+		color: #636363;
+		&:first-child{
+			border-right: 1px solid color($colors, headers);
+		}
+	}
+}

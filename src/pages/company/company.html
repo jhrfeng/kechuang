@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="headers">
+    <ion-title text-center>
+      公司认证
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="iconType = !iconType;">
+	        <ion-icon [name]="iconType?'md-create':'md-checkmark-circle'"></ion-icon>
+	    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content">
+	<ion-card style="margin:0;width:100%;">
+		<ion-item *ngIf="iconType">
+		    <h2>企业名称</h2>
+		    <p>杭州世博科技有限公司</p>
+		</ion-item>
+	</ion-card>
+
+	<ion-list text-left *ngIf="iconType">
+		<ion-row *ngIf="iconType">
+			<ion-col width-33>企业地址</ion-col>
+			<ion-col text-left>浙江省杭州市建江区</ion-col>
+		</ion-row>
+	</ion-list>
+
+	<ion-list text-left *ngIf="!iconType">
+		<ion-item>
+		    <ion-label fixed>企业名称</ion-label>
+		    <ion-input type="text" value="杭州世博科技有限公司"></ion-input>
+		</ion-item>
+		<ion-item>
+		    <ion-label fixed>企业地址</ion-label>
+		    <ion-input type="text" value="浙江省杭州市建江区"></ion-input>
+		</ion-item>
+		<ion-item>
+		    <ion-label fixed>上传营业执照</ion-label>
+		    <ion-icon name="md-camera" item-right></ion-icon>
+		</ion-item>
+		<ion-item>
+		    <ion-label fixed>上传身份证件</ion-label>
+		    <ion-icon name="md-camera" item-right></ion-icon>
+		</ion-item>
+	</ion-list>
+
+			
+</ion-content>

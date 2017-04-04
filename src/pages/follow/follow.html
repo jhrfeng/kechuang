@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="headers">
+    <ion-title text-center>
+      关注领域
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content">
+	<ion-card style="margin:0;width:100%;">
+		<ion-item>
+			<ion-label><ion-icon name="ios-add-circle-outline"></ion-icon></ion-label>
+		    <ion-select [(ngModel)]="toppings" multiple="true" okText="确认" cancelText="取消">
+			    <ion-option>网络爬虫</ion-option>
+			    <ion-option>算法安全</ion-option>
+			    <ion-option>算法研究</ion-option>
+			    <ion-option>其它</ion-option>
+			</ion-select>
+		</ion-item>
+	</ion-card>
+	
+	<ion-list>
+		<ion-row>
+			<ion-col text-center>网络爬虫<br>
+				<button ion-button round outline small>删除</button>
+			</ion-col>
+
+			<ion-col text-center>算法安全<br>
+				<button ion-button round outline small>删除</button>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col text-center>算法研究<br>
+				<button ion-button round outline small>删除</button>
+			</ion-col>
+
+			<ion-col text-center>其它<br>
+				<button ion-button round outline small>删除</button>
+			</ion-col>
+		</ion-row>
+	</ion-list>
+	
+</ion-content>	

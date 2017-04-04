@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="headers">
+    <ion-title text-center>
+      我的资料
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="edit()">
+	        <ion-icon name="md-checkmark-circle"></ion-icon>
+	    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content">
+	<ion-card style="margin:0;width:100%;">
+		<ion-item>
+		    <ion-avatar item-left>
+		      <img src="assets/img/header.jpg">
+		    </ion-avatar>
+		</ion-item>
+	</ion-card>
+
+	<ion-list>
+		<ion-item>
+		    <ion-label fixed>昵称</ion-label>
+		    <ion-input type="text" value="小都比"></ion-input>
+		</ion-item>
+
+	    <ion-item>
+		    <ion-label fixed>邮箱</ion-label>
+		    <ion-input type="text" value="1059731125@qq.com"></ion-input>
+	  	</ion-item>
+
+	  	<ion-item>
+		    <ion-label fixed>组别</ion-label>
+		    <ion-input type="text" value="测试"></ion-input>
+	  	</ion-item>
+
+	  	<ion-item>
+		    <ion-label fixed>简介</ion-label>
+		    <ion-textarea>
+		    	怒发冲冠，凭阑处、潇潇雨歇。抬望眼，仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切。
+		    </ion-textarea>
+		</ion-item>    
+	</ion-list>
+
+</ion-content>

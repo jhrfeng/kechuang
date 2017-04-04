@@ -1,0 +1,18 @@
+page-personal {
+	.card-md h2{
+		color: #fff;
+	}
+	.list-md {
+	    background: #fff;
+	}
+	ion-row{
+		border-bottom: 1px solid #ddd;
+		ion-col {
+			font-size: 1.5rem;
+		}
+		.col{
+			padding: 10px 20px;
+		}
+	}
+
+}

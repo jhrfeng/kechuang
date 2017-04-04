@@ -1,0 +1,32 @@
+page-company {
+	ion-card{
+		.item-md{
+			background: color($colors, headers);
+	     	height: 90px;
+		}
+	}
+
+	.card-md h2{ 
+		color: #b1b1b1;
+		font-weight: bold;
+	}
+	.card-md p{ 
+		color: #fff;
+		padding: 5px 0;
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
+
+	.list-md {
+	    background: #fff;
+	}
+	ion-row{
+		border-bottom: 1px solid #ddd;
+		ion-col {
+			font-size: 1.5rem;
+		}
+		.col{
+			padding: 10px 20px;
+		}
+	}
+}

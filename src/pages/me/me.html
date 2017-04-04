@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
+  <ion-navbar color="headers">
+    <ion-title text-center>
       我
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="content">
-	<ion-card style="margin:0;width:100%;background:#131e26;">
-		<hed-item></hed-item>
+	<ion-card style="margin:0;width:100%;">
+		<hed-item tappable (click)="personal()"></hed-item>
 	</ion-card>
 	<item-list></item-list>
 </ion-content>

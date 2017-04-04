@@ -1,9 +1,4 @@
 search-list {
-	ion-input, ion-textarea {
-	    margin-left: 10px;
-	    height: 40px;
-	    width: 95%;
-	}
 	ion-item p{
 		padding-left:10px;
 	}
@@ -26,10 +21,5 @@ search-list {
 	}
 	.source{
 
-	}
-	ion-input, ion-textarea {
-	    color: #fff;
-	    background: #424242;
-	}
-	$text-input-placeholder-color:#fff;
+	}	
 }

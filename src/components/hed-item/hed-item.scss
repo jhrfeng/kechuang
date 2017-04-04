@@ -3,8 +3,8 @@ hed-item {
 		color: #f8f8f8;	
 	}
 	.item-md{
-		background: #333;
-     	
+		background: color($colors, headers);
+     	height: 80px;
 	}
 	.item-md ion-avatar ion-img, .item-md ion-avatar img {
 	    width: 60px;

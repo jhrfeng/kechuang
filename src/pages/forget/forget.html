@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="headers">
+    <ion-title text-center>
+      忘记密码
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  	<div class="center-content" text-center padding ion-fixed>
+		<div padding *ngIf="pwdType=='1'">		
+ 			<forget-input></forget-input>	
+		</div>
+		<div padding *ngIf="pwdType=='2'">		
+ 			<pwd-input></pwd-input>	
+		</div>
+	</div>
+
+</ion-content>

@@ -1,0 +1,24 @@
+page-personal-edit {
+	ion-card{
+		.item-md{
+			background: color($colors, headers);
+	     	height: 80px;
+		}
+		.item-md ion-avatar ion-img, .item-md ion-avatar img {
+		    width: 60px;
+		    height: 60px;
+		}
+	}
+	.list-md {
+	    background: #fff;
+	}
+	ion-row{
+		border-bottom: 1px solid #ddd;
+		ion-col {
+			font-size: 1.5rem;
+		}
+		.col{
+			padding: 10px 20px;
+		}
+	}
+}
