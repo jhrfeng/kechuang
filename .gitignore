@@ -30,6 +30,7 @@ www/
 $RECYCLE.BIN/
 resources/
 hooks/
+bak/
 
 .DS_Store
 Thumbs.db

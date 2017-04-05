@@ -6,6 +6,9 @@ import { ForgetPage } from '../../pages/forget/forget';
 import { CompanyPage } from '../../pages/company/company';
 import { CollectPage } from '../../pages/collect/collect';
 import { FollowPage } from '../../pages/follow/follow';
+import { AccountPage } from '../../pages/account/account';
+import { VipPage } from '../../pages/vip/vip';
+import { ApplyPage } from '../../pages/apply/apply';
 
 
 @Component({
@@ -24,6 +27,22 @@ export class ItemListComponent {
 	logout(){
 	  	this.navCtrl.push(LoginPage);
 	}
+
+    //账号绑定
+    account(){
+        this.navCtrl.push(AccountPage);
+    }
+
+    //会员信息
+    vip(){
+       this.navCtrl.push(VipPage); 
+    }
+
+    //应用
+    apply(){
+        this.navCtrl.push(ApplyPage); 
+    }
+
 
 	// 重置密码
     resetPwd(){

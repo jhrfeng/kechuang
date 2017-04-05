@@ -17,13 +17,18 @@ import { CompanyPage } from '../pages/company/company';
 import { FollowPage } from '../pages/follow/follow';
 import { PersonalPage } from '../pages/personal/personal';
 import { PersonalEditPage } from '../pages/personal-edit/personal-edit';
+import { VipPage } from '../pages/vip/vip';
+import { AccountPage } from '../pages/account/account';
+import { ApplyPage } from '../pages/apply/apply';
 
 
 import { AuthService } from '../providers/auth-service';
-import { UtilProvider } from '../providers/util-provider';
+// import { CameraService }  from '../providers/camera-service';
+// import { UtilProvider } from '../providers/util-provider';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 
 import { LineInputComponent } from '../components/line-input/line-input';
 import { PwdInputComponent } from '../components/pwd-input/pwd-input';
@@ -55,6 +60,9 @@ import { ForgetInputComponent } from '../components/forget-input/forget-input';
     PersonalPage,
     PersonalEditPage,
     FollowPage,
+    VipPage,
+    AccountPage,
+    ApplyPage,
     LineInputComponent,
     PwdInputComponent,
     RegInputComponent,
@@ -94,6 +102,9 @@ import { ForgetInputComponent } from '../components/forget-input/forget-input';
     PersonalPage,
     PersonalEditPage,
     FollowPage,
+    VipPage,
+    AccountPage,
+    ApplyPage,
     LineInputComponent,
     PwdInputComponent,
     RegInputComponent,
@@ -108,8 +119,10 @@ import { ForgetInputComponent } from '../components/forget-input/forget-input';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     AuthService,
-    UtilProvider,
+    // CameraService,
+    // UtilProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
