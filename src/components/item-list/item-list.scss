@@ -4,7 +4,7 @@ item-list {
     	margin-bottom: 0.5rem;
 	}
 	.item-md{
-		border-bottom: 1px solid #ddd;
+		// border-bottom: 1px solid #ddd;
 	}
 	ion-app.md [padding-left]{
 	    padding-left: 26px;
@@ -16,7 +16,7 @@ item-list {
 		height: 3.4rem;
 		min-height: 3rem;
 	}*/
-/*	.item-md ion-icon[item-right] {
-	    margin-top: 24px;
-	}*/
+	.item-md ion-icon[item-right] {
+	    padding-top: 1rem;
+	}
 }
