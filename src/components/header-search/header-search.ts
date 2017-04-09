@@ -14,8 +14,6 @@ export class HeaderSearchComponent {
     
   }
 
-  search() {
-  	// this.navCtrl.push(ExactPage);
-  }
+
 
 }

@@ -1,0 +1,57 @@
+page-person-detail {
+	.content{
+		.toolbar-md {
+			padding-top: 56px;
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+		.item-md{
+			height: 100px;
+		}
+		.item-md ion-avatar ion-img, .item-md ion-avatar img {
+		    width: 60px;
+		    height: 60px;
+		}
+		span{
+			float: right;
+			color: color($colors, primary);
+			border: 1px solid color($colors, primary);
+			padding: 8px 15px;
+			font-size: 1.4rem;
+		}
+
+	}
+
+	.toolbar-content{
+		.row{
+			margin: 10px;
+		}
+		.col{
+			border: 1px solid color($colors, dark);
+		}
+	}
+
+	ion-item p{
+		padding-left:10px;
+	}
+	ion-row{
+		margin: 8px 10px 15px 0px;
+	}
+	.result{
+		background:#FFC107;
+		color: #f3f3f3;
+	}
+	.title{
+		color: #28a28a;
+		font-size: 1.7rem;
+		line-height: 1.6rem;
+	}
+	.tag{
+		color: #28a28a;
+		font-size: 1.4rem;
+		margin: 4px 0;
+	}
+	.source{
+
+	}	
+}

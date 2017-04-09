@@ -8,9 +8,15 @@ import { NavController, ModalController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-    constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController) {
+	isSearch = true;
 
-    }
+  constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController) {
+
+	}
+
+  search(){
+    this.isSearch = false;
+  }
 
     ionViewDidEnter() {
     	console.log(this.navCtrl.parent)

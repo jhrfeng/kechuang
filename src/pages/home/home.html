@@ -1,3 +1,7 @@
-<header-search></header-search>
+<header-search (click)="search()"></header-search>
 
-<background></background>
+<background *ngIf="isSearch"></background>
+
+<search-list *ngIf="!isSearch"></search-list>
+
+

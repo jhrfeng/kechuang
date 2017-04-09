@@ -3,12 +3,12 @@ import { NavController, NavParams } from 'ionic-angular';
 import {DomSanitizer} from '@angular/platform-browser'; //SafeResourceUrl
 
 @Component({
-  selector: 'page-account',
-  templateUrl: 'account.html'
+  selector: 'page-chart',
+  templateUrl: 'chart.html'
 })
-export class AccountPage {
+export class ChartPage {
 
-  	screenWidth:any = window.screen.availWidth;
+	screenWidth:any = window.screen.availWidth;
  	screenHeight:any = window.screen.availHeight;
 
   	constructor(public navCtrl: NavController, public navParams: NavParams, public sanitizer: DomSanitizer) {}
@@ -18,7 +18,7 @@ export class AccountPage {
   	}
 
   	updateVideoUrl(id: string) {
-        let dangerousVideoUrl = 'https://html5up.net/uploads/demos/story/';
+        let dangerousVideoUrl = 'https://html5up.net/uploads/demos/multiverse/';
         return this.sanitizer.bypassSecurityTrustResourceUrl(dangerousVideoUrl);
 	}
 

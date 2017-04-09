@@ -20,6 +20,8 @@ import { PersonalEditPage } from '../pages/personal-edit/personal-edit';
 import { VipPage } from '../pages/vip/vip';
 import { AccountPage } from '../pages/account/account';
 import { ApplyPage } from '../pages/apply/apply';
+import { PersonDetailPage } from '../pages/person-detail/person-detail';
+import { ChartPage } from '../pages/chart/chart';
 
 
 import { AuthService } from '../providers/auth-service';
@@ -40,6 +42,8 @@ import { HeaderSearchComponent } from '../components/header-search/header-search
 import { SearchListComponent } from '../components/search-list/search-list';
 import { BackgroundComponent } from '../components/background/background';
 import { ForgetInputComponent } from '../components/forget-input/forget-input';
+import { PersonListComponent } from '../components/person-list/person-list';
+import { OpenChartComponent } from '../components/open-chart/open-chart';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,8 @@ import { ForgetInputComponent } from '../components/forget-input/forget-input';
     VipPage,
     AccountPage,
     ApplyPage,
+    ChartPage,
+    PersonDetailPage,
     LineInputComponent,
     PwdInputComponent,
     RegInputComponent,
@@ -72,7 +78,9 @@ import { ForgetInputComponent } from '../components/forget-input/forget-input';
     HeaderSearchComponent,
     SearchListComponent,
     BackgroundComponent,
-    ForgetInputComponent
+    ForgetInputComponent,
+    PersonListComponent,
+    OpenChartComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -105,6 +113,8 @@ import { ForgetInputComponent } from '../components/forget-input/forget-input';
     VipPage,
     AccountPage,
     ApplyPage,
+    ChartPage,
+    PersonDetailPage,
     LineInputComponent,
     PwdInputComponent,
     RegInputComponent,
@@ -114,7 +124,9 @@ import { ForgetInputComponent } from '../components/forget-input/forget-input';
     HeaderSearchComponent,
     SearchListComponent,
     BackgroundComponent,
-    ForgetInputComponent
+    ForgetInputComponent,
+    PersonListComponent,
+    OpenChartComponent
   ],
   providers: [
     StatusBar,

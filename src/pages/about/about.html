@@ -1,14 +1,24 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      About
+  <ion-navbar color="dark">
+    <ion-title text-center>
+      联系他
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="content">
-	<ion-card>
-		<hed-item></hed-item>
-	</ion-card>
-	<item-list></item-list>
+<ion-content class="content" padding>
+	<ion-list>
+		<ion-item>
+	    	<ion-input placeholder="请输入手机号" clearInput></ion-input>
+	 	</ion-item>
+	  	<ion-item>
+	    	<ion-input placeholder="请输入邮箱" clearInput></ion-input>
+	 	</ion-item>
+
+	  	<ion-item>
+	    	<ion-textarea autosize placeholder="请说明原因"><br><br><br><br></ion-textarea>
+	  	</ion-item>
+	</ion-list>
+
+	<button ion-button round full>提  交</button>
 </ion-content>
