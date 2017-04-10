@@ -44,6 +44,7 @@ import { BackgroundComponent } from '../components/background/background';
 import { ForgetInputComponent } from '../components/forget-input/forget-input';
 import { PersonListComponent } from '../components/person-list/person-list';
 import { OpenChartComponent } from '../components/open-chart/open-chart';
+import { UserService } from "../providers/user-service";
 
 @NgModule({
   declarations: [
@@ -133,6 +134,7 @@ import { OpenChartComponent } from '../components/open-chart/open-chart';
     SplashScreen,
     Camera,
     AuthService,
+    UserService,
     // CameraService,
     // UtilProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
