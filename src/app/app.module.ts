@@ -23,11 +23,6 @@ import { ApplyPage } from '../pages/apply/apply';
 import { PersonDetailPage } from '../pages/person-detail/person-detail';
 import { ChartPage } from '../pages/chart/chart';
 
-
-import { AuthService } from '../providers/auth-service';
-// import { CameraService }  from '../providers/camera-service';
-// import { UtilProvider } from '../providers/util-provider';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
@@ -44,7 +39,14 @@ import { BackgroundComponent } from '../components/background/background';
 import { ForgetInputComponent } from '../components/forget-input/forget-input';
 import { PersonListComponent } from '../components/person-list/person-list';
 import { OpenChartComponent } from '../components/open-chart/open-chart';
-import { UserService } from "../providers/user-service";
+
+
+import { AuthService } from '../providers/auth-service';
+import { UserService } from '../providers/user-service';
+import { Auth } from '../providers/auth';
+// import { CameraService }  from '../providers/camera-service';
+// import { UtilProvider } from '../providers/util-provider';
+
 
 @NgModule({
   declarations: [
@@ -135,6 +137,7 @@ import { UserService } from "../providers/user-service";
     Camera,
     AuthService,
     UserService,
+    Auth,
     // CameraService,
     // UtilProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
