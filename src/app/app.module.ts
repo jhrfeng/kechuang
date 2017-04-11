@@ -26,6 +26,7 @@ import { ChartPage } from '../pages/chart/chart';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 import { LineInputComponent } from '../components/line-input/line-input';
 import { PwdInputComponent } from '../components/pwd-input/pwd-input';
@@ -135,6 +136,7 @@ import { Auth } from '../providers/auth';
     StatusBar,
     SplashScreen,
     Camera,
+    NativeStorage,
     AuthService,
     UserService,
     Auth,

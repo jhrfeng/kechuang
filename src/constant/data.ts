@@ -1,3 +1,5 @@
+export let REQUEST_URL = "http://mportal.hdu.edu.cn";
+
 export function menuData(): any {
     return {
 			tech: [{
