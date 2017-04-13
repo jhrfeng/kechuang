@@ -12,8 +12,8 @@ import { HomePage } from '../../pages/home/home';
 })
 export class LineInputComponent {
 
-    username: string;
-    password: string;
+    username: string = '';
+    password: string = '';
     loading: any;
 
   constructor(public navCtrl: NavController, public authService: Auth, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {}
@@ -34,7 +34,10 @@ export class LineInputComponent {
   }
 
   login(){
- 
+    if(this.username=='' || this.password==''){
+      this.showError("手机号或密码不能为空");
+      return false;
+    }
     this.showLoader();
 
     let credentials = {
@@ -45,11 +48,10 @@ export class LineInputComponent {
     this.authService.login(credentials).then((result) => {
         this.loading.dismiss();
         console.log(result);
-        this.showError("Access Denied");
         this.navCtrl.setRoot(HomePage);//
     }, (err) => {
         this.loading.dismiss();
-        this.showError("err");
+        this.showError(err["_body"]);
     });
  
   }
@@ -61,17 +63,14 @@ export class LineInputComponent {
     this.loading.present();
   }
 
-  showError(text) {
-    setTimeout(() => {
-      this.loading.dismiss();
-    });
+showError(text) {
  
     let alert = this.alertCtrl.create({
       subTitle: text,
       buttons: ['确定']
     });
     alert.present(prompt);
-  }
+}
 
   register(){
     this.navCtrl.push(RegisterPage);
