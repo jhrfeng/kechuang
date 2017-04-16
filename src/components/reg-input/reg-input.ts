@@ -10,6 +10,7 @@ export class RegInputComponent {
 
    username: string = '';
    password: string = '';
+   confirmPwd: string = '';
    user:any = {
      relationManMobilePhone: '',
      enterpriseName: '',
@@ -51,6 +52,10 @@ export class RegInputComponent {
       this.showError("用户名或密码不能为空");
       return false;
     }
+    if(this.password!=this.confirmPwd){
+      this.showError("两次密码输入一样");
+      return false;
+    }
     this.showLoader();
 
     let credentials = {
@@ -64,7 +69,7 @@ export class RegInputComponent {
         // this.navCtrl.pop();//
     }, (err) => {
         this.loading.dismiss();
-        this.showError(err["_body"]);
+        this.showError(err);
     });
  
   }
@@ -76,13 +81,13 @@ export class RegInputComponent {
     this.loading.present();
   }
 
-showError(text) {
- 
-    let alert = this.alertCtrl.create({
-      subTitle: text,
-      buttons: ['确定']
-    });
-    alert.present(prompt);
-}
+  showError(text) {
+   
+      let alert = this.alertCtrl.create({
+        subTitle: text,
+        buttons: ['确定']
+      });
+      alert.present(prompt);
+  }
 
 }

@@ -20,33 +20,37 @@
 	</div>
 	<ion-list class="main">
     <ion-row>
-      <ion-col width-20>标题</ion-col>
-      <ion-col>{{params.data.papername}}</ion-col>
+      <ion-col width-25>标题</ion-col>
+      <ion-col>{{params.data.name}}</ion-col>
     </ion-row>
     <ion-row>
-  		<ion-col width-20>作者</ion-col>
-  		<ion-col>{{params.data.authors}}</ion-col>
+  		<ion-col width-25>成员</ion-col>
+  		<ion-col>{{params.data.member}}</ion-col>
     </ion-row>
     <ion-row>
-			<ion-col width-20>来源</ion-col>
-      <ion-col>{{params.data.journalname}}</ion-col>
+			<ion-col width-25>单位</ion-col>
+      <ion-col>{{params.data.unit}}</ion-col>
     </ion-row>
     <ion-row>
-			<ion-col width-20>期刊号</ion-col>
-      <ion-col>{{params.data.journalNO}}</ion-col>
+			<ion-col width-25>委托单位</ion-col>
+      <ion-col>{{params.data.entrustunit}}</ion-col>
     </ion-row>
     <ion-row>
-			<ion-col width-20>机构</ion-col>
-      <ion-col>{{params.data.organization}}</ion-col>
+			<ion-col width-25>类型</ion-col>
+      <ion-col>{{params.data.type}}</ion-col>
     </ion-row>
     <ion-row>
-			<ion-col width-20>摘要</ion-col>
+      <ion-col width-25>时间</ion-col>
+      <ion-col>{{params.data.endtime}}</ion-col>
+    </ion-row>
+    <ion-row>
+			<ion-col width-25>摘要</ion-col>
       <ion-col></ion-col>
     </ion-row>
     <ion-row>
 			<ion-col>
       <p class="pcontent">
-			   {{params.data.paperAbstract}}
+			   {{params.data.abstractCH}}
 			</p>
       </ion-col>
     </ion-row>
@@ -58,7 +62,7 @@
     </ion-row>
     <ion-row  *ngFor="let relate of relateds;">
       <ion-col>
-        <p class="pcontent" text-nowrap>{{relate.papername}}</p>
+        <p class="pcontent" text-nowrap>{{relate.name}}</p>
       </ion-col>
     </ion-row>
   </ion-list>

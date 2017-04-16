@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { MenuItemComponent } from '../menu-item/menu-item';
-import { PersonDetailPage } from '../../pages/person-detail/person-detail';
 
 @Component({
   selector: 'person-list',
@@ -9,9 +8,17 @@ import { PersonDetailPage } from '../../pages/person-detail/person-detail';
 })
 export class PersonListComponent {
 
- 
+  @Input('data') data: any;
+  @Input('events') events: any;   
+   
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+    console.log(this.data)
+  }
 
+  onEvent = (event: string, item: any): void => {
+    if (this.events[event]) {
+        this.events[event](item);
+    }
   }
 
   presentProfileModal() {
@@ -22,8 +29,5 @@ export class PersonListComponent {
     profileModal.present();
   }
 
-  detail(){
-    this.navCtrl.push(PersonDetailPage);
-  }
 
 }

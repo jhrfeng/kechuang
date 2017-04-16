@@ -1,93 +1,21 @@
-<!-- <ion-header>
-  <ion-navbar color="dark">
-    <ion-input 
-      placeholder="请输入关键字"
-      type="search"
-      [clearInput]="true"
-    ></ion-input>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="md-search"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header> -->
 
-<ion-content class="content">
-  <ion-navbar color="dark">
-    <!-- <ion-segment [(ngModel)]="pet" color="whites">
-      <ion-segment-button value="1">
-        人才
-      </ion-segment-button>
-      <ion-segment-button value="2">
-        论文
-      </ion-segment-button>
-      <ion-segment-button value="3">
-        项目
-      </ion-segment-button>
-      <ion-segment-button value="4">
-        专利
-      </ion-segment-button>
-    </ion-segment> -->
-  </ion-navbar>
   <ion-row>
     <ion-col 
 	    text-left class="result">
-	    搜索结果：2000000
+	    搜索结果：{{data.total}}
 	</ion-col>
-	<ion-col text-right 
+	<ion-col></ion-col>
+	<!-- <ion-col text-right 
     (click)="presentProfileModal()">
           筛选
         <ion-icon name="ios-arrow-down"></ion-icon>
-    </ion-col>
+    </ion-col> -->
   </ion-row>
 	
-	<ion-item (click)="detail()">
+	<ion-item *ngFor="let item of data.list; let i = index;" (click)="onEvent('onDetail', item)">
 	    <ion-avatar item-left>
 	      <img src="assets/img/header.jpg">
 	    </ion-avatar>
-	    <h2>黄庭坚</h2>
-	    <p>中南财经大学博士</p>
+	    <h2>{{item.name}}</h2>
+	    <p>{{item.unit}}</p>
 	</ion-item>
-
-	<ion-item (click)="detail()">
-	    <ion-avatar item-left>
-	      <img src="assets/img/header2.jpg">
-	    </ion-avatar>
-	    <h2>紫霞仙子</h2>
-	    <p>中华美术学院博士后</p>
-	</ion-item>
-
-	<ion-item (click)="detail()">
-	    <ion-avatar item-left>
-	      <img src="assets/img/header3.jpg">
-	    </ion-avatar>
-	    <h2>黄庭坚</h2>
-	    <p>中南财经大学博士</p>
-	</ion-item>
-
-	<ion-item (click)="detail()">
-	    <ion-avatar item-left>
-	      <img src="assets/img/header4.jpg">
-	    </ion-avatar>
-	    <h2>紫霞仙子</h2>
-	    <p>中华美术学院博士后</p>
-	</ion-item>
-
-	<ion-item (click)="detail()">
-	    <ion-avatar item-left>
-	      <img src="assets/img/header5.jpg">
-	    </ion-avatar>
-	    <h2>黄庭坚</h2>
-	    <p>中南财经大学博士</p>
-	</ion-item>
-
-	<ion-item (click)="detail()">
-	    <ion-avatar item-left>
-	      <img src="assets/img/header2.jpg">
-	    </ion-avatar>
-	    <h2>紫霞仙子</h2>
-	    <p>中华美术学院博士后</p>
-	</ion-item>
-
-</ion-content>

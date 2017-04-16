@@ -13,7 +13,7 @@
 
 <ion-content class="content">
 	<ion-card style="margin:0;width:100%;">
-		<hed-item tappable (click)="personal()"></hed-item>
+		<hed-item [data]="params.data" tappable (click)="personal()"></hed-item>
 	</ion-card>
 	<item-list></item-list>
 </ion-content>

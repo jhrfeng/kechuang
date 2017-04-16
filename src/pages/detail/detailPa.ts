@@ -3,10 +3,10 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Auth } from '../../providers/auth';
 
 @Component({
-  selector: 'page-detail',
-  templateUrl: 'detail.html'
+  selector: 'page-detailPa',
+  templateUrl: 'detailPa.html'
 })
-export class DetailPage {
+export class DetailPaPage {
 
 	params: any;
 	relateds: any = [];
@@ -14,14 +14,16 @@ export class DetailPage {
   	constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth) {
   		this.params = {data:{}, related:{}};
 
-  		this.authService.authGet('/query/paper/'+this.navParams.get('item').id, null, true).then((result) => {
+  		this.authService.authGet('/query/patent/'+this.navParams.get('item').id, null, true).then((result) => {
 	    	this.params.data = JSON.parse(result["_body"]);
-	    	console.log(this.params.data)
-	    	this.keywords = this.params.data.keywords.split(",");
+	    	console.log(this.keywords, this.params.data)
+	    	// this.keywords = this.params.data.keywords.split(",");
+
+	      	
 	    },(err) =>{
 	      
 	    });
-  		this.authService.authGet('/query/paper/'+this.navParams.get('item').id+'/similar', null, false).then((result) => {
+  		this.authService.authGet('/query/patent/'+this.navParams.get('item').id+'/similar', null, false).then((result) => {
 	    	this.params.related = JSON.parse(result["_body"]);
 	    	for(var index in this.params.related){
 	    		this.relateds.push(this.params.related[index])
@@ -32,7 +34,7 @@ export class DetailPage {
   	}
 
   	ionViewDidLoad() {
-    	console.log('ionViewDidLoad DetailPage');
+    	console.log('ionViewDidLoad DetailPaPage');
   	}
 
 }

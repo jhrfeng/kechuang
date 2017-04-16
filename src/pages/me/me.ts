@@ -1,19 +1,30 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { Auth } from '../../providers/auth';
 import { PersonalPage } from '../personal/personal'
 import { ApplyPage } from '../apply/apply';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-me',
   templateUrl: 'me.html'
 })
 export class MePage {
+    
+    params: any;
 
- 	constructor(public navCtrl: NavController, public navParams: NavParams) {}
+ 	constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth) {
+         this.params = {data:{name:'', enterpriseName:''}};
+     }
 
-		ionViewDidLoad() {
-    	console.log('ionViewDidLoad MePage');
+	ionViewDidLoad() {
+        this.authService.authGet('/restapi/user/me', null, true).then((result) => {
+            this.params.data = JSON.parse(result["_body"]);
+            console.log(this.params.data)
+        },(err) =>{
+            console.log(err)
+            if(err) this.navCtrl.push(LoginPage, {type: "MePage"})
+        });
     }
 
     // 跳转个人信息

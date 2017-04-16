@@ -1,26 +1,30 @@
 <ion-item>
+	<ion-icon name="md-person" item-left></ion-icon>
+	<ion-input type="text" placeholder="请输入用户名/手机号/邮箱" [(ngModel)]="username"></ion-input>
+</ion-item>
+<ion-item>
+	<ion-icon name="md-home" item-left></ion-icon>
+	<ion-input type="text" placeholder="企业名" [(ngModel)]="user.enterpriseName"></ion-input>
+</ion-item>
+<ion-item>
 	<ion-icon name="md-phone-portrait" item-left></ion-icon>
 	<ion-input type="text" placeholder="请输入手机号" [(ngModel)]="user.relationManMobilePhone"></ion-input>
 </ion-item>
-<ion-item>
-	<ion-icon name="md-lock" item-left></ion-icon>
-	<ion-input type="text" placeholder="企业名" [(ngModel)]="user.enterpriseName"></ion-input>
-</ion-item>
 <div class="send">
 	<ion-item>
-		<ion-icon name="md-lock" item-left></ion-icon>
+		<ion-icon name="md-log-in" item-left></ion-icon>
 		<ion-input type="text" placeholder="短信验证码" [(ngModel)]="user.relationManMobilePhoneSMS">
 		</ion-input>
 	</ion-item>
 	<button ion-button outline (click)="sendSms()">发送验证码</button>
 </div>
 <ion-item>
-	<ion-icon name="md-person" item-left></ion-icon>
-	<ion-input type="text" placeholder="请输入用户名" [(ngModel)]="username"></ion-input>
+	<ion-icon name="md-lock" item-left></ion-icon>
+	<ion-input type="password" placeholder="请输入密码" [(ngModel)]="password"></ion-input>
 </ion-item>
 <ion-item>
 	<ion-icon name="md-lock" item-left></ion-icon>
-	<ion-input type="password" placeholder="请输入密码" [(ngModel)]="password"></ion-input>
+	<ion-input type="password" placeholder="请再次输入密码" [(ngModel)]="confirmPwd"></ion-input>
 </ion-item>
 <p text-left>
 	<input type="checkbox" />

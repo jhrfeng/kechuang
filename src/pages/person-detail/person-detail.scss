@@ -1,7 +1,6 @@
 page-person-detail {
 	.content{
 		.toolbar-md {
-			padding-top: 56px;
 			padding-left: 0px;
 			padding-right: 0px;
 		}
@@ -52,6 +51,8 @@ page-person-detail {
 		margin: 4px 0;
 	}
 	.source{
-
+		em{
+			float: right;
+		}
 	}	
 }

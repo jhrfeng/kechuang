@@ -1,4 +1,4 @@
-page-detail {
+page-detailP {
 	.tag{
 		height: 140px;
 		background: color($colors, headers);
@@ -22,7 +22,7 @@ page-detail {
 	ion-col{
 		font-size: 1.5rem;
 	}
-	ion-col[width-20], ion-col[width-40]{
+	ion-col[width-25], ion-col[width-40]{
 		font-size: 1.6rem;
 		padding-left: 10px;
     	font-weight: bold;

@@ -1,3 +1,47 @@
-<header-search></header-search>
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-input
+      placeholder="请输入科技关键词 多个词用空格隔开"
+      [(ngModel)]="searchVo.keyWord"
+      type="search"
+      [clearInput]="true"
+    ></ion-input>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="search()">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-navbar color="dark">
+    <ion-segment [(ngModel)]="pet" color="whites">
+    	<ion-segment-button value="4" (ionSelect)="selectPage(4)">
+        	人才
+      	</ion-segment-button>
+      	<ion-segment-button value="1" (ionSelect)="selectPage(1)">
+        	论文
+      	</ion-segment-button>
+      	<ion-segment-button value="2" (ionSelect)="selectPage(2)">
+        	项目
+      	</ion-segment-button>
+      	<ion-segment-button value="3" (ionSelect)="selectPage(3)">
+        	专利
+      	</ion-segment-button>
+    </ion-segment>
+  </ion-navbar>
+</ion-header>
 
-<person-list></person-list>
+<ion-content>
+
+	<person-list 
+    *ngIf="isSearch"
+    [data]="params.data4" 
+    [events]="params.events">
+  </person-list>
+
+  <search-list
+    *ngIf="!isSearch"
+    [data]="params.data" 
+    [events]="params.events">
+  </search-list>
+
+</ion-content>

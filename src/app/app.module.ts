@@ -8,7 +8,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 import { MePage } from '../pages/me/me';
+
 import { DetailPage } from '../pages/detail/detail';
+import { DetailPPage } from '../pages/detail/detailP';
+import { DetailPaPage } from '../pages/detail/detailPa';
+
 import { ExactPage } from '../pages/exact/exact';
 import { ForgetPage } from '../pages/forget/forget';
 import { LixiangPage } from '../pages/lixiang/lixiang';
@@ -48,6 +52,8 @@ import { Auth } from '../providers/auth';
 // import { CameraService }  from '../providers/camera-service';
 // import { UtilProvider } from '../providers/util-provider';
 
+import { Member } from '../pipes/member';
+
 
 @NgModule({
   declarations: [
@@ -60,6 +66,8 @@ import { Auth } from '../providers/auth';
     LoginPage,
     MePage,
     DetailPage,
+    DetailPPage,
+    DetailPaPage,
     ExactPage,
     ForgetPage,
     LixiangPage,
@@ -84,7 +92,8 @@ import { Auth } from '../providers/auth';
     BackgroundComponent,
     ForgetInputComponent,
     PersonListComponent,
-    OpenChartComponent
+    OpenChartComponent,
+    Member
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -106,6 +115,8 @@ import { Auth } from '../providers/auth';
     LoginPage,
     MePage,
     DetailPage,
+    DetailPPage,
+    DetailPaPage,
     ExactPage,
     ForgetPage,
     LixiangPage,

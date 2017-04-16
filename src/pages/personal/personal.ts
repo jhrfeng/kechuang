@@ -8,8 +8,11 @@ import { PersonalEditPage } from '../personal-edit/personal-edit';
   templateUrl: 'personal.html'
 })
 export class PersonalPage {
+	params: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {}
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    	this.params = {data:{name:'', type:''}};
+    }
 
     edit(){
     	this.navCtrl.push(PersonalEditPage)

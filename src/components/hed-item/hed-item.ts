@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'hed-item',
@@ -6,11 +6,10 @@ import { Component } from '@angular/core';
 })
 export class HedItemComponent {
 
-  text: string;
+  @Input() data: any;
 
   constructor() {
     console.log('Hello HedItem Component');
-    this.text = 'Hello World';
   }
 
 }

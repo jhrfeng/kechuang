@@ -1,39 +1,8 @@
-<!-- <ion-header>
-  <ion-navbar color="dark">
-    <ion-input 
-      placeholder="请输入关键字"
-      type="search"
-      [clearInput]="true"
-    ></ion-input>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="md-search"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header> -->
 
-<ion-content class="content">
-  <ion-navbar color="dark">
-    <ion-segment [(ngModel)]="pet" color="whites">
-      <ion-segment-button value="1">
-        全部
-      </ion-segment-button>
-      <ion-segment-button value="2">
-        论文
-      </ion-segment-button>
-      <ion-segment-button value="3">
-        项目
-      </ion-segment-button>
-      <ion-segment-button value="4">
-        专利
-      </ion-segment-button>
-    </ion-segment>
-  </ion-navbar>
   <ion-row>
     <ion-col 
       text-left class="result">
-      搜索结果：2000000
+      搜索结果：{{data.numFound}} 条 <!-- numFound data.docs -->
     </ion-col>
     <ion-col text-right 
     (click)="presentProfileModal()">
@@ -41,22 +10,9 @@
         <ion-icon name="ios-arrow-down"></ion-icon>
     </ion-col>
   </ion-row>
-  <ion-item (click)="detail()">
-    <p class="title">未来互联网虚拟化研究</p>
-    <p class="tag">余涛 碧君 王晓天</p>
-    <p class="source" text-nowrap>《计算机研究与发展》 2015年09期</p>
+  <ion-item *ngFor="let item of data.docs; let i = index;" (click)="onEvent('onDetail', item)">
+    <p class="title">{{item.name}}</p>
+    <p class="tag">{{item.member}}</p>
+    <p class="source" text-nowrap>《{{item.journal_name}}》 <span>{{item.journal_no}}</span></p>
   </ion-item>
 
-  <ion-item (click)="detail()">
-    <p class="title">未来互联网虚拟化研究</p>
-    <p class="tag">余涛 碧君 王晓天</p>
-    <p class="source" text-nowrap>《计算机研究与发展》 2015年09期</p>
-  </ion-item>
-
-  <ion-item (click)="detail()">
-    <p class="title">未来互联网虚拟化研究</p>
-    <p class="tag">余涛 碧君 王晓天</p>
-    <p class="source" text-nowrap>《计算机研究与发展》 2015年09期</p>
-  </ion-item>
-
-</ion-content>
