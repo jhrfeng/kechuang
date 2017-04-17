@@ -40,8 +40,8 @@ export class Auth {
   	checkAuthentication(){
   		return new Promise((resolve, reject) => {
         //Load token if exists
-        this.storage.getItem('token').then((value) => {
-            this.token = value;
+        // this.storage.getItem('token').then((value) => {
+            this.token = "MDNlNzMzZDItMDljYy00Y2U1LWEwMDktMWJlNGNjMmUyYzFi"; //value;
  			console.log(this.token)
             let headers = new Headers();
             headers.append('token', this.token);
@@ -55,15 +55,15 @@ export class Auth {
 	 
 	        });         
 	 
-	    });
+	    // });
   	}
 
 	authGet(api, param, show){
   		return new Promise((resolve, reject) => {
         //Load token if exists
-        this.storage.getItem('token').then((value) => {
+        // this.storage.getItem('token').then((value) => {
         	
-            this.token = value; //"ODU1NDRiMTctYWUwNS00N2VmLWI4NWEtZTc4NDA1MjYzNjU2"; //
+            this.token = "MDNlNzMzZDItMDljYy00Y2U1LWEwMDktMWJlNGNjMmUyYzFi"; //value; //
             let headers = new Headers();
             headers.append('token', this.token);
  			
@@ -94,14 +94,14 @@ export class Auth {
                 }); 
 	        });         
 	 
-	    });
+	    // });
   	}
 
 	authPost(api, details, show){
   		return new Promise((resolve, reject) => {
         //Load token if exists
-        this.storage.getItem('token').then((value) => {
-            this.token = value; //"ODU1NDRiMTctYWUwNS00N2VmLWI4NWEtZTc4NDA1MjYzNjU2"; //
+        // this.storage.getItem('token').then((value) => {
+            this.token = "MDNlNzMzZDItMDljYy00Y2U1LWEwMDktMWJlNGNjMmUyYzFi"; //value; //
             let headers = new Headers();
             headers.append('Content-Type', 'application/json;charset=UTF-8');
             headers.append('token', this.token);
@@ -123,7 +123,7 @@ export class Auth {
                 }); 
 	        });     
 
-	    });
+	    // });
   	}  
 
 	post(api, details){

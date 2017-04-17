@@ -45,6 +45,24 @@ import { ForgetInputComponent } from '../components/forget-input/forget-input';
 import { PersonListComponent } from '../components/person-list/person-list';
 import { OpenChartComponent } from '../components/open-chart/open-chart';
 
+import { SmartSearch1Component } from '../components/smart-search-1/smart-search-1';
+import { SmartSearch2Component } from '../components/smart-search-2/smart-search-2';
+import { SmartSearch3Component } from '../components/smart-search-3/smart-search-3';
+import { SmartSearch4Component } from '../components/smart-search-4/smart-search-4';
+import { SmartDetail1Component } from '../components/smart-detail-1/smart-detail-1';
+import { SmartDetail2Component } from '../components/smart-detail-2/smart-detail-2';
+import { SmartDetail3Component } from '../components/smart-detail-3/smart-detail-3';
+
+import { TalentSearch1Component } from '../components/talent-search-1/talent-search-1';
+import { TalentSearch2Component } from '../components/talent-search-2/talent-search-2';
+import { TalentSearch3Component } from '../components/talent-search-3/talent-search-3';
+import { TalentSearch4Component } from '../components/talent-search-4/talent-search-4';
+import { TalentDetail1Component } from '../components/talent-detail-1/talent-detail-1';
+import { TalentDetail2Component } from '../components/talent-detail-2/talent-detail-2';
+import { TalentDetail3Component } from '../components/talent-detail-3/talent-detail-3';
+import { TalentDetail4Component } from '../components/talent-detail-4/talent-detail-4';
+
+
 
 import { AuthService } from '../providers/auth-service';
 import { UserService } from '../providers/user-service';
@@ -93,7 +111,22 @@ import { Member } from '../pipes/member';
     ForgetInputComponent,
     PersonListComponent,
     OpenChartComponent,
-    Member
+    Member,
+    SmartSearch1Component,
+    SmartSearch2Component,
+    SmartSearch3Component,
+    SmartSearch4Component,
+    SmartDetail1Component,
+    SmartDetail2Component,
+    SmartDetail3Component,
+    TalentSearch1Component,
+    TalentSearch2Component,
+    TalentSearch3Component,
+    TalentSearch4Component,
+    TalentDetail1Component,
+    TalentDetail2Component,
+    TalentDetail3Component,
+    TalentDetail4Component
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -141,7 +174,22 @@ import { Member } from '../pipes/member';
     BackgroundComponent,
     ForgetInputComponent,
     PersonListComponent,
-    OpenChartComponent
+    OpenChartComponent,
+    SmartSearch1Component,
+    SmartSearch2Component,
+    SmartSearch3Component,
+    SmartSearch4Component,
+    SmartDetail1Component,
+    SmartDetail2Component,
+    SmartDetail3Component,
+    TalentSearch1Component,
+    TalentSearch2Component,
+    TalentSearch3Component,
+    TalentSearch4Component,
+    TalentDetail1Component,
+    TalentDetail2Component,
+    TalentDetail3Component,
+    TalentDetail4Component
   ],
   providers: [
     StatusBar,

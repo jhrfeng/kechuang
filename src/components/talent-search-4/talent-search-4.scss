@@ -1,0 +1,34 @@
+talent-search-4 {
+	.toolbar-md {
+		padding-top: 56px;
+	}
+	ion-item p{
+		padding-left:10px;
+	}
+	ion-row{
+		margin: 8px 10px 15px 0px;
+	}
+	.row{
+		// margin-top: 70px;
+	}
+	.result{
+		background:#FFC107;
+		color: #f3f3f3;
+	}
+	.title{
+		color: #28a28a;
+		font-size: 1.7rem;
+		line-height: 1.6rem;
+	}
+	.tag{
+		color: #5c7973;
+		font-size: 1.4rem;
+		margin: 4px 0;
+	}
+	.source{
+		span{
+			float: right;
+			padding-right: 10px;
+		}
+	}	
+}
