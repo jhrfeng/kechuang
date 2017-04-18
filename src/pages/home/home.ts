@@ -17,12 +17,13 @@ export class HomePage {
   searchVo:any = {keyWord:"", type:"paper"};
 
   constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController, public authService: Auth) {
-    this.params = { data: {docs:[], numFound:0},
+    this.params = { 
                     data1:{docs:[], numFound:0},
                     data2:{docs:[], numFound:0},
                     data3:{docs:[], numFound:0}, 
                     data4:{docs:[], numFound:0}, 
-                    events:{}
+                    events:{},
+                    istype:1
                   };
     this.params.events = {
       'onDetail': (item: any) => {
@@ -39,10 +40,10 @@ export class HomePage {
   search(){
     this.isSearch = false;
     // 论文
+    this.searchVo.type = "paper";
     this.authService.authGet('/query/search', this.searchVo, true).then((result) => {
       this.params.data1 = JSON.parse(result["_body"]);
       this.params.data1 = this.params.data1.response;
-      this.params.data = this.params.data1;
     },(err) =>{
       console.log(err)
       if(err) this.navCtrl.push(LoginPage, {type: "HomePage"})
@@ -73,16 +74,7 @@ export class HomePage {
   }
 
   selectPage(type){
-    if(type==1)
-      this.params.data = this.params.data1;
-    if(type==2)
-      this.params.data = this.params.data2;
-    if(type==3)
-      this.params.data = this.params.data3;
-    if(type==4)
-      this.params.data = this.params.data4;
-
-    console.log(this.params.data)
+    this.params.istype = type;
   }
 
   ionViewDidLoad() {

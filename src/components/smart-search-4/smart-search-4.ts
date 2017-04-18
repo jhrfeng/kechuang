@@ -1,22 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MenuItemComponent } from '../menu-item/menu-item';
+import { ModalController } from 'ionic-angular';
 
-/*
-  Generated class for the SmartSearch4 component.
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
-*/
 @Component({
   selector: 'smart-search-4',
   templateUrl: 'smart-search-4.html'
 })
 export class SmartSearch4Component {
 
-  text: string;
+  @Input('data') data: any;
+  @Input('events') events: any;
 
-  constructor() {
-    console.log('Hello SmartSearch4 Component');
-    this.text = 'Hello World';
+  constructor(public modalCtrl: ModalController) {
+
   }
+
+
+  onEvent = (event: string, item: any): void => {
+    if (this.events[event]) {
+        this.events[event](item);
+    }
+  }
+
+  presentProfileModal() {
+    let profileModal = this.modalCtrl.create(MenuItemComponent, { userId: 8675309 });
+    profileModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    profileModal.present();
+  }
+
 
 }
