@@ -23,3 +23,22 @@ export class Member implements PipeTransform {
   }
 
 }
+
+@Pipe({
+  name: 'fname'
+})
+export class Fname implements PipeTransform {
+
+  transform(value: string, ...args): string {
+    if(value === '') 
+    		return '';
+    var names = value.split(";");
+    var keywords = '';
+    for(var i in names){
+    	keywords+= names[i] + ' ';
+    }
+    return keywords;
+  }
+
+}
+

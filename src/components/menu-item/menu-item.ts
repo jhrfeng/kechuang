@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 
 import { menuData } from '../../constant/data';
-import { ChecklistModel } from '../../model/ChecklistModel';
+import { RadiolistModel } from '../../model/RadiolistModel';
 
 @Component({
   selector: 'menu-item',
@@ -11,23 +11,23 @@ import { ChecklistModel } from '../../model/ChecklistModel';
 export class MenuItemComponent {
 
   data:any;
-  checklist = new ChecklistModel([]);
+  radiolist = new RadiolistModel({subject:"", time:"-1",area:"",yeardesc:false});
 
   constructor(public viewCtrl: ViewController) {
     this.data = menuData();
   }
 
   dismiss() {
-    this.viewCtrl.dismiss(this.checklist.items);
+    this.viewCtrl.dismiss(this.radiolist.items);
   }
 
   reset() {
     this.data = menuData();
-    this.checklist.resetItem();
+    this.radiolist.resetItem({subject:"", time:"-1",area:"",yeardesc:false});
   }
 
   ionViewDidEnter(){
-    this.data = menuData();
+    // this.data = menuData();
   }
 
 

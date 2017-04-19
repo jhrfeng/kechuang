@@ -26,6 +26,11 @@ export class HomePage {
                     istype:1
                   };
     this.params.events = {
+      'onModal': (item: any) => { //筛选
+        this.searchVo = Object.assign(this.searchVo, item);
+        console.log(this.searchVo)
+        this.search();
+      },
       'onDetail': (item: any) => {
         if(item.type=="paper")//论文
           this.navCtrl.push(DetailPage, {item: item});
@@ -39,42 +44,62 @@ export class HomePage {
 
   search(){
     this.isSearch = false;
-    // 论文
-    this.searchVo.type = "paper";
-    this.authService.authGet('/query/search', this.searchVo, true).then((result) => {
-      this.params.data1 = JSON.parse(result["_body"]);
-      this.params.data1 = this.params.data1.response;
+    // 检查搜索次数
+    this.authService.authPost('/query/search/checkTimes', {keyWord: this.searchVo.keyWord, id:"103"}, true).then((result) => {
+      var times = JSON.parse(result["_body"]);
+      if(times==1){
+        // 论文
+        this.searchVo.type = "paper";
+        this.authService.authGet('/query/search', this.searchVo, false).then((result) => {
+          this.params.data1 = JSON.parse(result["_body"]);
+          this.params.data1 = this.params.data1.response;
+        },(err) =>{
+        });
+        // 项目
+        this.searchVo.type = "project";
+        this.authService.authGet('/query/search', this.searchVo, false).then((result) => {
+          this.params.data2 = JSON.parse(result["_body"]);
+          this.params.data2 = this.params.data2.response;
+        },(err) =>{
+        });
+        // 专利
+        this.searchVo.type = "patent";
+        this.authService.authGet('/query/search', this.searchVo, false).then((result) => {
+          this.params.data3 = JSON.parse(result["_body"]);
+          this.params.data3 = this.params.data3.response;
+        },(err) =>{
+        });
+        // 全部
+        this.authService.authGet('/query/search', {keyWord: this.searchVo.keyWord}, false).then((result) => {
+          this.params.data4 = JSON.parse(result["_body"]);
+          this.params.data4 = this.params.data4.response;
+        },(err) =>{
+        });
+      }else{
+        // 提示次数已经使用完毕
+      }
     },(err) =>{
-      console.log(err)
-      if(err) this.navCtrl.push(LoginPage, {type: "HomePage"})
+      if(err){
+        this.navCtrl.push(LoginPage, {type: "HomePage"})
+      }
     });
-    // 项目
-    this.searchVo.type = "project";
-    this.authService.authGet('/query/search', this.searchVo, false).then((result) => {
-      this.params.data2 = JSON.parse(result["_body"]);
-      this.params.data2 = this.params.data2.response;
-    },(err) =>{
-      
-    });
-    // 专利
-    this.searchVo.type = "patent";
-    this.authService.authGet('/query/search', this.searchVo, false).then((result) => {
-      this.params.data3 = JSON.parse(result["_body"]);
-      this.params.data3 = this.params.data3.response;
-    },(err) =>{
-      
-    });
-    // 全部
-    this.authService.authGet('/query/search', {keyWord: this.searchVo.keyWord}, false).then((result) => {
-      this.params.data4 = JSON.parse(result["_body"]);
-      this.params.data4 = this.params.data4.response;
-    },(err) =>{
-     
-    });
+    
+    
   }
 
   selectPage(type){
     this.params.istype = type;
+  }
+
+  doInfinite(infiniteScroll) {
+    setTimeout(() => {
+      // for (let i = 0; i < 30; i++) {
+        // this.items.push( this.items.length );
+      // }
+      console.log(this.params.istype);
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 500);
   }
 
   ionViewDidLoad() {

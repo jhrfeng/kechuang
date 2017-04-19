@@ -41,7 +41,7 @@ export class Auth {
   		return new Promise((resolve, reject) => {
         //Load token if exists
         // this.storage.getItem('token').then((value) => {
-            this.token = "MDNlNzMzZDItMDljYy00Y2U1LWEwMDktMWJlNGNjMmUyYzFi"; //value;
+            this.token = "YjA1YzcyMmQtNzQ2YS00ZTM1LWExZGMtOWNmMGEzNjVlMTM1"; //value;
  			console.log(this.token)
             let headers = new Headers();
             headers.append('token', this.token);
@@ -63,7 +63,7 @@ export class Auth {
         //Load token if exists
         // this.storage.getItem('token').then((value) => {
         	
-            this.token = "MDNlNzMzZDItMDljYy00Y2U1LWEwMDktMWJlNGNjMmUyYzFi"; //value; //
+            this.token = "YjA1YzcyMmQtNzQ2YS00ZTM1LWExZGMtOWNmMGEzNjVlMTM1"; //value; //
             let headers = new Headers();
             headers.append('token', this.token);
  			
@@ -101,7 +101,7 @@ export class Auth {
   		return new Promise((resolve, reject) => {
         //Load token if exists
         // this.storage.getItem('token').then((value) => {
-            this.token = "MDNlNzMzZDItMDljYy00Y2U1LWEwMDktMWJlNGNjMmUyYzFi"; //value; //
+            this.token = "YjA1YzcyMmQtNzQ2YS00ZTM1LWExZGMtOWNmMGEzNjVlMTM1"; //value; //
             let headers = new Headers();
             headers.append('Content-Type', 'application/json;charset=UTF-8');
             headers.append('token', this.token);

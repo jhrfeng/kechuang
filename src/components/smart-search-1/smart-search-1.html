@@ -4,14 +4,14 @@
       搜索结果：{{data.numFound}} 条 <!-- numFound data.docs -->
     </ion-col>
     <ion-col text-right 
-    (click)="presentProfileModal()">
+      (click)="onEvent('onModal', item)">
           筛选
         <ion-icon name="ios-arrow-down"></ion-icon>
     </ion-col>
 </ion-row>
 <ion-item *ngFor="let item of data.docs; let i = index;" (click)="onEvent('onDetail', item)">
     <p class="title">{{item.name}}</p>
-    <p class="tag">{{item.member}}</p>
+    <p class="tag">{{item.member | fname}}</p>
     <p class="source" text-nowrap>《{{item.journal_name}}》 <span>{{item.journal_no}}</span></p>
 </ion-item>
 

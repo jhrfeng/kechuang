@@ -70,7 +70,7 @@ import { Auth } from '../providers/auth';
 // import { CameraService }  from '../providers/camera-service';
 // import { UtilProvider } from '../providers/util-provider';
 
-import { Member } from '../pipes/member';
+import { Member, Fname } from '../pipes/member';
 
 
 @NgModule({
@@ -112,6 +112,7 @@ import { Member } from '../pipes/member';
     PersonListComponent,
     OpenChartComponent,
     Member,
+    Fname,
     SmartSearch1Component,
     SmartSearch2Component,
     SmartSearch3Component,

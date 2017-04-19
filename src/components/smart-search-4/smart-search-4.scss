@@ -9,7 +9,7 @@ smart-search-4 {
 		margin: 8px 10px 15px 0px;
 	}
 	.row{
-		// margin-top: 70px;
+		margin-top: 70px;
 	}
 	.result{
 		background:#FFC107;
@@ -29,6 +29,20 @@ smart-search-4 {
 		span{
 			float: right;
 			padding-right: 10px;
+		}
+	}	
+	.tag3{
+		color: #5c7973;
+		font-size: 1.4rem;
+		margin: 4px 0;
+		span {
+			padding-left: 20px;
+		}
+	}
+	.source3{
+		span{
+			// float: right;
+			padding-left: 20px;
 		}
 	}	
 	

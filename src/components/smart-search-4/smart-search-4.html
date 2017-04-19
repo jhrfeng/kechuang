@@ -4,14 +4,27 @@
       搜索结果：{{data.numFound}} 条 <!-- numFound data.docs -->
     </ion-col>
     <ion-col text-right 
-    (click)="presentProfileModal()">
+      (click)="onEvent('onModal', item)">
           筛选
         <ion-icon name="ios-arrow-down"></ion-icon>
     </ion-col>
 </ion-row>
 <ion-item *ngFor="let item of data.docs; let i = index;" (click)="onEvent('onDetail', item)">
-    <p class="title">{{item.name}}</p>
-    <p class="tag">{{item.member}}</p>
-    <p class="source" text-nowrap>《{{item.journal_name}}》 <span>{{item.journal_no}}</span></p>
+    <div *ngIf="item.type=='paper'">
+      <p class="title">{{item.name}}</p>
+      <p class="tag">{{item.member | fname}}</p>
+      <p class="source" text-nowrap>《{{item.journal_name}}》 <span>{{item.journal_no}}</span></p>
+    </div>
+    <div *ngIf="item.type=='project'">
+      <p class="title">{{item.name}}</p>
+      <p class="tag">{{item.member | fname}}</p>
+      <p class="source" text-nowrap>{{item.unit}} <span>{{item.year}}年</span></p>
+    </div>
+    <div *ngIf="item.type=='patent'">
+      <p class="title">{{item.name}}</p>
+      <p class="tag3">发明者  <span>{{item.member}}</span></p>
+      <p class="tag3">申请者  <span>{{item.unit}}</span></p>
+      <p class="source3" text-nowrap>公开号 <span>{{item.publication_no}}</span></p>
+    </div>
 </ion-item>
 

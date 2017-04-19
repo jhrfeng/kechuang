@@ -17,17 +17,16 @@ export class SmartSearch1Component {
 
 
   onEvent = (event: string, item: any): void => {
-    if (this.events[event]) {
+    if(event=='onModal'){
+      let profileModal = this.modalCtrl.create(MenuItemComponent, { userId: 8675309 });
+      profileModal.onDidDismiss(data => {
+        this.events[event](data);
+      });
+      profileModal.present();
+    }else 
+      if (this.events[event]) {
         this.events[event](item);
     }
-  }
-
-  presentProfileModal() {
-    let profileModal = this.modalCtrl.create(MenuItemComponent, { userId: 8675309 });
-    profileModal.onDidDismiss(data => {
-      console.log(data);
-    });
-    profileModal.present();
   }
 
 }

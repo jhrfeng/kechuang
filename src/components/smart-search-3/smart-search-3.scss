@@ -9,7 +9,7 @@ smart-search-3 {
 		margin: 8px 10px 15px 0px;
 	}
 	.row{
-		// margin-top: 70px;
+		margin-top: 70px;
 	}
 	.result{
 		background:#FFC107;
@@ -24,11 +24,14 @@ smart-search-3 {
 		color: #5c7973;
 		font-size: 1.4rem;
 		margin: 4px 0;
+		span {
+			padding-left: 20px;
+		}
 	}
 	.source{
 		span{
-			float: right;
-			padding-right: 10px;
+			// float: right;
+			padding-left: 20px;
 		}
 	}	
 }

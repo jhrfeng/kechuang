@@ -5,7 +5,7 @@
         </div>
         <div class="body">
             <div *ngFor="let tech of data.tech"
-                (click)="checklist.toggleItem(tech)"
+                (click)="radiolist.toggleItemTech(data.tech, tech)"
                 [ngClass]="tech.selected?'selected':''">{{tech.name}}</div>
         </div>
       </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="body">
             <div  *ngFor="let year of data.year"
-                (click)="checklist.toggleItem(year)"
+                (click)="radiolist.toggleItemYear(data.year, year)"
                 [ngClass]="year.selected?'selected':''">{{year.name}}</div>
         </div>
       </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="body">
             <div  *ngFor="let area of data.area"
-                (click)="checklist.toggleItem(area)"
+                (click)="radiolist.toggleItemArea(data.area, area)"
                 [ngClass]="area.selected?'selected':''">{{area.name}}</div>
         </div>
       </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="body">
             <div  *ngFor="let sort of data.sort"
-                (click)="checklist.toggleItem(sort)"
+                (click)="radiolist.toggleItemSort(data.sort, sort)"
                 [ngClass]="sort.selected?'selected':''">{{sort.name}}</div>
         </div>
     </div>

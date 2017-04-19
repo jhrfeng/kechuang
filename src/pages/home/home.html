@@ -34,35 +34,35 @@
 
   <background *ngIf="isSearch"></background>
 
-  <smart-search-1
-    *ngIf="params.istype==1"
-    [data]="params.data1" 
-    [events]="params.events">
-  </smart-search-1>
+  <div *ngIf="!isSearch">
+    <smart-search-1
+      *ngIf="params.istype==1"
+      [data]="params.data1" 
+      [events]="params.events">
+    </smart-search-1>
 
-  <smart-search-2
-    *ngIf="params.istype==2"
-    [data]="params.data2" 
-    [events]="params.events">
-  </smart-search-2>
+    <smart-search-2
+      *ngIf="params.istype==2"
+      [data]="params.data2" 
+      [events]="params.events">
+    </smart-search-2>
 
-  <smart-search-3
-    *ngIf="params.istype==3"
-    [data]="params.data3" 
-    [events]="params.events">
-  </smart-search-3>
+    <smart-search-3
+      *ngIf="params.istype==3"
+      [data]="params.data3" 
+      [events]="params.events">
+    </smart-search-3>
 
-  <smart-search-4
-    *ngIf="params.istype==4"
-    [data]="params.data4" 
-    [events]="params.events">
-  </smart-search-4>
-<!-- 
-  <search-list
-    [hidden]="isSearch" 
-    [data]="params.data" 
-    [events]="params.events">
-  </search-list> -->
+    <smart-search-4
+      *ngIf="params.istype==4"
+      [data]="params.data4" 
+      [events]="params.events">
+    </smart-search-4>
 
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  
 </ion-content>
 
