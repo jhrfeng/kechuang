@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MenuItemComponent } from '../menu-item/menu-item';
-import { ModalController } from 'ionic-angular';
+
 
 @Component({
   selector: 'talent-search-4',
@@ -11,7 +10,7 @@ export class TalentSearch4Component {
   @Input('data') data: any;
   @Input('events') events: any;
 
-  constructor(public modalCtrl: ModalController) {
+  constructor() {
 
   }
 
@@ -21,13 +20,4 @@ export class TalentSearch4Component {
         this.events[event](item);
     }
   }
-
-  presentProfileModal() {
-    let profileModal = this.modalCtrl.create(MenuItemComponent, { userId: 8675309 });
-    profileModal.onDidDismiss(data => {
-      console.log(data);
-    });
-    profileModal.present();
-  }
-
 }

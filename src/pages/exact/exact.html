@@ -32,16 +32,29 @@
 
 <ion-content>
 
-	<person-list 
-    *ngIf="isSearch"
+  <talent-search-1
+    *ngIf="searchType==1"
+    [data]="params.data1" 
+    [events]="params.events">
+  </talent-search-1>
+
+  <talent-search-2
+    *ngIf="searchType==2"
+    [data]="params.data2" 
+    [events]="params.events">
+  </talent-search-2>
+
+  <talent-search-3
+    *ngIf="searchType==3"
+    [data]="params.data3" 
+    [events]="params.events">
+  </talent-search-3>
+
+	<talent-search-4
+    *ngIf="searchType==4"
     [data]="params.data4" 
     [events]="params.events">
-  </person-list>
+  </talent-search-4>
 
-  <search-list
-    *ngIf="!isSearch"
-    [data]="params.data" 
-    [events]="params.events">
-  </search-list>
 
 </ion-content>
