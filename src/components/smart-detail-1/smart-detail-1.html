@@ -1,8 +1,64 @@
-<!--
-  Generated template for the SmartDetail1 component.
+<div class="tag">
+	<ion-row>
+	<ion-col>
+		<i *ngFor="let keyword of keywords;let i = index;" style="margin-top: 10px;">
+		<br *ngIf="i==4">
+		<span >{{keyword}}</span>
+		</i>
+	</ion-col>
+	</ion-row>
+</div>
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
--->
+<ion-list class="main">
+	<ion-row>
+	<ion-col width-20>标题</ion-col>
+	<ion-col>{{data.papername}}</ion-col>
+	</ion-row>
+	<ion-row>
+	<ion-col width-20>作者</ion-col>
+	<ion-col>{{data.authors}}</ion-col>
+	</ion-row>
+	<ion-row>
+	<ion-col width-20>来源</ion-col>
+	<ion-col>{{data.journalname}}</ion-col>
+	</ion-row>
+	<ion-row>
+	<ion-col width-20>期刊号</ion-col>
+	<ion-col>{{data.journalNO}}</ion-col>
+	</ion-row>
+	<ion-row>
+	<ion-col width-20>机构</ion-col>
+	<ion-col>{{data.organization}}</ion-col>
+	</ion-row>
+	<ion-row>
+	<ion-col width-20>摘要</ion-col>
+	<ion-col></ion-col>
+	</ion-row>
+	<ion-row>
+	<ion-col>
+	<p class="pcontent">
+		{{data.paperAbstract}}
+	</p>
+	</ion-col>
+	</ion-row>
+	<ion-row>
+	<ion-col width-50>{{readCount}}人看过</ion-col>
+	<ion-col text-right>
+		<button ion-button icon-left clear small (click)="onEvent('onCollect', data.id)">
+	        <ion-icon name="ios-heart-outline"></ion-icon>
+	    </button>
+	</ion-col>
+	</ion-row>
+</ion-list>
 
-{{text}}
+
+<ion-list class="main">
+	<ion-row>
+	<ion-col width-40>相关论文</ion-col>
+	</ion-row>
+	<ion-row  *ngFor="let relate of relateds;">
+	<ion-col>
+	<p class="pcontent" text-nowrap>{{relate.papername}}</p>
+	</ion-col>
+	</ion-row>
+</ion-list>

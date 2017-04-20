@@ -2,65 +2,34 @@
   <ion-navbar color="headers">
     <ion-title>
     </ion-title>
-    <ion-buttons end>
-        <button ion-button>
-          <ion-icon name="ios-heart-outline"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-	<div class="tag">
-		<ion-row>
-      <ion-col>
-			  <span *ngFor="let keyword of keywords;">{{keyword}}</span>
-      </ion-col> 
-		</ion-row>
-	</div>
-	<ion-list class="main">
-    <ion-row>
-      <ion-col width-20>标题</ion-col>
-      <ion-col>{{params.data.papername}}</ion-col>
-    </ion-row>
-    <ion-row>
-  		<ion-col width-20>作者</ion-col>
-  		<ion-col>{{params.data.authors}}</ion-col>
-    </ion-row>
-    <ion-row>
-			<ion-col width-20>来源</ion-col>
-      <ion-col>{{params.data.journalname}}</ion-col>
-    </ion-row>
-    <ion-row>
-			<ion-col width-20>期刊号</ion-col>
-      <ion-col>{{params.data.journalNO}}</ion-col>
-    </ion-row>
-    <ion-row>
-			<ion-col width-20>机构</ion-col>
-      <ion-col>{{params.data.organization}}</ion-col>
-    </ion-row>
-    <ion-row>
-			<ion-col width-20>摘要</ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-    <ion-row>
-			<ion-col>
-      <p class="pcontent">
-			   {{params.data.paperAbstract}}
-			</p>
-      </ion-col>
-    </ion-row>
-  </ion-list>
+	<smart-detail-1 
+    *ngIf="detailType=='paper'"
+    [data]="params.data" 
+    [keywords]="params.keywords"
+    [relateds]="params.relateds"
+    [readCount]="params.readCount"
+    [events]="params.events">
+  </smart-detail-1>
 
-  <ion-list class="main">
-    <ion-row>    
-        <ion-col width-40>相关论文</ion-col>
-    </ion-row>
-    <ion-row  *ngFor="let relate of relateds;">
-      <ion-col>
-        <p class="pcontent" text-nowrap>{{relate.papername}}</p>
-      </ion-col>
-    </ion-row>
-  </ion-list>
+  <smart-detail-2 
+    *ngIf="detailType=='project'"
+    [data]="params.data" 
+    [keywords]="params.keywords"
+    [relateds]="params.relateds"
+    [readCount]="params.readCount"
+    [events]="params.events">
+  </smart-detail-2>
+
+  <smart-detail-3 
+    *ngIf="detailType=='patent'"
+    [data]="params.data" 
+    [relateds]="params.relateds"
+    [readCount]="params.readCount"
+    [events]="params.events">
+  </smart-detail-3>
 
 </ion-content>

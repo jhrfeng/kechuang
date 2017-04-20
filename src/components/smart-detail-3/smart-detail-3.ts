@@ -1,22 +1,26 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 
-/*
-  Generated class for the SmartDetail3 component.
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
-*/
 @Component({
   selector: 'smart-detail-3',
   templateUrl: 'smart-detail-3.html'
 })
 export class SmartDetail3Component {
 
-  text: string;
+  @Input('data') data: any;
+  // @Input('keywords') keywords: any;
+  @Input('relateds') relateds: any;
+  @Input('readCount') readCount: any;
+  @Input('events') events: any;
 
   constructor() {
-    console.log('Hello SmartDetail3 Component');
-    this.text = 'Hello World';
+    console.log('Hello SmartDetail1 Component');
+  }
+
+  onEvent = (event: string, item: any): void => {
+    if (this.events[event]) {
+        this.events[event](item);
+    }
   }
 
 }

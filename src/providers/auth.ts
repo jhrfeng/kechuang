@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 export class Auth {
 
 	public token: any;
+	public userid: string;
 	loading: any;
 
   	constructor(public http: Http, 
@@ -37,11 +38,19 @@ export class Auth {
       alert.present(prompt);
   	}
 
+    showMessage(text) {
+      let alert = this.alertCtrl.create({
+        subTitle: text,
+        buttons: ['确定']
+      });
+      alert.present(prompt);
+    }
+
   	checkAuthentication(){
   		return new Promise((resolve, reject) => {
         //Load token if exists
         // this.storage.getItem('token').then((value) => {
-            this.token = "YjA1YzcyMmQtNzQ2YS00ZTM1LWExZGMtOWNmMGEzNjVlMTM1"; //value;
+            this.token = "ZGNkMzhhZGYtNzZjZi00NDk4LWFjOTMtYjgxNWI2YjEwOGI1"; //value;
  			console.log(this.token)
             let headers = new Headers();
             headers.append('token', this.token);
@@ -58,12 +67,19 @@ export class Auth {
 	    // });
   	}
 
+  	getUserid(){
+      return "103";
+  		// this.storage.getItem('userid').then((value) => {
+  		// 	return value;
+  		// })
+  	}
+
 	authGet(api, param, show){
   		return new Promise((resolve, reject) => {
         //Load token if exists
         // this.storage.getItem('token').then((value) => {
         	
-            this.token = "YjA1YzcyMmQtNzQ2YS00ZTM1LWExZGMtOWNmMGEzNjVlMTM1"; //value; //
+            this.token = "ZGNkMzhhZGYtNzZjZi00NDk4LWFjOTMtYjgxNWI2YjEwOGI1"; //value; //
             let headers = new Headers();
             headers.append('token', this.token);
  			
@@ -97,11 +113,30 @@ export class Auth {
 	    // });
   	}
 
+  authPut(api){
+      return new Promise((resolve, reject) => {
+        // this.storage.getItem('token').then((value) => {
+          
+            this.token = "ZGNkMzhhZGYtNzZjZi00NDk4LWFjOTMtYjgxNWI2YjEwOGI1"; //value; //
+            let headers = new Headers();
+            headers.append('token', this.token);
+            this.http.put(REQUEST_URL + api, null, {headers: headers})
+                .subscribe(res => {
+                    resolve(res);
+                }, (err) => {
+                 reject(err);
+                }); 
+
+          });         
+   
+      // });
+    }  
+
 	authPost(api, details, show){
   		return new Promise((resolve, reject) => {
         //Load token if exists
         // this.storage.getItem('token').then((value) => {
-            this.token = "YjA1YzcyMmQtNzQ2YS00ZTM1LWExZGMtOWNmMGEzNjVlMTM1"; //value; //
+            this.token = "ZGNkMzhhZGYtNzZjZi00NDk4LWFjOTMtYjgxNWI2YjEwOGI1"; //value; //
             let headers = new Headers();
             headers.append('Content-Type', 'application/json;charset=UTF-8');
             headers.append('token', this.token);
@@ -117,8 +152,10 @@ export class Auth {
                     	reject(err);
                     	this.showLoader("登录过期，请重新登录");
                     	setTimeout(() => {
-					        this.loading.dismiss();
-					     }, 1000);
+      					        this.loading.dismiss();
+      					     }, 1000);
+                    }else{
+                      reject(err);
                     }
                 }); 
 	        });     
@@ -193,8 +230,9 @@ export class Auth {
 	 			let data = res;
 	 			if(data.status==200 && data.ok){
 	 				this.token = data["_body"];
-	 				console.log( this.token.substring(0,this.token.indexOf("_")))
 	 				this.token = this.token.substring(0,this.token.indexOf("_"));
+	 				this.userid = data["_body"].substring(data["_body"].indexOf("_")+1);
+	 				this.storage.setItem('userid', this.userid);
 	 				this.storage.setItem('token', this.token);
 	 				resolve(data);
 	 			}else{

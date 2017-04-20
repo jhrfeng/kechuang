@@ -3,8 +3,7 @@ import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
 import { DetailPage } from '../detail/detail';
-import { DetailPPage } from '../detail/detailP';
-import { DetailPaPage } from '../detail/detailPa';
+
 
 @Component({
   selector: 'page-home',
@@ -14,7 +13,7 @@ export class HomePage {
 
 	isSearch = true;
   params: any;
-  searchVo:any = {keyWord:"", type:"paper"};
+  searchVo:any = {keyWord:"", type:"paper", start:0};
 
   constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController, public authService: Auth) {
     this.params = { 
@@ -23,29 +22,27 @@ export class HomePage {
                     data3:{docs:[], numFound:0}, 
                     data4:{docs:[], numFound:0}, 
                     events:{},
+                    start:{paper:0, project:0, patent:0, all:0}, //分页查询
                     istype:1
+
                   };
     this.params.events = {
       'onModal': (item: any) => { //筛选
-        this.searchVo = Object.assign(this.searchVo, item);
-        console.log(this.searchVo)
-        this.search();
+          this.searchVo = Object.assign(this.searchVo, item);
+          console.log(this.searchVo)
+          this.search();
       },
       'onDetail': (item: any) => {
-        if(item.type=="paper")//论文
           this.navCtrl.push(DetailPage, {item: item});
-        if(item.type=="project") //项目
-          this.navCtrl.push(DetailPPage, {item: item});
-        if(item.type=="patent") // 专利
-          this.navCtrl.push(DetailPaPage, {item: item});
       }
     }
 	}
 
   search(){
     this.isSearch = false;
+    this.searchVo.start = 0; // 重置搜索分页下标
     // 检查搜索次数
-    this.authService.authPost('/query/search/checkTimes', {keyWord: this.searchVo.keyWord, id:"103"}, true).then((result) => {
+    this.authService.authPost('/query/search/checkTimes', {keyWord: this.searchVo.keyWord, id:this.authService.getUserid()}, true).then((result) => {
       var times = JSON.parse(result["_body"]);
       if(times==1){
         // 论文
@@ -93,10 +90,47 @@ export class HomePage {
 
   doInfinite(infiniteScroll) {
     setTimeout(() => {
-      // for (let i = 0; i < 30; i++) {
-        // this.items.push( this.items.length );
-      // }
-      console.log(this.params.istype);
+      //  start:{paper:0, project:0, patent:0, all:0}, //分页查询
+      if(this.params.istype==1){  // 论文
+        this.params.start.paper+=10;
+        this.searchVo.start = this.params.start.paper;
+        this.searchVo.type = "paper";
+        this.authService.authGet('/query/search', this.searchVo, true).then((result) => {
+          var data = JSON.parse(result["_body"]);
+          this.params.data1.docs = this.params.data1.docs.concat(data.response.docs);
+        },(err) =>{
+        });
+
+      }else if(this.params.istype==2){ //项目
+        this.params.start.project+=10;
+        this.searchVo.start = this.params.start.project;
+        this.searchVo.type = "project";
+        this.authService.authGet('/query/search', this.searchVo, true).then((result) => {
+          var data = JSON.parse(result["_body"]);
+          this.params.data2.docs = this.params.data2.docs.concat(data.response.docs);
+        },(err) =>{
+        });
+
+      }else if(this.params.istype==3){ // 专利
+        this.params.start.patent+=10;
+        this.searchVo.start = this.params.start.patent;
+        this.searchVo.type = "patent";
+        this.authService.authGet('/query/search', this.searchVo, true).then((result) => {
+          var data = JSON.parse(result["_body"]);
+          this.params.data3.docs = this.params.data3.docs.concat(data.response.docs);
+        },(err) =>{
+        });
+        
+      }else if(this.params.istype==4){ //全部
+        this.params.start.all+=10;
+        this.searchVo.start = this.params.start.all;
+        this.authService.authGet('/query/search', this.searchVo, true).then((result) => {
+          var data = JSON.parse(result["_body"]);
+          this.params.data4.docs = this.params.data4.docs.concat(data.response.docs);
+        },(err) =>{
+        });
+        
+      }
       console.log('Async operation has ended');
       infiniteScroll.complete();
     }, 500);
