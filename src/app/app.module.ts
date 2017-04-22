@@ -1,5 +1,9 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
+import { NativeStorage } from '@ionic-native/native-storage';
+
+
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -12,6 +16,7 @@ import { MePage } from '../pages/me/me';
 import { DetailPage } from '../pages/detail/detail';
 import { DetailPPage } from '../pages/detail/detailP';
 import { DetailPaPage } from '../pages/detail/detailPa';
+import { ExactDetailPage } from '../pages/exact-detail/exact-detail';
 
 import { ExactPage } from '../pages/exact/exact';
 import { ForgetPage } from '../pages/forget/forget';
@@ -30,7 +35,7 @@ import { ChartPage } from '../pages/chart/chart';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
-import { NativeStorage } from '@ionic-native/native-storage';
+
 
 import { LineInputComponent } from '../components/line-input/line-input';
 import { PwdInputComponent } from '../components/pwd-input/pwd-input';
@@ -86,6 +91,7 @@ import { Member, Fname } from '../pipes/member';
     DetailPage,
     DetailPPage,
     DetailPaPage,
+    ExactDetailPage,
     ExactPage,
     ForgetPage,
     LixiangPage,
@@ -136,7 +142,8 @@ import { Member, Fname } from '../pipes/member';
         modalLeave: 'modal-slide-out',
         // pageTransition: 'ios',
         tabsHideOnSubPages: true
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -151,6 +158,7 @@ import { Member, Fname } from '../pipes/member';
     DetailPage,
     DetailPPage,
     DetailPaPage,
+    ExactDetailPage,
     ExactPage,
     ForgetPage,
     LixiangPage,

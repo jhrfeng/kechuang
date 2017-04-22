@@ -7,4 +7,11 @@ page-home {
 		background: #3e4a51;
 	}
 	$text-input-placeholder-color: #fff;
+	.content {
+		.toolbar-md {
+		    // margin-top: 56px;
+		    position: fixed;
+		}
+	}
+	
 }

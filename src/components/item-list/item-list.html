@@ -3,15 +3,15 @@
       个人信息
     </p>
     <ion-list>
-      <ion-item tappable (click)="account()">
+      <ion-item tappable (click)="onEvent('onAccount')" >
         <ion-icon name="ios-arrow-forward" item-right></ion-icon>账号绑定
       </ion-item>
       
-      <ion-item tappable (click)="resetPwd()">
+      <ion-item tappable (click)="onEvent('onResetPwd')">
         <ion-icon name="ios-arrow-forward" item-right ></ion-icon>修改密码
       </ion-item>
       
-      <ion-item tappable (click)="vip()">
+      <ion-item tappable (click)="onEvent('onVip')">
         <ion-icon name="ios-arrow-forward" item-right></ion-icon>会员信息
       </ion-item>
     </ion-list>
@@ -20,7 +20,7 @@
       认证
     </p>
     <ion-list>
-      <ion-item tappable (click)="company()">
+      <ion-item tappable (click)="onEvent('onCompany')">
         <ion-icon name="ios-arrow-forward" item-right></ion-icon>公司认证
       </ion-item>
     </ion-list>
@@ -29,21 +29,17 @@
       收藏
     </p>
     <ion-list>
-      <ion-item tappable (click)="collect()">
+      <ion-item tappable (click)="onEvent('onCollect')">
         <ion-icon name="ios-arrow-forward" item-right></ion-icon>我的收藏
       </ion-item>
 
-      <ion-item tappable (click)="follow()">
+      <ion-item tappable (click)="onEvent('onFollow')">
         <ion-icon name="ios-arrow-forward" item-right></ion-icon>我关注的领域
       </ion-item>
     </ion-list>
     
-<!--     <div padding>
-      <button ion-button color="secondary" full (click)="apply()">设置</button>
-    </div>
- -->
     <div padding>
-      <button ion-button full (click)="logout()">登出</button>
+      <button ion-button full (click)="onEvent('onLogout')">登出</button>
     </div>
     
 </ion-list>

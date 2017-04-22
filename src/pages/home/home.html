@@ -12,29 +12,28 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-navbar color="dark" *ngIf="!isSearch">
-    <ion-segment [(ngModel)]="pet" color="whites">
-      <ion-segment-button value="1" (ionSelect)="selectPage(1)">
-        论文
-      </ion-segment-button>
-      <ion-segment-button value="2" (ionSelect)="selectPage(2)">
-        项目
-      </ion-segment-button>
-      <ion-segment-button value="3" (ionSelect)="selectPage(3)">
-        专利
-      </ion-segment-button>
-      <ion-segment-button value="4" (ionSelect)="selectPage(4)">
-        全部
-      </ion-segment-button>
-    </ion-segment>
-  </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="content">
+  <ion-toolbar no-border-top color="dark" [hidden]="!isSearch">
+    <ion-segment [(ngModel)]="pet" color="whites" [hidden]="!isSearch">
+        <ion-segment-button value="1" (ionSelect)="selectPage(1)">
+          论文
+        </ion-segment-button>
+        <ion-segment-button value="2" (ionSelect)="selectPage(2)">
+          项目
+        </ion-segment-button>
+        <ion-segment-button value="3" (ionSelect)="selectPage(3)">
+          专利
+        </ion-segment-button>
+        <ion-segment-button value="4" (ionSelect)="selectPage(4)">
+          全部
+        </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <background [hidden]="isSearch"></background>
 
-  <background *ngIf="isSearch"></background>
-
-  <div *ngIf="!isSearch">
+  <div [hidden]="!isSearch">
     <smart-search-1
       *ngIf="params.istype==1"
       [data]="params.data1" 

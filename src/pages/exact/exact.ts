@@ -4,8 +4,8 @@ import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
 import { DetailPage } from '../detail/detail';
 import { DetailPPage } from '../detail/detailP';
-import { DetailPaPage } from '../detail/detailPa';
 import { PersonDetailPage } from '../person-detail/person-detail';
+import { ExactDetailPage } from '../exact-detail/exact-detail';
 
 @Component({
   selector: 'page-exact',
@@ -13,35 +13,40 @@ import { PersonDetailPage } from '../person-detail/person-detail';
 })
 export class ExactPage {
 
-	isSearch = true;
-	searchType = 4;
-	searchVo:any = {keyWord:"", type:"paper"};
+	searchVo:any = {keyWord:""};
 	params: any;
 
   	constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController, public authService: Auth) {
-	    this.params = { data: {docs:[], numFound:0}, // 组件属性
+	    this.params = { 
 	                    data1:{list:[], total:0},
 	                    data2:{list:[], total:0},
 	                    data3:{list:[], total:0}, 
 	                    data4:{list:[], total:0}, 
-	                    events:{}
+	                    events:{},
+	                    start:{paper:1, project:1, patent:1, expert:1}, //分页查询
+	                    istype:4 // 默认人才
 	                  };
 	    this.params.events = {
-	      'onDetail': (item: any) => {
-	      	console.log(item);
-	        if(this.searchType==1) //论文
-	          	this.navCtrl.push(DetailPage, {item: item});
-	        if(this.searchType==2) //项目
-	          	this.navCtrl.push(DetailPPage, {item: item});
-	        if(this.searchType==3)  //专利
-	          	this.navCtrl.push(DetailPaPage, {item: item});
-	      	if(this.searchType==4) //人才
-	      		this.navCtrl.push(PersonDetailPage, {item: item});
-	      }
+	       'onDetail': (item: any) => {
+	      		console.log(item);
+		        if(this.params.istype==1) //论文
+		          	this.navCtrl.push(DetailPage, {item: {id:item.id, type:'paper', name:item.papername}});
+		        if(this.params.istype==2) //项目
+		          	this.navCtrl.push(DetailPage, {item: {id:item.id, type:'project', name:item.name}});
+		        if(this.params.istype==3)  //专利
+		          	this.navCtrl.push(DetailPage, {item: {id:item.id, type:'patent', name:item.name}});
+		      	if(this.params.istype==4) //人才
+		      		this.navCtrl.push(PersonDetailPage, {item: item});
+	       },
+	       'onInventor': (item: any) => {
+	       		console.log(item);
+	       }
 	    }
 	}
 
   	search(){
+  		// 重置搜索条件
+  		this.params.start = {paper:1, project:1, patent:1, expert:1};
   		// 人才
 	    this.authService.authPost('/query/expert/sim', {keyWord: this.searchVo.keyWord}, true).then((result) => {
 	      this.params.data4 = JSON.parse(result["_body"]);
@@ -56,7 +61,6 @@ export class ExactPage {
 
 	    });
 	    // 项目
-	    this.searchVo.type = "project";
 	    this.authService.authPost('/query/project/sim', {keyWord: this.searchVo.keyWord}, false).then((result) => {
 	      this.params.data2 = JSON.parse(result["_body"]);
 	      this.removeByValue(this.params.data2.list, null);
@@ -64,7 +68,6 @@ export class ExactPage {
 	      
 	    });
 	    // 专利
-	    this.searchVo.type = "patent";
 	    this.authService.authPost('/query/patent/sim', {keyWord: this.searchVo.keyWord}, false).then((result) => {
 	      this.params.data3 = JSON.parse(result["_body"]);
 	      this.removeByValue(this.params.data3.list, null);
@@ -74,38 +77,69 @@ export class ExactPage {
 	  }
 
   	selectPage(type){
-  		this.searchType = type;
-	    if(type==1){
-	      	this.params.data.docs = this.params.data1.list;
-	      	this.params.data.numFound = this.params.data1.total;
-	      	console.log("1", this.params.data)
-	      	this.isSearch = false;
-	    }
-	    if(type==2){
-	      	this.params.data.docs = this.params.data2.list;
-	      	this.params.data.numFound = this.params.data2.total;
-	      	console.log("2", this.params.data)
-	      	this.isSearch = false;
-	    }
-	    if(type==3){
-	      	this.params.data.docs = this.params.data3.list;
-	      	this.params.data.numFound = this.params.data3.total;
-	      	console.log("3", this.params.data)
-	      	this.isSearch = false;
-	    }
-	    if(type==4){ //人才
-	    	this.isSearch = true;
-	    }
+  		this.params.istype = type;
 	}
 
-	removeByValue(arr, val) {
+	// 分页查询
+	doInfinite(infiniteScroll) {
+	    setTimeout(() => {
+	      //  start:{paper:0, project:0, patent:0, all:0}, //分页查询
+	      if(this.params.istype==1){  // 论文
+	        this.params.start.paper+=1;
+	        if(this.params.start.paper*10 <= this.params.data1.total)
+		        this.authService.authPost('/query/paper/sim', {keyWord: this.searchVo.keyWord}, true).then((result) => {
+			      	var data = JSON.parse(result["_body"]);
+			      	this.params.data1.list = this.params.data1.list.concat(data.list);
+			      	this.removeByValue(this.params.data1.list, null);
+			    },(err) =>{
+
+			    });
+
+	      }else if(this.params.istype==2){ //项目
+	        this.params.start.project+=1;
+	        if(this.params.start.project*10 <= this.params.data2.total)
+		        this.authService.authPost('/query/project/sim', {keyWord: this.searchVo.keyWord}, true).then((result) => {
+			      	var data  = JSON.parse(result["_body"]);
+			      	this.params.data2.list = this.params.data2.list.concat(data.list);
+			      	this.removeByValue(this.params.data2.list, null);
+			    },(err) =>{
+			      
+			    });
+
+	      }else if(this.params.istype==3){ // 专利
+	        this.params.start.patent+=1;
+	        if(this.params.start.patent*10 <= this.params.data3.total)
+		        this.authService.authPost('/query/patent/sim?page='+this.params.start.patent, {keyWord: this.searchVo.keyWord}, true).then((result) => {
+			      	var data = JSON.parse(result["_body"]);
+			      	this.params.data3.list = this.params.data3.list.concat(data.list);
+			      	this.removeByValue(this.params.data3.list, null);
+			    },(err) =>{
+			      
+			    });
+	        
+	      }else if(this.params.istype==4){ //全部
+	        this.params.start.expert+=1;
+	        if(this.params.start.expert*10 <= this.params.data4.total)
+		        this.authService.authPost('/query/expert/sim?page='+this.params.start.expert, {keyWord: this.searchVo.keyWord}, true).then((result) => {
+		        	var data = JSON.parse(result["_body"]);
+			        this.params.data4.list = this.params.data4.list.concat(data.list);
+			    },(err) =>{
+			    });
+		        
+	      }
+	      console.log('Async operation has ended');
+	      infiniteScroll.complete();
+	    }, 500);
+	}
+    
+
+	// 判断返回的list数组中是否有空对象
+	removeByValue(arr, val) { 
 	  for(var i=0; i<arr.length; i++) {
 	    if(arr[i] == val) {
 	      arr.splice(i, 1);
 	    }
 	  }
 	}
-
-    
 
 }

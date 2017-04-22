@@ -6,7 +6,7 @@
 
 <ion-content class="content">
 
-  <ion-navbar>
+  <ion-navbar class="navbar">
   		<ion-item color="dark">
   		    <ion-avatar item-left>
   		      <img src="assets/img/header.jpg">
@@ -20,34 +20,43 @@
   			<ion-col tappable (click)="openChart()">综合表征</ion-col>
   		</ion-row>
 	    <ion-segment [(ngModel)]="pet" color="primary">
-	      <ion-segment-button value="2">
+	      <ion-segment-button value="1" 
+        *ngIf="params.data1.list.length>0"
+        (ionSelect)="selectPage(1)">
 	        论文
 	      </ion-segment-button>
-	      <ion-segment-button value="3">
+
+	      <ion-segment-button value="2" 
+        *ngIf="params.data2.list.length>0"
+        (ionSelect)="selectPage(2)">
 	        项目
 	      </ion-segment-button>
-	      <ion-segment-button value="4">
+
+	      <ion-segment-button value="3" 
+        *ngIf="params.data3.list.length>0"
+        (ionSelect)="selectPage(3)">
 	        专利
 	      </ion-segment-button>
 	    </ion-segment>
   </ion-navbar>
 
-  <ion-row>
-    <ion-col 
-      text-left class="result">
-      搜索结果：{{params.total}} 条
-    </ion-col>
-    <ion-col> </ion-col>
-    <!-- <ion-col text-right 
-    (click)="presentProfileModal()">
-          筛选
-        <ion-icon name="ios-arrow-down"></ion-icon>
-    </ion-col> -->
-  </ion-row>
-  <ion-item *ngFor="let item of params.papers; let i = index;" (click)="detail(item)">
-    <p class="title">{{item.papername}}</p>
-    <p class="tag">{{item.authors}}</p>
-    <p class="source" text-nowrap>《{{item.journalname}}》 <em>{{item.journalNO}}</em></p>
-  </ion-item>
+
+  <talent-search-1
+    *ngIf="params.istype==1"
+    [data]="params.data1" 
+    [events]="params.events">
+  </talent-search-1>
+
+  <talent-search-2
+    *ngIf="params.istype==2"
+    [data]="params.data2" 
+    [events]="params.events">
+  </talent-search-2>
+
+  <talent-search-3
+    *ngIf="params.istype==3"
+    [data]="params.data3" 
+    [events]="params.events">
+  </talent-search-3>
 
 </ion-content>

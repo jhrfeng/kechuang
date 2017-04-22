@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Auth } from '../../providers/auth';
+
 import { PersonalPage } from '../personal/personal'
-import { ApplyPage } from '../apply/apply';
-import { LoginPage } from '../login/login';
+import { ApplyPage }    from '../apply/apply';
+import { LoginPage }    from '../login/login';
+import { ForgetPage }   from '../forget/forget';
+import { CompanyPage }  from '../company/company';
+import { CollectPage }  from '../collect/collect';
+import { FollowPage }   from '../follow/follow';
+import { AccountPage }  from '../account/account';
+import { VipPage }      from '../vip/vip';
+
+import { Auth } from '../../providers/auth';
+
+
 
 @Component({
   selector: 'page-me',
@@ -14,8 +24,32 @@ export class MePage {
     params: any;
 
  	constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth) {
-         this.params = {data:{name:'', enterpriseName:''}};
-     }
+        this.params = {data:{name:'', enterpriseName:''}, events:{}};
+        this.params.events = {
+            'onAccount': () => { 
+                this.navCtrl.push(AccountPage);
+            },
+            'onResetPwd': () => {
+                this.navCtrl.push(ForgetPage, {pwdType:'2'});    
+            },
+            'onVip': () => { 
+                this.navCtrl.push(VipPage);   
+            },
+            'onCompany': () => { 
+                this.navCtrl.push(CompanyPage); 
+            },
+            'onCollect': () => { 
+                this.navCtrl.push(CollectPage); 
+            },
+            'onFollow': () => { 
+                 this.navCtrl.push(FollowPage); 
+            }
+            ,
+            'onLogout': () => { 
+                this.navCtrl.push(LoginPage);
+            }
+        }
+    }
 
 	ionViewDidLoad() {
         this.authService.authGet('/restapi/user/me', null, true).then((result) => {

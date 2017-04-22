@@ -1,9 +1,8 @@
 page-person-detail {
-	.content{
-		.toolbar-md {
-			padding-left: 0px;
-			padding-right: 0px;
-		}
+	.toolbar-md {
+		padding: 0;
+	}
+	.navbar{
 		.item-md{
 			height: 100px;
 		}
@@ -11,14 +10,16 @@ page-person-detail {
 		    width: 60px;
 		    height: 60px;
 		}
+		.item-md.item-block .item-inner {
+		    border-bottom: 0px solid #dedede;
+		}
 		span{
 			float: right;
 			color: color($colors, primary);
 			border: 1px solid color($colors, primary);
-			padding: 8px 15px;
+			padding: 4px 10px;
 			font-size: 1.4rem;
 		}
-
 	}
 
 	.toolbar-content{
@@ -30,29 +31,7 @@ page-person-detail {
 		}
 	}
 
-	ion-item p{
-		padding-left:10px;
+	talent-search-1, talent-search-2, talent-search-3 {
+		.row { display: none;}
 	}
-	ion-row{
-		margin: 8px 10px 15px 0px;
-	}
-	.result{
-		background:#FFC107;
-		color: #f3f3f3;
-	}
-	.title{
-		color: #28a28a;
-		font-size: 1.7rem;
-		line-height: 1.6rem;
-	}
-	.tag{
-		color: #28a28a;
-		font-size: 1.4rem;
-		margin: 4px 0;
-	}
-	.source{
-		em{
-			float: right;
-		}
-	}	
 }

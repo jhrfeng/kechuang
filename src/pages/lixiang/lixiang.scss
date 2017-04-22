@@ -1,3 +1,16 @@
 page-lixiang {
-
+	ion-input{
+		margin-left: 10px;
+		height: 40px;
+		width: 96%;
+		color: #fff;
+		background: #3e4a51;
+	}
+	$text-input-placeholder-color: #fff;
+	.content {
+		.toolbar-md {
+		    // margin-top: 56px;
+		    position: fixed;
+		}
+	}
 }

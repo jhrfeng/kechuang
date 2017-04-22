@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { REQUEST_URL_DETAIL } from '../../constant/data';
 import { Auth } from '../../providers/auth';
 
@@ -12,11 +13,20 @@ export class DetailPage {
 	detailType:string; //来源类型
 	collectionList: any; //收藏列表
 	params: any;
-  	
-  	constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth) {
-  		this.params = {data:{}, relateds:[], keywords:[], readCount:0};
-  		console.log(this.navParams.get('item'))
+  	userid: any;
+
+  	constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth,public storage: Storage)
+  	{
   		this.detailType = this.navParams.get('item').type;
+  		this.storage.get('userid').then((value) => {//获取当前登录人id
+	      	this.userid = value;
+		    // 收藏列表
+		    this.getCollectionList();
+	    })
+
+
+  		this.params = {data:{}, relateds:[], keywords:[], readCount:0};
+
   		// 详细信息
   		this.authService.authGet('/query/'+this.detailType+'/'+this.navParams.get('item').id, null, true).then((result) => {
 	    	this.params.data = JSON.parse(result["_body"]);
@@ -41,8 +51,6 @@ export class DetailPage {
 	      	
 	    });
 
-	    // 收藏列表
-	    this.getCollectionList();
 
 	    // 相关论文
   		this.authService.authGet('/query/'+this.detailType+'/'+this.navParams.get('item').id+'/similar', null, false).then((result) => {
@@ -61,8 +69,8 @@ export class DetailPage {
 	       		if(this.collectionList.list[i]["entryId"] == entryId){ // 取消收藏
 	       			collection = false;
 	       			console.log("取消收藏")
-	       			var url = '/restapi/user/' + this.authService.getUserid()+ '/cancelMark';
-	       			this.authService.authPost(url, {entryId: entryId, type:this.navParams.get('item').type, user: {id: this.authService.getUserid()}}, false).then((result) => {
+	       			var url = '/restapi/user/' + this.userid+ '/cancelMark';
+	       			this.authService.authPost(url, {entryId: entryId, type:this.navParams.get('item').type, user: {id: this.userid}}, false).then((result) => {
 				    	if(result["_body"]==1){
 							this.getCollectionList();
 							this.authService.showMessage("取消收藏成功!")
@@ -71,12 +79,12 @@ export class DetailPage {
 	       		}
 	       	}
 	       	if(collection){ // 进行收藏
-	       		var url = '/restapi/user/' + this.authService.getUserid()+ '/mark';
+	       		var url = '/restapi/user/' + this.userid+ '/mark';
 	       		var data = {entryId: entryId, 
 	       					title:this.navParams.get('item').name,
 	       					type:this.navParams.get('item').type, 
 	       					url:REQUEST_URL_DETAIL + this.navParams.get('item').type+ "/"+entryId+"/search",
-	       					user: {id: this.authService.getUserid()}};
+	       					user: {id: this.userid}};
        			this.authService.authPost(url, data, false).then((result) => {
 			    	this.getCollectionList();
 			    	this.authService.showMessage("收藏成功!")
@@ -94,7 +102,7 @@ export class DetailPage {
 
   	getCollectionList(){
   		 // 收藏列表
-	    var url = '/restapi/user/'+ this.authService.getUserid() + '/markings';
+	    var url = '/restapi/user/'+ this.userid + '/markings';
 	    this.authService.authGet(url, null, false).then((result) => {
 	    	this.collectionList = JSON.parse(result["_body"]);
 	    	console.log(this.collectionList)
