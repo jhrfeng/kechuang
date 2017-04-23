@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { Auth } from '../../providers/auth';
+import { REQUEST_URL_DETAIL } from '../../constant/data';
 
 import { DetailPage } from '../detail/detail';
 import { ChartPage } from '../chart/chart';
@@ -13,7 +15,12 @@ import { AboutPage } from '../about/about';
 export class PersonDetailPage {
 
     params: any;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth) {
+    items: any;
+    collectionList: any; //收藏列表
+    userid: any;
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth,public storage: Storage) {
+      this.items = navParams.get('item');
       this.params = { name:   "",
                       unit:   "",
                       data1:  {list:[], total:""}, 
@@ -22,8 +29,14 @@ export class PersonDetailPage {
                       events: {}, 
                       istype: 1
                     };
+      this.storage.get('userid').then((value) => {//获取当前登录人id
+          this.userid = value;
+        // 收藏列表
+        this.getCollectionList();
+      })
 
-      this.authService.authGet('/query/expert/'+this.navParams.get('item').id, null, true).then((result) => {
+
+      this.authService.authGet('/query/expert/'+this.items.id, null, true).then((result) => {
           var data = JSON.parse(result["_body"]);
           console.log(data)
           this.params.name = data.name;
@@ -68,16 +81,52 @@ export class PersonDetailPage {
     	console.log('ionViewDidLoad PersonDetailPage');
   	}
 
+    collect(entryId: any) { //收藏事件
+      var collection = true;
+      for(var i in this.collectionList.list){
+        if(this.collectionList.list[i]["entryId"] == entryId){ // 取消收藏
+          collection = false;
+          var url = '/restapi/user/' + this.userid+ '/cancelMark';
+          this.authService.authPost(url, {entryId: entryId, type:this.items.type, user: {id: this.userid}}, false).then((result) => {
+            if(result["_body"]==1){
+              this.getCollectionList();
+              this.authService.showMessage("取消收藏成功!")
+            }
+          },(err) =>{this.authService.showMessage("取消收藏失败!")});
+         }
+      }
+
+      if(collection){ // 进行收藏
+        var url = '/restapi/user/' + this.userid+ '/mark';
+        var data = {entryId: entryId, 
+                title:this.items.name,
+                type:'EXPERT', 
+                url:REQUEST_URL_DETAIL + this.items.type+ "/"+entryId+"/search",
+                user: {id: this.userid}
+            };
+        this.authService.authPost(url, data, false).then((result) => {
+          this.getCollectionList();
+          this.authService.showMessage("收藏成功!")
+        },(err) =>{this.authService.showMessage("收藏失败!")});
+      }
+    }
+
+    getCollectionList(){
+       // 收藏列表
+      var url = '/restapi/user/'+ this.userid + '/markings';
+      this.authService.authGet(url, null, false).then((result) => {
+        this.collectionList = JSON.parse(result["_body"]);
+      },(err) =>{
+        
+      });
+    }
+
   	openChart(){
   		this.navCtrl.push(ChartPage);
   	}
 
-  	detail(){
-  		this.navCtrl.push(DetailPage);
-  	}
-
     about(){
-      this.navCtrl.push(AboutPage);
+      this.navCtrl.push(AboutPage, {item:this.items});
     }
 
     // 判断返回的list数组中是否有空对象

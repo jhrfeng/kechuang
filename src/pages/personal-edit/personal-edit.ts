@@ -1,21 +1,28 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { ViewController, ActionSheetController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Auth } from '../../providers/auth';
 
 @Component({
   selector: 'page-personal-edit',
   templateUrl: 'personal-edit.html'
 })
 export class PersonalEditPage {
+	params: any = {data:{}};
 
  	constructor (public navCtrl: NavController, 
  				 public navParams: NavParams,
  				 public camera: Camera,
                  public viewCtrl: ViewController,
+                 public storage: Storage,
+                 public auth: Auth,
                  public actionSheetCtrl: ActionSheetController)
     {
-	
+		this.storage.get('user').then((user) => {
+            this.params.data = user;
+        })
     }
 
   	// 初始化相机参数
@@ -73,8 +80,14 @@ export class PersonalEditPage {
 	}
 
 
-  edit(){
-  	this.navCtrl.pop();
-  }
+  	edit(){
+  		console.log(this.params.data);
+  		this.auth.authparamPut('/restapi/user/'+this.params.data.id+'/personal', this.params.data, true).then((result) => {
+            this.storage.set('user', this.params.data);
+            this.auth.showMessage("修改成功")
+        },(err) =>{
+           
+        });
+  	}
 
 }

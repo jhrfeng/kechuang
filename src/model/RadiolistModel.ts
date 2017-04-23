@@ -33,7 +33,7 @@ export class RadiolistModel {
   }
   toggleItemSort(data, item): void {
     this.removeItem(data); // 清空选中
-    this.addItem('sort', item);
+    this.addItem('yeardesc', item);
   }    
 
 }

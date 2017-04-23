@@ -15,7 +15,6 @@ import { MePage } from '../pages/me/me';
 
 import { DetailPage } from '../pages/detail/detail';
 import { DetailPPage } from '../pages/detail/detailP';
-import { DetailPaPage } from '../pages/detail/detailPa';
 import { ExactDetailPage } from '../pages/exact-detail/exact-detail';
 
 import { ExactPage } from '../pages/exact/exact';
@@ -35,7 +34,7 @@ import { ChartPage } from '../pages/chart/chart';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
-
+import { CityPickerModule } from  "ionic2-city-picker";
 
 import { LineInputComponent } from '../components/line-input/line-input';
 import { PwdInputComponent } from '../components/pwd-input/pwd-input';
@@ -71,11 +70,11 @@ import { TalentDetail4Component } from '../components/talent-detail-4/talent-det
 
 import { AuthService } from '../providers/auth-service';
 import { UserService } from '../providers/user-service';
-import { Auth } from '../providers/auth';
-// import { CameraService }  from '../providers/camera-service';
-// import { UtilProvider } from '../providers/util-provider';
+import { Auth }        from '../providers/auth';
 
-import { Member, Fname } from '../pipes/member';
+
+
+import { Member, Fname, Type } from '../pipes/member';
 
 
 @NgModule({
@@ -90,7 +89,6 @@ import { Member, Fname } from '../pipes/member';
     MePage,
     DetailPage,
     DetailPPage,
-    DetailPaPage,
     ExactDetailPage,
     ExactPage,
     ForgetPage,
@@ -119,6 +117,7 @@ import { Member, Fname } from '../pipes/member';
     OpenChartComponent,
     Member,
     Fname,
+    Type,
     SmartSearch1Component,
     SmartSearch2Component,
     SmartSearch3Component,
@@ -136,6 +135,7 @@ import { Member, Fname } from '../pipes/member';
     TalentDetail4Component
   ],
   imports: [
+    CityPickerModule,
     IonicModule.forRoot(MyApp, {
         backButtonText: '',
         modalEnter: 'modal-slide-in',
@@ -157,7 +157,6 @@ import { Member, Fname } from '../pipes/member';
     MePage,
     DetailPage,
     DetailPPage,
-    DetailPaPage,
     ExactDetailPage,
     ExactPage,
     ForgetPage,
@@ -208,8 +207,6 @@ import { Member, Fname } from '../pipes/member';
     AuthService,
     UserService,
     Auth,
-    // CameraService,
-    // UtilProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

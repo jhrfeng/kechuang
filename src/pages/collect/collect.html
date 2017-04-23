@@ -3,41 +3,22 @@
     <ion-title text-center>
       我的收藏
     </ion-title>
-    <ion-buttons end>
-        <button ion-button>
-	        <ion-icon name="md-search"></ion-icon>
-	    </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="content">
+	<ion-toolbar no-border-top >
+		<ion-searchbar 
+		(ionInput)="searchCollection($event)"
+		[debounce]="1500"
+		placeholder="搜索">
+		</ion-searchbar>
+	</ion-toolbar>
 	<ion-list>
-		<ion-item-sliding>
+		<ion-item-sliding *ngFor="let item of collection.list;let i = index;">
 		  <ion-item>
-		    基于模糊神经网络的药物色谱分析专家系统
-		  </ion-item>
-		  <ion-item-options side="right">
-		    <button ion-button expandable (click)="delete(item)">
-		      取消收藏
-		    </button>
-		  </ion-item-options>
-		</ion-item-sliding>
-
-		<ion-item-sliding>
-		  <ion-item>
-		    一种数据挖掘方法及数据挖掘系统
-		  </ion-item>
-		  <ion-item-options side="right">
-		    <button ion-button expandable (click)="delete(item)">
-		      取消收藏
-		    </button>
-		  </ion-item-options>
-		</ion-item-sliding>
-
-		<ion-item-sliding>
-		  <ion-item>
-		    模糊数据挖掘在电子政务中的应用
+		  	<p text-left>{{item?.type | type}}</p>
+		    {{item?.title}}
 		  </ion-item>
 		  <ion-item-options side="right">
 		    <button ion-button expandable (click)="delete(item)">
@@ -46,4 +27,7 @@
 		  </ion-item-options>
 		</ion-item-sliding>
 	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      	<ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>

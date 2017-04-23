@@ -11,12 +11,18 @@
   		    <ion-avatar item-left>
   		      <img src="assets/img/header.jpg">
   		    </ion-avatar>
-  		    <h2>{{params.name}} <span tappable (click)="about()">联系他</span></h2>
+  		    <h2>
+              {{params.name}}
+              <ion-icon (click)="collect()" name="ios-heart-outline"></ion-icon>
+              <span tappable (click)="about()">联系他</span>
+          </h2>
   		    <p>{{params.unit}}</p>
+          <p> </p>
   		</ion-item>
   		
   		<ion-row text-center>
-  			<ion-col tappable (click)="openChart()">自我网络</ion-col>
+  			<ion-col tappable (click)="openChart()">简介</ion-col>
+        <ion-col tappable (click)="openChart()">自我网络</ion-col>
   			<ion-col tappable (click)="openChart()">综合表征</ion-col>
   		</ion-row>
 	    <ion-segment [(ngModel)]="pet" color="primary">

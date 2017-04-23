@@ -13,12 +13,24 @@ page-person-detail {
 		.item-md.item-block .item-inner {
 		    border-bottom: 0px solid #dedede;
 		}
+		.ion-ios-heart-outline{
+			padding-left: 10px;
+		}
 		span{
 			float: right;
 			color: color($colors, primary);
 			border: 1px solid color($colors, primary);
 			padding: 4px 10px;
 			font-size: 1.4rem;
+		}
+
+		ion-row[text-center]{
+			.col:first-child{
+				border-right: 0;
+			}
+			.col:last-child{
+				border-left: 0;
+			}
 		}
 	}
 

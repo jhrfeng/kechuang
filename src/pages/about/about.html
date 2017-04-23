@@ -8,17 +8,21 @@
 
 <ion-content class="content" padding>
 	<ion-list>
-		<ion-item>
-	    	<ion-input placeholder="请输入手机号" clearInput></ion-input>
+		<ion-item lines>
+	    	<ion-input placeholder="请输入手机号" 
+	    	[(ngModel)]="about.phone" clearInput></ion-input>
 	 	</ion-item>
-	  	<ion-item>
-	    	<ion-input placeholder="请输入邮箱" clearInput></ion-input>
+	  	<ion-item lines>
+	    	<ion-input placeholder="请输入邮箱" 
+	    	[(ngModel)]="about.email" clearInput></ion-input>
 	 	</ion-item>
 
-	  	<ion-item>
-	    	<ion-textarea autosize placeholder="请说明原因"><br><br><br><br></ion-textarea>
+	  	<ion-item lines>
+	    	<ion-textarea rows='10' 
+	    	[(ngModel)]="about.msg" placeholder="请说明原因">
+	    	</ion-textarea>
 	  	</ion-item>
 	</ion-list>
 
-	<button ion-button round full>提  交</button>
+	<button ion-button round full (click)="submit(about)">提  交</button>
 </ion-content>

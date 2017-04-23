@@ -119,6 +119,35 @@ export class Auth {
       });
     }  
 
+    authparamPut(api, details, show){
+      return new Promise((resolve, reject) => {
+
+        this.storage.get('token').then((value) => {
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json;charset=UTF-8');
+            headers.append('token', value);
+     
+             if(show) this.showLoader("请求中...");
+            this.http.put(REQUEST_URL + api, JSON.stringify(details),{headers: headers})
+              .subscribe(res => {
+                if(show) this.loading.dismiss();
+                  resolve(res);
+              }, (err) => {
+                this.loading.dismiss();
+                if(err["status"]==401){
+                  reject(err);
+                  this.showLoader("登录过期，请重新登录");
+                  setTimeout(() => {
+                    this.loading.dismiss();
+                 }, 1000);
+
+                }else{reject(err)}
+            }); 
+        });     
+
+      });
+    }
+
 	  authPost(api, details, show){
   		return new Promise((resolve, reject) => {
 
@@ -129,25 +158,62 @@ export class Auth {
      
        			if(show) this.showLoader("请求中...");
             this.http.post(REQUEST_URL + api, JSON.stringify(details),{headers: headers})
-                  .subscribe(res => {
-                  	if(show) this.loading.dismiss();
-                      resolve(res);
-                  }, (err) => {
-                  	this.loading.dismiss();
-                      if(err["status"]==401){
-                      	reject(err);
-                      	this.showLoader("登录过期，请重新登录");
-                      	setTimeout(() => {
-        					        this.loading.dismiss();
-        					     }, 1000);
-                      }else{
-                        reject(err);
-                      }
-                  }); 
-  	        });     
+              .subscribe(res => {
+              	if(show) this.loading.dismiss();
+                  resolve(res);
+              }, (err) => {
+              	this.loading.dismiss();
+                if(err["status"]==401){
+                	reject(err);
+                	this.showLoader("登录过期，请重新登录");
+                	setTimeout(() => {
+  					        this.loading.dismiss();
+  					     }, 1000);
 
-  	    });
-    	}  
+                }else{reject(err)}
+            }); 
+  	    });     
+
+  	  });
+    } 
+
+    authFormPost(api, details, show){
+      return new Promise((resolve, reject) => {
+
+        this.storage.get('token').then((value) => {
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+            headers.append('token', value);
+
+            // 处理参数
+            var params = '';
+            if(null != details){
+              for(var key in details){
+                params+= key + '=' + details[key] + '&';
+              }
+              console.log(params)
+            }
+     
+            if(show) this.showLoader("请求中...");
+            this.http.post(REQUEST_URL + api, params,{headers: headers})
+              .subscribe(res => {
+                if(show) this.loading.dismiss();
+                  resolve(res);
+              }, (err) => {
+                this.loading.dismiss();
+                if(err["status"]==401){
+                  reject(err);
+                  this.showLoader("登录过期，请重新登录");
+                  setTimeout(() => {
+                    this.loading.dismiss();
+                 }, 1000);
+
+                }else{reject(err)}
+            }); 
+        });     
+
+      });
+    } 
 
   	post(api, details){
     		return new Promise((resolve, reject) => {

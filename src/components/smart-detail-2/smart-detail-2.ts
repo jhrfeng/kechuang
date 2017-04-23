@@ -19,8 +19,12 @@ export class SmartDetail2Component {
   }
 
   onEvent = (event: string, item: any): void => {
-    if (this.events[event]) {
-        this.events[event](item);
+    if(event=='onRelate'){
+      item.type = 'project'; 
+      this.events[event](item);
+    
+    }else if (this.events[event]) {
+      this.events[event](item);
     }
   }
 

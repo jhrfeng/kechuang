@@ -17,18 +17,20 @@
 	</ion-card>
 
 	<ion-list text-left>
-		<ion-row>
+<!-- 		<ion-row>
 			<ion-col width-20>邮箱</ion-col>
 			<ion-col text-right>1059731125@qq.com</ion-col>
 		</ion-row>
+-->
 		<ion-row>
-			<ion-col width-20>组别</ion-col>
-			<ion-col text-right>测试</ion-col>
-		</ion-row>
+			<ion-col width-20>性别</ion-col>
+			<ion-col text-left>{{params.data.gender=='male'?'男':'女'}}</ion-col>
+		</ion-row> 
+
 		<ion-row>
 			<ion-col width-20>简介</ion-col>
-			<ion-col text-left>
-			怒发冲冠，凭阑处、潇潇雨歇。抬望眼，仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切。
+			<ion-col text-left style="height: 200px;">
+			{{params.data.introduction}}
 			</ion-col>
 		</ion-row>
 	</ion-list>

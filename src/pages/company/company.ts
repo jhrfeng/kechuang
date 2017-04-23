@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ViewController, ActionSheetController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-// import { CameraService } from '../../providers/camera-service';
+import { Storage } from '@ionic/storage';
+import { Auth } from '../../providers/auth';
+import { CITYDATA }  from '../../constant/city-data';
 
 @Component({
   selector: 'page-company',
@@ -10,14 +12,47 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class CompanyPage {
 
+	params: any = {data:{}};
 	iconType:boolean = true;
+
+	cityData: any[]; //城市数据
+  	cityName:string; //初始化城市名
 
   	constructor (public camera: Camera,
                  public viewCtrl: ViewController,
-                 public actionSheetCtrl: ActionSheetController)
+                 public actionSheetCtrl: ActionSheetController,
+                 public storage: Storage,
+                 public auth: Auth)
     {
-	
+		this.storage.get('user').then((user) => {
+            this.params.data = user;
+            this.cityName = user.enterpriseAddressProvince + ' ' 
+            	+ user.enterpriseAddressCity + ' '
+            	+ user.enterpriseAddressDistrict;
+            console.log(this.cityName);
+        });
+        this.cityData = CITYDATA; // * 获取城市数据
     }
+
+   //* 城市选择器被改变时触发的事件
+  	cityChange(event){
+    	console.log(event);
+    	this.params.data.enterpriseAddressProvince = event.province.text; 
+        this.params.data.enterpriseAddressCity = event.city.text;
+        this.params.data.enterpriseAddressDistrict = event.region.text;
+  	}
+
+  	editCompany(){
+  		this.iconType = !this.iconType;
+  		if(this.iconType){
+  			this.auth.authparamPut('/restapi/user/'+this.params.data.id+'/personal', this.params.data, true).then((result) => {
+	            this.storage.set('user', this.params.data);
+	            this.auth.showMessage("修改成功")
+	        },(err) =>{
+	           
+	        });
+  		}
+  	}
 
   	// 初始化相机参数
 	options: CameraOptions = {

@@ -4,8 +4,8 @@
       公司认证
     </ion-title>
     <ion-buttons end>
-        <button ion-button (click)="iconType = !iconType;">
-	        <ion-icon [name]="iconType?'md-create':'md-checkmark-circle'"></ion-icon>
+        <button ion-button (click)="editCompany()">
+	        <ion-icon [name]="iconType?'md-create':'md-checkmark'"></ion-icon>
 	    </button>
     </ion-buttons>
   </ion-navbar>
@@ -15,25 +15,33 @@
 	<ion-card style="margin:0;width:100%;">
 		<ion-item *ngIf="iconType">
 		    <h2>企业名称</h2>
-		    <p>杭州世博科技有限公司</p>
+		    <p>{{params.data.enterpriseName}}</p>
 		</ion-item>
 	</ion-card>
 
 	<ion-list text-left *ngIf="iconType">
 		<ion-row *ngIf="iconType">
 			<ion-col width-33>企业地址</ion-col>
-			<ion-col text-left>浙江省杭州市建江区</ion-col>
+			<ion-col text-left>{{params.data.enterpriseAddressProvince + ' - ' + params.data.enterpriseAddressCity + ' - ' + params.data.enterpriseAddressDistrict}}</ion-col>
 		</ion-row>
 	</ion-list>
 
 	<ion-list text-left *ngIf="!iconType">
 		<ion-item>
 		    <ion-label fixed>企业名称</ion-label>
-		    <ion-input type="text" value="杭州世博科技有限公司"></ion-input>
+		    <ion-input type="text" [(ngModel)]="params.data.enterpriseName"></ion-input>
 		</ion-item>
 		<ion-item>
 		    <ion-label fixed>企业地址</ion-label>
-		    <ion-input type="text" value="浙江省杭州市建江区"></ion-input>
+		    <city-picker item-content
+                [cancelText]="'取消'"
+                [doneText]="'完成'"
+                [separator]="' - '"
+                [citiesData]="cityData"
+                [(ngModel)]="cityName"
+                (ionChange)="cityChange($event)">
+ 
+    		</city-picker>
 		</ion-item>
 		<ion-item tappable (click)="openSheet()">
 		    <ion-label fixed>上传营业执照</ion-label>

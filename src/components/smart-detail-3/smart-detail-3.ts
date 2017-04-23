@@ -18,7 +18,11 @@ export class SmartDetail3Component {
   }
 
   onEvent = (event: string, item: any): void => {
-    if (this.events[event]) {
+    if(event=='onRelate'){
+      item.type = 'patent'; 
+      this.events[event](item);
+    
+    }else if (this.events[event]) {
         this.events[event](item);
     }
   }

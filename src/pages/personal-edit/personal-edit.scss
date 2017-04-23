@@ -12,6 +12,14 @@ page-personal-edit {
 	.list-md {
 	    background: #fff;
 	}
+
+	ion-list{
+		.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+		    border-bottom-color: #dedede;
+		}
+	}
+
+
 	ion-row{
 		border-bottom: 1px solid #ddd;
 		ion-col {

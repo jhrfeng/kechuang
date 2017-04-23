@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { PersonalPage } from '../personal/personal'
 import { ApplyPage }    from '../apply/apply';
@@ -23,7 +24,11 @@ export class MePage {
     
     params: any;
 
- 	constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth) {
+ 	constructor(public navCtrl: NavController, 
+                public navParams: NavParams, 
+                public authService: Auth,
+                public storage: Storage) 
+    {
         this.params = {data:{name:'', enterpriseName:''}, events:{}};
         this.params.events = {
             'onAccount': () => { 
@@ -49,27 +54,34 @@ export class MePage {
                 this.navCtrl.push(LoginPage);
             }
         }
-    }
-
-	ionViewDidLoad() {
         this.authService.authGet('/restapi/user/me', null, true).then((result) => {
             this.params.data = JSON.parse(result["_body"]);
+            this.storage.set('user', this.params.data);
             console.log(this.params.data)
         },(err) =>{
-            console.log(err)
             if(err) this.navCtrl.push(LoginPage, {type: "MePage"})
         });
     }
 
     // 跳转个人信息
     personal(){
-    	this.navCtrl.push(PersonalPage);
+        this.navCtrl.push(PersonalPage);
     }
 
     //应用
     apply(){
         this.navCtrl.push(ApplyPage); 
     }
+
+	ionViewDidEnter() {
+        this.storage.get('user').then((user) => {
+            if(user){
+                this.params.data = user;
+            }
+        })
+    }
+
+
 
 
 }

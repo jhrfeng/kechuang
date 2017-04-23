@@ -2,6 +2,9 @@ hed-item {
 	.item-md p {
 		color: #f8f8f8;	
 	}
+	span{
+		padding-left: 40px;
+	}
 	.item-md{
 		background: color($colors, headers);
      	height: 80px;

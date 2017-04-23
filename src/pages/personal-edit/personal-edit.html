@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons end>
         <button ion-button (click)="edit()">
-	        <ion-icon name="md-checkmark-circle"></ion-icon>
+	        <ion-icon name="md-checkmark"></ion-icon>
 	    </button>
     </ion-buttons>
   </ion-navbar>
@@ -22,24 +22,27 @@
 
 	<ion-list>
 		<ion-item>
-		    <ion-label fixed>昵称</ion-label>
-		    <ion-input type="text" value="小都比"></ion-input>
+		    <ion-label fixed>名字</ion-label>
+		    <ion-input type="text" [(ngModel)]="params.data.name" ></ion-input>
 		</ion-item>
 
-	    <ion-item>
-		    <ion-label fixed>邮箱</ion-label>
-		    <ion-input type="text" value="1059731125@qq.com"></ion-input>
-	  	</ion-item>
+		<ion-item>
+			<ion-label>性别</ion-label>
+			<ion-select okText="确认" cancelText="取消" [(ngModel)]="params.data.gender">
+			    <ion-option value="female" selected="true">女</ion-option>
+			    <ion-option value="male">男</ion-option>
+			</ion-select>
+		</ion-item>
 
 	  	<ion-item>
-		    <ion-label fixed>组别</ion-label>
-		    <ion-input type="text" value="测试"></ion-input>
+		    <ion-label fixed style="color:#999">组别</ion-label>
+		    <ion-label fixed>{{params.data.type | member}}</ion-label>
 	  	</ion-item>
 
 	  	<ion-item>
 		    <ion-label fixed>简介</ion-label>
-		    <ion-textarea>
-		    	怒发冲冠，凭阑处、潇潇雨歇。抬望眼，仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切。
+		    <ion-textarea rows='10' [(ngModel)]="params.data.introduction">
+		    	
 		    </ion-textarea>
 		</ion-item>    
 	</ion-list>

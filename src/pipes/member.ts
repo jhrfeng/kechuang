@@ -42,3 +42,23 @@ export class Fname implements PipeTransform {
 
 }
 
+@Pipe({
+  name: 'type'
+})
+export class Type implements PipeTransform {
+
+  transform(value: string, ...args): string {
+    if(value === '') 
+      return '';
+    if(value == 'PAPER' || value == 'paper')
+      return '论文'
+    if(value == 'PROJECT'  || value == 'project')
+      return '项目'
+    if(value == 'PATENT' || value == 'patent')
+      return '专利'
+    if(value == 'EXPERT' || value == 'expert')
+      return '人才'
+  }
+
+}
+

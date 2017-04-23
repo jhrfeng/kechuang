@@ -34,7 +34,13 @@
 
 	<ion-row>
 	<ion-col width-25>发明人</ion-col>
-	<ion-col>{{data.inventor}}</ion-col>
+	<ion-col>
+		<span *ngFor="let inv of data.memberWithId;"
+		tappabled (click)="onEvent('onExpert', inv)">
+			{{inv.name}}
+		</span>
+		
+	</ion-col>
 	</ion-row>
 
 	<ion-row>
@@ -78,11 +84,11 @@
 
 <ion-list class="main">
 	<ion-row>
-	<ion-col width-40>相关专利</ion-col>
+		<ion-col width-40>相关专利</ion-col>
 	</ion-row>
 	<ion-row  *ngFor="let relate of relateds;">
-	<ion-col>
-	<p class="pcontent" text-nowrap>{{relate.name}}</p>
-	</ion-col>
+		<ion-col tappabled (click)="onEvent('onRelate', relate)">
+			<p class="pcontent" text-nowrap>{{relate.name}}</p>
+		</ion-col>
 	</ion-row>
 </ion-list>

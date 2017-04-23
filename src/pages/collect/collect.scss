@@ -1,5 +1,24 @@
 page-collect {
+	.content {
+		.toolbar-md {
+		    // margin-top: 56px;
+		    position: fixed;
+		}
+	}
+	.list-md {
+	    margin: 56px 0 16px 0;
+	}
 	.item-md {
 		height: 60px;
 	}
+	.label-md {
+		padding-left: 20px;
+	    // margin: 13px 8px 13px 20px;
+	}
+	.item-md p{
+		color: #28a28a;
+		line-height: 2.6rem;
+		margin-left: -10px;
+	}
+
 }

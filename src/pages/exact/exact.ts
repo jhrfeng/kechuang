@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
 import { DetailPage } from '../detail/detail';
-import { DetailPPage } from '../detail/detailP';
 import { PersonDetailPage } from '../person-detail/person-detail';
-import { ExactDetailPage } from '../exact-detail/exact-detail';
 
 @Component({
   selector: 'page-exact',
@@ -15,8 +14,16 @@ export class ExactPage {
 
 	searchVo:any = {keyWord:""};
 	params: any;
-
-  	constructor(public navCtrl: NavController,public navParams: NavParams,public modalCtrl: ModalController, public authService: Auth) {
+	userid: any;
+  	constructor(public navCtrl: NavController,
+  				public navParams: NavParams,
+  				public modalCtrl: ModalController, 
+  				public authService: Auth,
+  				public storage: Storage) 
+  	{   
+  		this.storage.get('userid').then((value) => {//获取当前登录人id
+	        this.userid = value;
+	    })
 	    this.params = { 
 	                    data1:{list:[], total:0},
 	                    data2:{list:[], total:0},
@@ -45,35 +52,44 @@ export class ExactPage {
 	}
 
   	search(){
-  		// 重置搜索条件
-  		this.params.start = {paper:1, project:1, patent:1, expert:1};
-  		// 人才
-	    this.authService.authPost('/query/expert/sim', {keyWord: this.searchVo.keyWord}, true).then((result) => {
-	      this.params.data4 = JSON.parse(result["_body"]);
-	    },(err) =>{
-	     	if(err) this.navCtrl.push(LoginPage, {type: "ExactPage"})
-	    });
-	    // 论文
-	    this.authService.authPost('/query/paper/sim', {keyWord: this.searchVo.keyWord}, false).then((result) => {
-	      this.params.data1 = JSON.parse(result["_body"]);
-	      this.removeByValue(this.params.data1.list, null);
-	    },(err) =>{
+  		// 检查搜索次数
+	    this.authService.authPost('/query/search/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {
+	      	var times = JSON.parse(result["_body"]);
+	      	if(times!=1){
+	        	this.authService.showMessage("您的搜索次数已使用完毕，请充值！")
+	      	}else{
+	      		// 重置搜索条件
+		  		this.params.start = {paper:1, project:1, patent:1, expert:1};
+		  		// 人才
+			    this.authService.authPost('/query/expert/sim', {keyWord: this.searchVo.keyWord}, true).then((result) => {
+			      this.params.data4 = JSON.parse(result["_body"]);
+			    },(err) =>{
+			    });
+			    // 论文
+			    this.authService.authPost('/query/paper/sim', {keyWord: this.searchVo.keyWord}, false).then((result) => {
+			      this.params.data1 = JSON.parse(result["_body"]);
+			      this.removeByValue(this.params.data1.list, null);
+			    },(err) =>{
 
-	    });
-	    // 项目
-	    this.authService.authPost('/query/project/sim', {keyWord: this.searchVo.keyWord}, false).then((result) => {
-	      this.params.data2 = JSON.parse(result["_body"]);
-	      this.removeByValue(this.params.data2.list, null);
-	    },(err) =>{
-	      
-	    });
-	    // 专利
-	    this.authService.authPost('/query/patent/sim', {keyWord: this.searchVo.keyWord}, false).then((result) => {
-	      this.params.data3 = JSON.parse(result["_body"]);
-	      this.removeByValue(this.params.data3.list, null);
-	    },(err) =>{
-	      
-	    });
+			    });
+			    // 项目
+			    this.authService.authPost('/query/project/sim', {keyWord: this.searchVo.keyWord}, false).then((result) => {
+			      this.params.data2 = JSON.parse(result["_body"]);
+			      this.removeByValue(this.params.data2.list, null);
+			    },(err) =>{
+			      
+			    });
+			    // 专利
+			    this.authService.authPost('/query/patent/sim', {keyWord: this.searchVo.keyWord}, false).then((result) => {
+			      this.params.data3 = JSON.parse(result["_body"]);
+			      this.removeByValue(this.params.data3.list, null);
+			    },(err) =>{
+			      
+			    });
+		    
+		    }},(err) =>{
+		      if(err) this.navCtrl.push(LoginPage, {type: "HomePage"})
+		    });
 	  }
 
   	selectPage(type){
