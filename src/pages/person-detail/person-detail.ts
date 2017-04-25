@@ -121,9 +121,13 @@ export class PersonDetailPage {
       });
     }
 
-  	openChart(){
-  		this.navCtrl.push(ChartPage);
+  	openChart1(){ // 自我网络
+  		this.navCtrl.push(ChartPage,{type:'socialNetwork', id:this.items.id, keyword:''});
   	}
+
+    openChart2(){ // 综合表征
+      this.navCtrl.push(ChartPage,{type:'radarGraphic', id:this.items.id, keyword:''});
+    }
 
     about(){
       this.navCtrl.push(AboutPage, {item:this.items});

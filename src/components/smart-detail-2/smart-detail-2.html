@@ -2,7 +2,7 @@
 	<ion-row>
 	<ion-col>
 		<i *ngFor="let keyword of keywords;let i = index;" style="margin-top: 10px;">
-		<br *ngIf="i/4==0">
+		<br *ngIf="i%4==0">
 		<span >{{keyword}}</span>
 		</i>
 	</ion-col>

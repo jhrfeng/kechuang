@@ -3,7 +3,8 @@ import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
-import { DetailPage } from '../detail/detail'
+import { DetailPage } from '../detail/detail';
+import { ChartPage } from '../chart/chart';
 
 @Component({
   selector: 'page-lixiang',
@@ -69,7 +70,6 @@ export class LixiangPage {
 
   searchPaper(){ // 论文
     this.searchVo["type"]='paper';
-    var param = Object.assign({}, this.searchVo);
     this.authService.authGet('/query/search', Object.assign({}, this.searchVo), false).then((result) => {
       this.params.data1 = JSON.parse(result["_body"]);
       this.params.data1 = this.params.data1.response;
@@ -108,6 +108,20 @@ export class LixiangPage {
   selectPage(type){
     this.params.istype = type;
   }
+
+  openChart1(){ // 相关机构
+    this.navCtrl.push(ChartPage,{type:'relevantInstitutions', id:'', keyword:encodeURI(this.searchVo.keyWord)});
+  }
+
+  openChart2(){ // 相关学者
+    this.navCtrl.push(ChartPage,{type:'relevantExperts', id:'', keyword:encodeURI(this.searchVo.keyWord)});
+  }
+
+  openChart3(){ // 研究走势
+    this.navCtrl.push(ChartPage,{type:'resarchTrends', id:'', keyword:encodeURI(this.searchVo.keyWord)});
+  }
+
+
 
   doInfinite(infiniteScroll) {
     setTimeout(() => {

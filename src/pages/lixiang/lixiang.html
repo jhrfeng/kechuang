@@ -15,7 +15,12 @@
 </ion-header>
 
 <ion-content class="content">
-  <ion-toolbar no-border-top color="dark">
+  <ion-toolbar class="navbar" no-border-top color="dark">
+      <ion-row text-center>
+        <ion-col tappable (click)="openChart1()">相关机构</ion-col>
+        <ion-col tappable (click)="openChart2()">相关学者</ion-col>
+        <ion-col tappable (click)="openChart3()">研究走势</ion-col>
+      </ion-row>
     <ion-segment [(ngModel)]="pet" color="whites">
         <ion-segment-button value="1" (ionSelect)="selectPage(1)">
           论文
@@ -32,7 +37,7 @@
     </ion-segment>
   </ion-toolbar>
 
-  <div>
+  <div class="lixiang">
     <smart-search-1
       *ngIf="params.istype==1"
       [data]="params.data1" 

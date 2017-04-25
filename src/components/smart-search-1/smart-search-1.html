@@ -10,7 +10,7 @@
     </ion-col>
 </ion-row>
 <ion-item *ngFor="let item of data.docs; let i = index;" (click)="onEvent('onDetail', item)">
-    <p class="title">{{item.name}}</p>
+    <p class="title" text-nowrap>{{item.name}}</p>
     <p class="tag">{{item.member | fname}}</p>
     <p class="source" text-nowrap>《{{item.journal_name}}》 <span>{{item.journal_no}}</span></p>
 </ion-item>

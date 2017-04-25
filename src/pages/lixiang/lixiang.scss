@@ -13,4 +13,29 @@ page-lixiang {
 		    position: fixed;
 		}
 	}
+	.navbar{
+		.col{
+			// color: #fff;
+   //  		border: 1px solid #d0d0d0;
+   			color: color($colors, toptab);
+   			border: 1px solid color($colors, toptab);
+		}
+		ion-row[text-center]{
+			.col:first-child{
+				border-right: 0;
+			}
+			.col:last-child{
+				border-left: 0;
+			}
+		}
+	}
+	.lixiang{
+		padding-top: 25px;
+		.col:first-child{
+			margin-right: 50%;
+		}
+		.col:last-child{
+			display: none;
+		}
+	}
 }

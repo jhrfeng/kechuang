@@ -84,10 +84,10 @@ export class DetailPage {
 		       			console.log("取消收藏")
 		       			var url = '/restapi/user/' + this.userid+ '/cancelMark';
 		       			this.authService.authPost(url, {entryId: entryId, type:this.navParams.get('item').type, user: {id: this.userid}}, false).then((result) => {
-					    	if(result["_body"]==1){
+					    	// if(result["_body"]==1){
 								this.getCollectionList();
 								this.authService.showMessage("取消收藏成功!")
-					    	}
+					    	// }
 					    },(err) =>{this.authService.showMessage("取消收藏失败!")});
 		       		}
 		       	}
@@ -95,7 +95,7 @@ export class DetailPage {
 		       		var url = '/restapi/user/' + this.userid+ '/mark';
 		       		var data = {entryId: entryId, 
 		       					title: this.itemName,
-		       					type: this.navParams.get('item').type, 
+		       					type: this.navParams.get('item').type.toUpperCase(), 
 		       					url: REQUEST_URL_DETAIL + this.navParams.get('item').type+ "/"+entryId+"/search",
 		       					user: {id: this.userid}};
 	       			this.authService.authPost(url, data, false).then((result) => {
