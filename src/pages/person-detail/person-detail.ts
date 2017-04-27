@@ -23,6 +23,7 @@ export class PersonDetailPage {
       this.items = navParams.get('item');
       this.params = { name:   "",
                       unit:   "",
+                      introduction: null,
                       data1:  {list:[], total:""}, 
                       data2:  {list:[], total:""}, 
                       data3:  {list:[], total:""},
@@ -41,6 +42,7 @@ export class PersonDetailPage {
           console.log(data)
           this.params.name = data.name;
           this.params.unit = data.unit; 
+          this.params.introduction = data.introduction;
           this.params.data1.list = data.papers;
           this.params.data2.list = data.projects;
           this.params.data3.list = data.patents;
@@ -81,7 +83,8 @@ export class PersonDetailPage {
     	console.log('ionViewDidLoad PersonDetailPage');
   	}
 
-    collect(entryId: any) { //收藏事件
+    collect() { //收藏事件
+      let entryId = this.items.id;
       var collection = true;
       for(var i in this.collectionList.list){
         if(this.collectionList.list[i]["entryId"] == entryId){ // 取消收藏
@@ -119,6 +122,10 @@ export class PersonDetailPage {
       },(err) =>{
         
       });
+    }
+
+    openChart(){
+      this.authService.showMessage(this.params.introduction)
     }
 
   	openChart1(){ // 自我网络

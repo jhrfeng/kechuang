@@ -300,7 +300,39 @@ export class Auth {
 
 	logout(){
 	 	 this.storage.remove('token');
-	    // this.storage.setItem('token', '');
 	}
+
+  validatemobile(newname) {
+      if (newname=='' || newname==null) {
+          this.showMessage('请输入手机号码！');
+          return false;
+      }
+      if (newname.length != 11) {
+          this.showMessage('请输入有效的手机号！');
+          return false;
+      }
+      var PATTERN_CHINAMOBILE = /^1(3[4-9]|5[0123789]|8[23478]|4[7]|7[8])\d{8}$/; //移动号
+      var PATTERN_CHINAUNICOM = /^1(3[0-2]|5[56]|8[56]|4[5]|7[6])\d{8}$/; //联通号
+      var PATTERN_CHINATELECOM = /^1(3[3])|1(7[3])|(8[019])\d{8}$/; //电信号
+      if (PATTERN_CHINAUNICOM.test(newname)) {
+          return true;
+      } else if (PATTERN_CHINAMOBILE.test(newname)) {
+          return true;
+      } else if (PATTERN_CHINATELECOM.test(newname)) {
+          return true;
+      }else {
+          this.showMessage("请输入正确的手机号");
+          return false;
+      }
+  }
+
+    validatemail(email){
+      var regEmail=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+(\.[a-zA-Z]{2,3})+$/;
+      if(!regEmail.test(email)) {
+          this.showMessage("请输入正确邮箱地址")
+          return false;
+      }
+      return true;
+    }
 
 }

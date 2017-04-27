@@ -21,21 +21,16 @@ export class AboutPage {
   	}
 
     submit(about){
-      console.log(about)
-      var url = '/restapi/expert/contactExpert';
-      this.auth.authPost(url, about, true).then((result) => {
-        var data = JSON.parse(result["_body"]);
-      },(err) =>{
-        this.auth.showError("提交失败")
-      });
+      if(this.auth.validatemobile(about.phone) 
+          && this.auth.validatemail(about.email))
+      {
+        var url = '/restapi/expert/contactExpert';
+        this.auth.authPost(url, about, true).then((result) => {
+          this.navCtrl.pop();
+        },(err) =>{
+          this.auth.showError("提交失败")
+        });
+      }
     }
-
-  	onInput(event){
-
-  	}
-
-  	onCancel(event){
-  		
-  	}
 
 }

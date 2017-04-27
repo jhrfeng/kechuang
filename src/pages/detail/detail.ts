@@ -20,7 +20,22 @@ export class DetailPage {
 
   	constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth,public storage: Storage)
   	{
-  		this.initDetail(0);
+  		console.log(this.navParams.get('item'))
+  		this.storage.get('userid').then((value) => {//获取当前登录人id
+	      	this.userid = value;
+	      	// 检查搜索次数
+		    this.authService.authPost('/query/detail/checkTimes', {id: this.userid}, true).then((result) => {
+		      var times = JSON.parse(result["_body"]);
+		      if(times!=1){
+		        this.authService.showMessage("您的搜索次数已使用完毕，请充值！")
+		      }else{
+		       	this.initDetail(0);
+		      }
+		    },(err) =>{
+		      this.authService.showMessage("您的搜索次数已使用完毕，请充值！")
+		    });
+
+	    })
   	}
 
   	// 初始化 type:0 上一页；  type:1 相关推荐
@@ -31,11 +46,11 @@ export class DetailPage {
   		}
   		this.detailType = this.navParams.get('item').type;
   		
-  		this.storage.get('userid').then((value) => {//获取当前登录人id
-	      	this.userid = value;
+  		// this.storage.get('userid').then((value) => {//获取当前登录人id
+	   //    	this.userid = value;
 		    // 收藏列表
 		    this.getCollectionList();
-	    })
+	    // })
 
 
   		this.params = {data:{}, relateds:[], keywords:[], readCount:0};

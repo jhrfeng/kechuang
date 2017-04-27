@@ -53,7 +53,7 @@ export class ExactPage {
 
   	search(){
   		// 检查搜索次数
-	    this.authService.authPost('/query/search/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {
+	    this.authService.authPost('/query/advance/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {
 	      	var times = JSON.parse(result["_body"]);
 	      	if(times!=1){
 	        	this.authService.showMessage("您的搜索次数已使用完毕，请充值！")
@@ -88,7 +88,7 @@ export class ExactPage {
 			    });
 		    
 		    }},(err) =>{
-		      if(err) this.navCtrl.push(LoginPage, {type: "HomePage"})
+		      if(err) this.navCtrl.push(LoginPage, {type: "ExactPage"})
 		    });
 	  }
 

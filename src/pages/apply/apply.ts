@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { NewsPage } from '../news/news';
 
-/*
-  Generated class for the Apply page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-apply',
   templateUrl: 'apply.html'
@@ -14,6 +10,10 @@ import { NavController, NavParams } from 'ionic-angular';
 export class ApplyPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
+
+  news(){
+  	this.navCtrl.push(NewsPage);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ApplyPage');

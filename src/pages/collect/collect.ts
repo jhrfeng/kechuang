@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Auth } from '../../providers/auth';
+import { DetailPage } from '../detail/detail';
+import { PersonDetailPage } from '../person-detail/person-detail';
 
 @Component({
   selector: 'page-collect',
@@ -22,6 +24,17 @@ export class CollectPage {
 		    this.getCollectionList();
 	    })
   	}
+
+    detail(item){
+      item.type = item.type.toLowerCase();
+      item.name = item.title;
+      item.id = item.entryId;
+      if(item.type == 'expert'){
+        this.navCtrl.push(PersonDetailPage, {item: item});
+      }else{
+        this.navCtrl.push(DetailPage, {item: item});
+      }
+    }
 
 
   	doInfinite(infiniteScroll) {

@@ -1,16 +1,23 @@
 <ion-item>
 	<ion-icon name="md-person" item-left></ion-icon>
-	<ion-input type="text" placeholder="请输入手机号" [(ngModel)]="username"></ion-input>
+	<ion-input type="text" placeholder="请输入手机号" [(ngModel)]="data.username"></ion-input>
 </ion-item>
 
 <ion-item>
 	<ion-icon name="md-lock" item-left></ion-icon>
-	<ion-input type="password" placeholder="请输入密码" [(ngModel)]="password"></ion-input>
+	<ion-input type="password" placeholder="请输入密码" [(ngModel)]="data.password"></ion-input>
 </ion-item>
 
 <ion-row>
-	<ion-col padding text-left tappable (click)="register()">注册</ion-col>
-	<ion-col padding text-right tappable (click)="forget()">忘记密码</ion-col>
+	<ion-col padding text-left tappable 
+	(click)="onEvent('onRegister', item)">
+		注册
+	</ion-col>
+
+	<ion-col padding text-right tappable 
+	(click)="onEvent('onForget', item)">
+		忘记密码
+	</ion-col>
 </ion-row>
 
-<button ion-button round full (click)="login()">登  录</button>
+<button ion-button round full (click)="onEvent('onLogin', item)">登  录</button>

@@ -21,7 +21,7 @@
   		</ion-item>
   		
   		<ion-row text-center>
-  			<ion-col tappable (click)="openChart()">简介</ion-col>
+  			<ion-col [hidden]="params.introduction==null" tappable (click)="openChart()">简介</ion-col>
         <ion-col tappable (click)="openChart1()">自我网络</ion-col>
   			<ion-col tappable (click)="openChart2()">综合表征</ion-col>
   		</ion-row>

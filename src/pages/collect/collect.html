@@ -16,7 +16,7 @@
 	</ion-toolbar>
 	<ion-list>
 		<ion-item-sliding *ngFor="let item of collection.list;let i = index;">
-		  <ion-item>
+		  <ion-item tappable (click)="detail(item)">
 		  	<p text-left>{{item?.type | type}}</p>
 		    {{item?.title}}
 		  </ion-item>

@@ -51,7 +51,7 @@ export class MePage {
             }
             ,
             'onLogout': () => { 
-                this.navCtrl.push(LoginPage);
+                this.navCtrl.push(LoginPage, {type:'MePage'});
             }
         }
         this.authService.authGet('/restapi/user/me', null, true).then((result) => {
