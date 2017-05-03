@@ -1,21 +1,21 @@
 <ion-header>
-<ion-navbar>
-<ion-title>Home</ion-title>
-</ion-navbar>
+  <ion-navbar color="dark">
+    <ion-title text-center>消息设置</ion-title>
+  </ion-navbar>
 </ion-header>
  
 <ion-content padding>
-<button ion-button block (click)="initJPush()">启动推送</button>
+<!-- <button ion-button block (click)="initJPush()">启动推送</button>
 <ion-item>
 <ion-label floating>别名 Alias</ion-label>
 <ion-input type="text" [(ngModel)]="alias"></ion-input>
 </ion-item>
-<button ion-button block (click)="setAlias()" [disabled]="alias == ''">设置别名</button>
+<button ion-button block (click)="setAlias()" [disabled]="alias == ''">设置别名</button> -->
  
 <ion-list>
 <ion-item text-wrap *ngFor="let msg of msgList">
 <ion-avatar item-left>
-<img src="assets/img/header.jpg">
+<!-- <img src="assets/img/header.jpg"> -->
 </ion-avatar>
 <h2>通知</h2>
 <p>{{msg.content}}</p>

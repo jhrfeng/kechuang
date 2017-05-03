@@ -16,7 +16,13 @@
 	</ion-row>
 	<ion-row>
 	<ion-col width-20>成员</ion-col>
-	<ion-col>{{data.member}}</ion-col>
+	<ion-col>
+		<span *ngFor="let inv of data.memberWithId;"
+		[ngClass]="inv.id==null?'no':''"
+		tappabled (click)="onEvent('onExpert', inv)">
+			{{inv.name}}
+		</span>
+	</ion-col>
 	</ion-row>
 	<ion-row>
 	<ion-col width-20>单位</ion-col>

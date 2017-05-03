@@ -33,11 +33,13 @@ export class ChartPage {
 
   	chartUrl() {
         if(this.item.type == 'socialNetwork'){
-          let url =  REQUEST_URL + '/#/socialNetwork/' + this.item.token + '/' + this.item.id;
+          let url =  REQUEST_URL + '/#/socialNetwork/' + this.item.token + '/' + this.item.expertid;
+          console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'radarGraphic'){
-          let url =  REQUEST_URL + '/#/radarGraphic/' + this.item.token + '/' + this.item.id;
+          let url =  REQUEST_URL + '/#/radarGraphic/' + this.item.token + '/' + this.item.expertid;
+          console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'relevantInstitutions'){
@@ -51,7 +53,7 @@ export class ChartPage {
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'resarchTrends'){
-          let url =  REQUEST_URL + '/#/resarchTrends/' + this.item.token + '/' + this.item.keyword + '/resarchTrends';
+          let url =  REQUEST_URL + '/#/researchTrends/' + this.item.token + '/' + this.item.keyword + '/researchTrends';
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }

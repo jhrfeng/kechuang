@@ -36,6 +36,7 @@
 	<ion-col width-25>发明人</ion-col>
 	<ion-col>
 		<span *ngFor="let inv of data.memberWithId;"
+		[ngClass]="inv.id==null?'no':''"
 		tappabled (click)="onEvent('onExpert', inv)">
 			{{inv.name}}
 		</span>

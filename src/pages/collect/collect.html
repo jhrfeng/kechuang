@@ -16,15 +16,17 @@
 	</ion-toolbar>
 	<ion-list>
 		<ion-item-sliding *ngFor="let item of collection.list;let i = index;">
-		  <ion-item tappable (click)="detail(item)">
-		  	<p text-left>{{item?.type | type}}</p>
-		    {{item?.title}}
-		  </ion-item>
-		  <ion-item-options side="right">
-		    <button ion-button expandable (click)="delete(item)">
-		      取消收藏
-		    </button>
-		  </ion-item-options>
+		  	<ion-item tappable (click)="detail(item)">
+			  	<ion-avatar item-left>
+					<img src="{{item?.type | type}}">
+				</ion-avatar>
+		  		<p>{{item?.title}}</p>
+		  	</ion-item>
+		  	<ion-item-options side="right">
+		    	<button ion-button expandable (click)="delete(item)">
+		      		取消收藏
+		    	</button>
+		    </ion-item-options>
 		</ion-item-sliding>
 	</ion-list>
 	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">

@@ -13,7 +13,14 @@ export class NewsPage {
 	msgList:Array<any>=[];
 
 	constructor(public navCtrl: NavController) {
- 
+ 		this.getMessage();
+ 		console.log(this.msgList);
+	}
+
+	getMessage(){
+		document.addEventListener("jpush.receiveNotification", () => {
+			this.msgList.push({content:window.plugins.jPushPlugin.receiveNotification.alert})
+		}, false);
 	}
 
 	initJPush() {

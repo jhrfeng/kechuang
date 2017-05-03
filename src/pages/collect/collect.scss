@@ -20,5 +20,14 @@ page-collect {
 		line-height: 2.6rem;
 		margin-left: -10px;
 	}
+	.item-md ion-avatar img {
+	    width: 20px;
+	    height: 20px;
+	    border-radius: 0;
+	}
+	.item-md ion-avatar {
+	    min-width: 20px;
+	    min-height: 20px;
+	}
 
 }

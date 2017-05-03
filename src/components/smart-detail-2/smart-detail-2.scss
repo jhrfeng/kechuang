@@ -22,6 +22,10 @@ smart-detail-2 {
 	}
 	ion-col{
 		font-size: 1.5rem;
+		span{
+			color: #28a28a;
+			padding-right: 10px
+		}
 	}
 	ion-col[width-20],ion-col[width-25],ion-col[width-40]{
 		font-size: 1.6rem;
@@ -38,5 +42,8 @@ smart-detail-2 {
 	}
 	ion-col[text-right] {
 		padding-right: 20px;
+	}
+	.no{
+		color: #000;
 	}
 }

@@ -51,13 +51,22 @@ export class Type implements PipeTransform {
     if(value === '') 
       return '';
     if(value == 'PAPER' || value == 'paper')
-      return '论文'
+      return 'assets/img/paper_1.png'
     if(value == 'PROJECT'  || value == 'project')
-      return '项目'
+      return 'assets/img/project_1.png'
     if(value == 'PATENT' || value == 'patent')
-      return '专利'
+      return 'assets/img/patent_1.png'
     if(value == 'EXPERT' || value == 'expert')
-      return '人才'
+      return 'assets/img/expert_1.png'
+
+    // if(value == 'PAPER' || value == 'paper')
+    //   return '论文'
+    // if(value == 'PROJECT'  || value == 'project')
+    //   return '项目'
+    // if(value == 'PATENT' || value == 'patent')
+    //   return '专利'
+    // if(value == 'EXPERT' || value == 'expert')
+    //   return '人才'
   }
 
 }
