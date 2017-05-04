@@ -5,7 +5,6 @@ import { LoadingController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 import { REQUEST_URL } from '../constant/data';
-import { LoginPage } from '../pages/login/login';
 
 // https://www.joshmorony.com/creating-role-based-authentication-with-passport-in-ionic-2-part-2/
 // https://devdactic.com/login-ionic-2/

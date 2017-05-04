@@ -46,13 +46,6 @@ export class DetailPage {
   		}
   		this.detailType = this.navParams.get('item').type;
   		
-  		// this.storage.get('userid').then((value) => {//获取当前登录人id
-	   //    	this.userid = value;
-		    // 收藏列表
-		    this.getCollectionList();
-	    // })
-
-
   		this.params = {data:{}, relateds:[], keywords:[], readCount:0};
 
   		// 详细信息
@@ -66,7 +59,9 @@ export class DetailPage {
 	    		this.params.keywords = this.params.data.keywordCH.split(";");
 	    	}
 	    	
-	    	console.log(this.params.data)
+	    	// 收藏列表
+	    	this.getCollectionList();
+	    
 	    },(err) =>{
 	      
 	    });
@@ -92,21 +87,7 @@ export class DetailPage {
 
 	    this.params.events = {
 	        'onCollect': (entryId: any) => { //收藏事件
-		       	var collection = true;
-		       	for(var i in this.collectionList.list){
-		       		if(this.collectionList.list[i]["entryId"] == entryId){ // 取消收藏
-		       			collection = false;
-		       			console.log("取消收藏")
-		       			var url = '/restapi/user/' + this.userid+ '/cancelMark';
-		       			this.authService.authPost(url, {entryId: entryId, type:this.navParams.get('item').type, user: {id: this.userid}}, false).then((result) => {
-					    	// if(result["_body"]==1){
-								this.getCollectionList();
-								this.authService.showMessage("取消收藏成功!")
-					    	// }
-					    },(err) =>{this.authService.showMessage("取消收藏失败!")});
-		       		}
-		       	}
-		       	if(collection){ // 进行收藏
+	        	if(!this.params.data.collection){ // 进行收藏
 		       		var url = '/restapi/user/' + this.userid+ '/mark';
 		       		var data = {entryId: entryId, 
 		       					title: this.itemName,
@@ -118,6 +99,20 @@ export class DetailPage {
 				    	this.authService.showMessage("收藏成功!")
 				    },(err) =>{this.authService.showMessage("收藏失败!")});
 		       	}
+
+		       	for(var i in this.collectionList.list){
+		       		if(this.collectionList.list[i]["entryId"] == entryId){ // 取消收藏
+		       			this.params.data.collection = false;
+		       			var url = '/restapi/user/' + this.userid+ '/cancelMark';
+		       			this.authService.authPost(url, {entryId: entryId, type:this.navParams.get('item').type.toUpperCase(), user: {id: this.userid}}, false).then((result) => {
+					    	// if(result["_body"]==1){
+								this.getCollectionList();
+								this.authService.showMessage("取消收藏成功!")
+					    	// }
+					    },(err) =>{this.authService.showMessage("取消收藏失败!")});
+		       		}
+		       	}
+	
 	      	},
 	      	'onExpert': (item: any) =>{ // 发明者人才详情
 	      		console.log(item);
@@ -145,7 +140,12 @@ export class DetailPage {
 	    var url = '/restapi/user/'+ this.userid + '/markings';
 	    this.authService.authGet(url, null, false).then((result) => {
 	    	this.collectionList = JSON.parse(result["_body"]);
-	    	console.log(this.collectionList)
+	    	this.params.data.collection = false;
+	    	for(var i in this.collectionList.list){
+	       		if(this.collectionList.list[i]["entryId"] == this.itemid)
+	       			this.params.data.collection = true;
+		    }
+		    console.log(this.params.data.collection)
 	    },(err) =>{
 	      
 	    });

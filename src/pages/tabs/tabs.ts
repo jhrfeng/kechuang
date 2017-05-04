@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { HomePage } from '../home/home';
 import { ExactPage } from '../exact/exact';
 import { ContactPage } from '../contact/contact';
-import { LoginPage } from '../login/login';
 import { MePage } from '../me/me';
 
 @Component({
