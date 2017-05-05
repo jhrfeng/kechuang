@@ -24,6 +24,7 @@ export class PersonDetailPage {
       this.params = { name:   "",
                       unit:   "",
                       introduction: null,
+                      data:{},
                       data1:  {list:[], total:""}, 
                       data2:  {list:[], total:""}, 
                       data3:  {list:[], total:""},
@@ -85,21 +86,7 @@ export class PersonDetailPage {
 
     collect() { //收藏事件
       let entryId = this.items.id;
-      var collection = true;
-      for(var i in this.collectionList.list){
-        if(this.collectionList.list[i]["entryId"] == entryId){ // 取消收藏
-          collection = false;
-          var url = '/restapi/user/' + this.userid+ '/cancelMark';
-          this.authService.authPost(url, {entryId: entryId, type:this.items.type, user: {id: this.userid}}, false).then((result) => {
-            if(result["_body"]==1){
-              this.getCollectionList();
-              this.authService.showMessage("取消收藏成功!")
-            }
-          },(err) =>{this.authService.showMessage("取消收藏失败!")});
-         }
-      }
-
-      if(collection){ // 进行收藏
+      if(!this.params.data.collection){ // 进行收藏
         var url = '/restapi/user/' + this.userid+ '/mark';
         var data = {entryId: entryId, 
                 title:this.items.name,
@@ -112,6 +99,21 @@ export class PersonDetailPage {
           this.authService.showMessage("收藏成功!")
         },(err) =>{this.authService.showMessage("收藏失败!")});
       }
+
+      for(var i in this.collectionList.list){
+        if(this.collectionList.list[i]["entryId"] == entryId){ // 取消收藏
+          this.params.data.collection = false;
+          var url = '/restapi/user/' + this.userid+ '/cancelMark';
+          this.authService.authPost(url, {entryId: entryId, type:'EXPERT', user: {id: this.userid}}, false).then((result) => {
+            if(result["_body"]==1){
+              this.getCollectionList();
+              this.authService.showMessage("取消收藏成功!")
+            }
+          },(err) =>{this.authService.showMessage("取消收藏失败!")});
+         }
+      }
+
+      
     }
 
     getCollectionList(){
@@ -119,6 +121,11 @@ export class PersonDetailPage {
       var url = '/restapi/user/'+ this.userid + '/markings';
       this.authService.authGet(url, null, false).then((result) => {
         this.collectionList = JSON.parse(result["_body"]);
+        this.params.data.collection = false;
+        for(var i in this.collectionList.list){
+            if(this.collectionList.list[i]["entryId"] == this.items.id)
+              this.params.data.collection = true;
+        }
       },(err) =>{
         
       });

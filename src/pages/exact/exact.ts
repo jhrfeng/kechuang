@@ -15,6 +15,7 @@ export class ExactPage {
 	searchVo:any = {keyWord:""};
 	params: any;
 	userid: any;
+	pet:any;
   	constructor(public navCtrl: NavController,
   				public navParams: NavParams,
   				public modalCtrl: ModalController, 
@@ -52,6 +53,7 @@ export class ExactPage {
 	}
 
   	search(){
+  		this.pet = "4";
   		// 检查搜索次数
 	    this.authService.authPost('/query/advance/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {
 	      	var times = JSON.parse(result["_body"]);

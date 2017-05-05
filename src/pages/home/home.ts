@@ -13,6 +13,7 @@ import { DetailPage } from '../detail/detail';
 export class HomePage {
 
 	isSearch = false;
+  pet:any;
   params: any;
   userid: any;
   searchVo:any = {keyWord:'', type:'', start:0};
@@ -50,6 +51,7 @@ export class HomePage {
 	}
 
   search(){
+    this.pet = "1";
     this.isSearch = true;
 
     // 检查搜索次数
@@ -72,7 +74,6 @@ export class HomePage {
 
   searchPaper(){ // 论文
     this.searchVo["type"]='paper';
-    var param = Object.assign({}, this.searchVo);
     this.authService.authGet('/query/search', Object.assign({}, this.searchVo), false).then((result) => {
       this.params.data1 = JSON.parse(result["_body"]);
       this.params.data1 = this.params.data1.response;

@@ -13,7 +13,7 @@
   		    </ion-avatar>
   		    <h2>
               {{params.name}}
-              <ion-icon (click)="collect()" name="ios-heart-outline"></ion-icon>
+              <ion-icon (click)="collect()" name="{{params.data?.collection?'ios-heart':'ios-heart-outline'}}"></ion-icon>
               <span tappable (click)="about()">联系他</span>
           </h2>
   		    <p>{{params.unit}}</p>

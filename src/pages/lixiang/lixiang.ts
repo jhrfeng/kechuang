@@ -14,6 +14,7 @@ export class LixiangPage {
 
   params: any;
   userid: any;
+  pet:any;
   searchVo:any = {keyWord:'', type:'', start:0};
 
   constructor(public navCtrl: NavController,
@@ -49,7 +50,7 @@ export class LixiangPage {
 	}
 
   search(){
-
+    this.pet = "1";
     // 检查搜索次数
     this.authService.authPost('/query/analyse/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {
       var times = JSON.parse(result["_body"]);
