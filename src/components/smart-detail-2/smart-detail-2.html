@@ -55,7 +55,8 @@
 	<ion-col width-50>{{readCount}}人看过</ion-col>
 	<ion-col text-right>
 		<button ion-button icon-left clear small (click)="onEvent('onCollect', data.id)">
-	        <ion-icon name="{{data?.collection?'ios-heart':'ios-heart-outline'}}"></ion-icon>
+	        <ion-icon color="primary" 
+	        	name="{{data?.collection?'ios-heart':'ios-heart-outline'}}"></ion-icon>
 	    </button>
 	</ion-col>
 	</ion-row>
@@ -68,7 +69,7 @@
 	</ion-row>
 	<ion-row  *ngFor="let relate of relateds;">
 	<ion-col tappabled (click)="onEvent('onRelate', relate)">
-	<p class="pcontent" text-nowrap>{{relate.name}}</p>
+	<p class="pcontent href" text-nowrap>{{relate.name}}</p>
 	</ion-col>
 	</ion-row>
 </ion-list>

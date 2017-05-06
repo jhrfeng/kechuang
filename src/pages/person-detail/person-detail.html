@@ -19,7 +19,8 @@
   		    <h2>
               {{params.name}}
               <label>
-              <ion-icon (click)="collect()" name="{{params.data?.collection?'ios-heart':'ios-heart-outline'}}"></ion-icon>
+              <ion-icon color="primary"
+                (click)="collect()" name="{{params.data?.collection?'ios-heart':'ios-heart-outline'}}"></ion-icon>
               </label>
               <span tappable (click)="about()">联系他</span>
           </h2>

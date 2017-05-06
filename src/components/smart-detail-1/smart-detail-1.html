@@ -58,7 +58,7 @@
 	</ion-row>
 	<ion-row  *ngFor="let relate of relateds;">
 	<ion-col tappabled (click)="onEvent('onRelate', relate)">
-	<p class="pcontent" text-nowrap>{{relate.papername}}</p>
+	<p class="pcontent href" text-nowrap>{{relate.papername}}</p>
 	</ion-col>
 	</ion-row>
 </ion-list>
