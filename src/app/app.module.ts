@@ -15,7 +15,6 @@ import { MePage } from '../pages/me/me';
 
 import { DetailPage } from '../pages/detail/detail';
 import { DetailPPage } from '../pages/detail/detailP';
-import { ExactDetailPage } from '../pages/exact-detail/exact-detail';
 
 import { ExactPage } from '../pages/exact/exact';
 import { ForgetPage } from '../pages/forget/forget';
@@ -90,7 +89,6 @@ import { Member, Fname, Type } from '../pipes/member';
     MePage,
     DetailPage,
     DetailPPage,
-    ExactDetailPage,
     ExactPage,
     ForgetPage,
     LixiangPage,
@@ -159,7 +157,6 @@ import { Member, Fname, Type } from '../pipes/member';
     MePage,
     DetailPage,
     DetailPPage,
-    ExactDetailPage,
     ExactPage,
     ForgetPage,
     LixiangPage,

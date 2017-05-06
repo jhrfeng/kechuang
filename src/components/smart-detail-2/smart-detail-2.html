@@ -3,7 +3,7 @@
 	<ion-col>
 		<i *ngFor="let keyword of keywords;let i = index;" style="margin-top: 10px;">
 		<br *ngIf="i%4==0">
-		<span >{{keyword}}</span>
+		<span [hidden]="keyword==''">{{keyword}}</span>
 		</i>
 	</ion-col>
 	</ion-row>
@@ -11,11 +11,11 @@
 
 <ion-list class="main">
 	<ion-row>
-	<ion-col width-20>标题</ion-col>
+	<ion-col width-25>标题</ion-col>
 	<ion-col>{{data.name}}</ion-col>
 	</ion-row>
 	<ion-row>
-	<ion-col width-20>成员</ion-col>
+	<ion-col width-25>成员</ion-col>
 	<ion-col>
 		<span *ngFor="let inv of data.memberWithId;"
 		[ngClass]="inv.id==null?'no':''"
@@ -25,7 +25,7 @@
 	</ion-col>
 	</ion-row>
 	<ion-row>
-	<ion-col width-20>单位</ion-col>
+	<ion-col width-25>单位</ion-col>
 	<ion-col>{{data.unit}}</ion-col>
 	</ion-row>
 	<ion-row>
@@ -33,15 +33,15 @@
 	<ion-col>{{data.entrustunit}}</ion-col>
 	</ion-row>
 	<ion-row>
-	<ion-col width-20>时间</ion-col>
+	<ion-col width-25>时间</ion-col>
 	<ion-col>{{data.starttime}}</ion-col>
 	</ion-row>
 	<ion-row>
-	<ion-col width-20>类型</ion-col>
+	<ion-col width-25>类型</ion-col>
 	<ion-col>{{data.type}}</ion-col>
 	</ion-row>
 	<ion-row>
-	<ion-col width-20>摘要</ion-col>
+	<ion-col width-25>摘要</ion-col>
 	<ion-col></ion-col>
 	</ion-row>
 	<ion-row>

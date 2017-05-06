@@ -42,7 +42,7 @@ export class HomePage {
       'onModal': (item: any) => { //筛选
           this.searchVo = Object.assign(this.searchVo, item);
           console.log(this.searchVo)
-          this.search();
+          this.search(2);
       },
       'onDetail': (item: any) => {
           this.navCtrl.push(DetailPage, {item: item});
@@ -50,10 +50,15 @@ export class HomePage {
     }
 	}
 
-  search(){
+  search(type){
+    if(type==1){ // 重置搜索条件
+        this.searchVo.area = "";
+        this.searchVo.subject = "";
+        this.searchVo.time = "-1";
+        this.searchVo.yeardesc = false;
+    }
     this.pet = "1";
     this.isSearch = true;
-
     // 检查搜索次数
     this.authService.authPost('/query/search/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {
       var times = JSON.parse(result["_body"]);

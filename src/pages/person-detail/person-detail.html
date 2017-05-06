@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title text-center>人才详情</ion-title>
+    <ion-buttons end>
+      <button ion-button color="dark">
+          <ion-icon name="ios-settings-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -13,7 +18,9 @@
   		    </ion-avatar>
   		    <h2>
               {{params.name}}
+              <label>
               <ion-icon (click)="collect()" name="{{params.data?.collection?'ios-heart':'ios-heart-outline'}}"></ion-icon>
+              </label>
               <span tappable (click)="about()">联系他</span>
           </h2>
   		    <p>{{params.unit}}</p>

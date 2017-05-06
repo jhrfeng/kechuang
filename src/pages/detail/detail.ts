@@ -55,8 +55,8 @@ export class DetailPage {
 	    		this.params.keywords = this.params.data.keywords.split(",");
 	    	}
 	    	else if(this.detailType=='project'){ // 关键词
-	    		console.log(this.params.data.keywordCH)
 	    		this.params.keywords = this.params.data.keywordCH.split(";");
+	    		console.log(this.params.keywords)
 	    	}
 	    	
 	    	// 收藏列表

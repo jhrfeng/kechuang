@@ -3,6 +3,11 @@
     <ion-title text-center>
       关注领域
     </ion-title>
+    <ion-buttons end>
+      	<button ion-button color="dark">
+          	<ion-icon name="ios-settings-outline"></ion-icon>
+      	</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -15,34 +20,25 @@
 		    (ionChange)="addConcern($event)"
 		    okText="确认" 
 		    cancelText="取消">
-			    <ion-option value="2">网络爬虫</ion-option>
-			    <ion-option value="3">算法研究</ion-option>
-			    <ion-option value="4">算法安全</ion-option>
-			    <ion-option value="1">其它</ion-option>
+		    	<ion-option  
+		    		*ngFor="let name of params.dataList" 
+		    		[value]="name.professionId" 
+		    		>{{name.professionName}}</ion-option>
 			</ion-select>
 		</ion-item>
 	</ion-card>
 	
 	<ion-list>
-		<ion-row>
-			<ion-col text-center>网络爬虫<br>
-				<button ion-button round outline small>删除</button>
-			</ion-col>
-
-			<ion-col text-center>算法安全<br>
-				<button ion-button round outline small>删除</button>
-			</ion-col>
-		</ion-row>
-
-		<ion-row>
-			<ion-col text-center>算法研究<br>
-				<button ion-button round outline small>删除</button>
-			</ion-col>
-
-			<ion-col text-center>其它<br>
-				<button ion-button round outline small>删除</button>
-			</ion-col>
-		</ion-row>
+		<div *ngFor="let data of params.data">
+			<ion-row>
+				<ion-col text-center *ngFor="let obj of data">
+					{{obj.professionName}}<br>
+					<button ion-button round outline small
+					[hidden]="obj.professionId==null"
+					(click)="delete(obj.professionId)">删除</button>
+				</ion-col>
+			</ion-row>
+		</div>
 	</ion-list>
 	
 </ion-content>	

@@ -8,7 +8,7 @@
   
 <ion-item *ngFor="let item of data.list; let i = index;" (click)="onEvent('onDetail', item)">
     <p class="title">{{item.papername}}</p>
-    <p class="tag">{{item.author}}</p>
+    <p class="tag">{{item.authors | fname}}</p>
     <p class="source" text-nowrap>《{{item.journalname}}》 <span>{{item.journalNO}}</span></p>
 </ion-item>
 

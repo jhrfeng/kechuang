@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Auth } from '../../providers/auth';
 
 @Component({
@@ -8,11 +8,13 @@ import { Auth } from '../../providers/auth';
 })
 export class AboutPage {
 	  
-    about:any = {}; 
+    about:any = {};
+    loading: any; 
 
   	constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                public auth: Auth) 
+                public auth: Auth,
+                public loadingCtrl: LoadingController) 
     {
       this.about.expertId = navParams.get('item').id;
       this.about.expertName = navParams.get('item').name;
@@ -26,11 +28,22 @@ export class AboutPage {
       {
         var url = '/restapi/expert/contactExpert';
         this.auth.authPost(url, about, true).then((result) => {
-          this.navCtrl.pop();
+          this.showLoader();
+          setTimeout(() => {
+            this.loading.dismiss();
+            this.navCtrl.pop();
+          }, 1500);
         },(err) =>{
           this.auth.showError("提交失败")
         });
       }
+    }
+
+    showLoader(){
+      this.loading = this.loadingCtrl.create({
+          content: '提交成功'
+      });
+      this.loading.present();
     }
 
 }
