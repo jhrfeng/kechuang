@@ -18,6 +18,7 @@ export class PersonDetailPage {
     items: any;
     collectionList: any; //收藏列表
     userid: any;
+    showtab: any = {t1:false, t2:false, t3:false};
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth,public storage: Storage) {
       this.items = navParams.get('item');
@@ -40,14 +41,24 @@ export class PersonDetailPage {
 
       this.authService.authGet('/query/expert/'+this.items.id, null, true).then((result) => {
           var data = JSON.parse(result["_body"]);
-          console.log(data)
           this.params.name = data.name;
           this.params.unit = data.unit; 
           this.params.introduction = data.introduction;
           this.params.data1.list = data.papers;
           this.params.data2.list = data.projects;
           this.params.data3.list = data.patents;
-          console.log(this.params.data1.list.length, this.params.data2.list.length, this.params.data3.list.length)
+          if(this.params.data1.list.length > 0){
+            this.showtab.t1 = true;
+          }
+          if(this.params.data2.list.length > 0){
+            this.showtab.t2 = true;
+          }
+          if(this.params.data3.list.length > 0){
+            this.showtab.t3 = true;
+          }
+
+
+
           if(this.params.data1.list.length > 0){
             this.params.istype = 1;
             this.removeByValue(this.params.data1.list, null);
@@ -63,25 +74,21 @@ export class PersonDetailPage {
 
       this.params.events = {
         'onDetail': (item: any) => {
-            console.log(item)
             if(this.params.istype==1) //论文
                 this.navCtrl.push(DetailPage, {item: {id:item.id, type:'paper', name:item.papername}});
             if(this.params.istype==2) //项目
                 this.navCtrl.push(DetailPage, {item: {id:item.id, type:'project', name:item.name}});
             if(this.params.istype==3)  //专利
                 this.navCtrl.push(DetailPage, {item: {id:item.id, type:'patent', name:item.name}});
-            // this.navCtrl.push(DetailPage, {item: item});
         }
       }
     }
 
     selectPage(type){
       this.params.istype = type;
-      console.log(this.params.istype)
     }
 
   	ionViewDidLoad() {
-    	console.log('ionViewDidLoad PersonDetailPage');
   	}
 
     collect() { //收藏事件
