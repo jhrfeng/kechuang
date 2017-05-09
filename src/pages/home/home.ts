@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
 import { DetailPage } from '../detail/detail';
+import { menuData } from '../../constant/data';
 
 
 @Component({
@@ -56,6 +57,7 @@ export class HomePage {
         this.searchVo.subject = "";
         this.searchVo.time = "-1";
         this.searchVo.yeardesc = false;
+        this.storage.set('options', menuData());
     }
     this.pet = "1";
     this.isSearch = true;

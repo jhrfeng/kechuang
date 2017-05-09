@@ -23,6 +23,10 @@ export class AboutPage {
   	}
 
     submit(about){
+      if(about.msg==null || about.msg==""){
+        this.auth.showError("帮助内容不能为空")
+        return false;
+      }
       if(this.auth.validatemobile(about.phone) 
           && this.auth.validatemail(about.email))
       {

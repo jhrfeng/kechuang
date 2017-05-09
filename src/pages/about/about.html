@@ -3,6 +3,11 @@
     <ion-title text-center>
       联系他
     </ion-title>
+    <ion-buttons end>
+      <button ion-button color="dark">
+          <ion-icon name="ios-settings-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -19,7 +24,7 @@
 
 	  	<ion-item lines>
 	    	<ion-textarea rows='10' 
-	    	[(ngModel)]="about.msg" placeholder="请说明原因">
+	    	[(ngModel)]="about.msg" placeholder="您需要什么样的帮助">
 	    	</ion-textarea>
 	  	</ion-item>
 	</ion-list>

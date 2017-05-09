@@ -12,7 +12,7 @@ import { RadiolistModel } from '../../model/RadiolistModel';
 export class MenuItemComponent {
 
   data:any;
-  radiolist = new RadiolistModel({subject:"xxkj", time:"-1",area:"",yeardesc:false});
+  radiolist = new RadiolistModel({subject:"", time:"-1",area:"",yeardesc:false});
 
   constructor(public viewCtrl: ViewController,
               public storage: Storage) {
@@ -33,6 +33,7 @@ export class MenuItemComponent {
   ionViewDidEnter(){
     // 保留选择项
     this.storage.get('options').then((options) => {
+      console.log(options)
       if(options) this.data = options;
     })
    
