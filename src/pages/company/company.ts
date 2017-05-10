@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 import { ViewController, ActionSheetController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
@@ -100,7 +99,7 @@ export class CompanyPage {
 	    this.options.sourceType = type;
 	    this.camera.getPicture(this.options).then((imageData) => {
 	      console.log(imageData);
-	      let base64Image = 'data:image/jpeg;base64,' + imageData;
+	      // let base64Image = 'data:image/jpeg;base64,' + imageData;
 	    }, (err) => {
 	      console.log(err);
 	    });

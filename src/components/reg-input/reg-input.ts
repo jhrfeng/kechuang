@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, AlertController } from 'ionic-angular';
 import { Auth } from '../../providers/auth';
 
 @Component({
@@ -18,7 +18,7 @@ export class RegInputComponent {
    };
    loading: any;
 
-  constructor(public navCtrl: NavController, public authService: Auth, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {}
+  constructor(public authService: Auth, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {}
 
   sendSms(){
     if(this.user.relationManMobilePhone==''){
@@ -58,15 +58,10 @@ export class RegInputComponent {
     }
     this.showLoader();
 
-    let credentials = {
-        username: this.username,
-        password: this.password
-    };
 
     this.authService.createAccount({user:this.user, username: this.username,password: this.password}).then((result) => {
         this.loading.dismiss();
-        console.log(result);
-        // this.navCtrl.pop();//
+      
     }, (err) => {
         this.loading.dismiss();
         this.showError(err);

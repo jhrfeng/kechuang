@@ -1,8 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
-import { NativeStorage } from '@ionic-native/native-storage';
-
 
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
@@ -14,7 +12,6 @@ import { LoginPage } from '../pages/login/login';
 import { MePage } from '../pages/me/me';
 
 import { DetailPage } from '../pages/detail/detail';
-import { DetailPPage } from '../pages/detail/detailP';
 
 import { ExactPage } from '../pages/exact/exact';
 import { ForgetPage } from '../pages/forget/forget';
@@ -42,12 +39,9 @@ import { RegInputComponent } from '../components/reg-input/reg-input';
 import { HedItemComponent } from '../components/hed-item/hed-item';
 import { ItemListComponent } from '../components/item-list/item-list';
 import { MenuItemComponent } from '../components/menu-item/menu-item';
-import { HeaderSearchComponent } from '../components/header-search/header-search';
-import { SearchListComponent } from '../components/search-list/search-list';
 import { BackgroundComponent } from '../components/background/background';
 import { ForgetInputComponent } from '../components/forget-input/forget-input';
 import { PersonListComponent } from '../components/person-list/person-list';
-import { OpenChartComponent } from '../components/open-chart/open-chart';
 
 import { SmartSearch1Component } from '../components/smart-search-1/smart-search-1';
 import { SmartSearch2Component } from '../components/smart-search-2/smart-search-2';
@@ -61,15 +55,9 @@ import { TalentSearch1Component } from '../components/talent-search-1/talent-sea
 import { TalentSearch2Component } from '../components/talent-search-2/talent-search-2';
 import { TalentSearch3Component } from '../components/talent-search-3/talent-search-3';
 import { TalentSearch4Component } from '../components/talent-search-4/talent-search-4';
-import { TalentDetail1Component } from '../components/talent-detail-1/talent-detail-1';
-import { TalentDetail2Component } from '../components/talent-detail-2/talent-detail-2';
-import { TalentDetail3Component } from '../components/talent-detail-3/talent-detail-3';
-import { TalentDetail4Component } from '../components/talent-detail-4/talent-detail-4';
 
 
 
-import { AuthService } from '../providers/auth-service';
-import { UserService } from '../providers/user-service';
 import { Auth }        from '../providers/auth';
 
 
@@ -88,7 +76,6 @@ import { Member, Fname, Type } from '../pipes/member';
     LoginPage,
     MePage,
     DetailPage,
-    DetailPPage,
     ExactPage,
     ForgetPage,
     LixiangPage,
@@ -109,12 +96,9 @@ import { Member, Fname, Type } from '../pipes/member';
     HedItemComponent,
     ItemListComponent,
     MenuItemComponent,
-    HeaderSearchComponent,
-    SearchListComponent,
     BackgroundComponent,
     ForgetInputComponent,
     PersonListComponent,
-    OpenChartComponent,
     Member,
     Fname,
     Type,
@@ -128,11 +112,7 @@ import { Member, Fname, Type } from '../pipes/member';
     TalentSearch1Component,
     TalentSearch2Component,
     TalentSearch3Component,
-    TalentSearch4Component,
-    TalentDetail1Component,
-    TalentDetail2Component,
-    TalentDetail3Component,
-    TalentDetail4Component
+    TalentSearch4Component
   ],
   imports: [
     CityPickerModule,
@@ -156,7 +136,6 @@ import { Member, Fname, Type } from '../pipes/member';
     LoginPage,
     MePage,
     DetailPage,
-    DetailPPage,
     ExactPage,
     ForgetPage,
     LixiangPage,
@@ -177,12 +156,9 @@ import { Member, Fname, Type } from '../pipes/member';
     HedItemComponent,
     ItemListComponent,
     MenuItemComponent,
-    HeaderSearchComponent,
-    SearchListComponent,
     BackgroundComponent,
     ForgetInputComponent,
     PersonListComponent,
-    OpenChartComponent,
     SmartSearch1Component,
     SmartSearch2Component,
     SmartSearch3Component,
@@ -193,19 +169,12 @@ import { Member, Fname, Type } from '../pipes/member';
     TalentSearch1Component,
     TalentSearch2Component,
     TalentSearch3Component,
-    TalentSearch4Component,
-    TalentDetail1Component,
-    TalentDetail2Component,
-    TalentDetail3Component,
-    TalentDetail4Component
+    TalentSearch4Component
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
-    NativeStorage,
-    AuthService,
-    UserService,
     Auth,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
