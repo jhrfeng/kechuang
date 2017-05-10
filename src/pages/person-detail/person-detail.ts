@@ -18,6 +18,7 @@ export class PersonDetailPage {
     items: any;
     collectionList: any; //收藏列表
     userid: any;
+    pet:string;
     showtab: any = {t1:false, t2:false, t3:false};
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public authService: Auth,public storage: Storage) {
@@ -47,25 +48,29 @@ export class PersonDetailPage {
           this.params.data1.list = data.papers;
           this.params.data2.list = data.projects;
           this.params.data3.list = data.patents;
-          if(this.params.data1.list.length > 0){
-            this.showtab.t1 = true;
-          }
           if(this.params.data2.list.length > 0){
             this.showtab.t2 = true;
+            // this.pet = "2";
           }
           if(this.params.data3.list.length > 0){
             this.showtab.t3 = true;
+            // this.pet = "3";
           }
-
-
+          if(this.params.data1.list.length > 0){
+            this.showtab.t1 = true;
+            // this.pet = "1";
+          }
+          
 
           if(this.params.data1.list.length > 0){
             this.params.istype = 1;
             this.removeByValue(this.params.data1.list, null);
-          }else if(this.params.data2.list.length > 0){
+          }
+          if(this.params.data2.list.length > 0){
             this.params.istype = 2;
             this.removeByValue(this.params.data2.list, null);
-          }else if(this.params.data3.list.length > 0){
+          }
+          if(this.params.data3.list.length > 0){
             this.params.istype = 3;
             this.removeByValue(this.params.data3.list, null);
           }
@@ -86,6 +91,7 @@ export class PersonDetailPage {
 
     selectPage(type){
       this.params.istype = type;
+      // this.pet = type+"";
     }
 
   	ionViewDidLoad() {
@@ -156,11 +162,13 @@ export class PersonDetailPage {
 
     // 判断返回的list数组中是否有空对象
     removeByValue(arr, val) { 
+      console.log(arr)
       for(var i=0; i<arr.length; i++) {
         if(arr[i] == val) {
           arr.splice(i, 1);
         }
       }
+      console.log(arr)
     }
 
 }

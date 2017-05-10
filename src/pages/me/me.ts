@@ -23,12 +23,18 @@ import { Auth } from '../../providers/auth';
 export class MePage {
     
     params: any;
+    token: string;
 
  	constructor(public navCtrl: NavController, 
                 public navParams: NavParams, 
                 public authService: Auth,
                 public storage: Storage) 
-    {
+    {   
+        this.storage.get('token').then((token) => {
+            if(token){
+                this.token = token;
+            }
+        })
         this.params = {data:{name:'', enterpriseName:''}, events:{}};
         this.params.events = {
             'onAccount': () => { 
@@ -61,6 +67,12 @@ export class MePage {
         },(err) =>{
             if(err) this.navCtrl.push(LoginPage, {type: "MePage"})
         });
+    }
+
+    logout(){
+        this.authService.authPost('/restapi/account/logout', {token:this.token}, true).then((result) => {
+            this.storage.set('token', null);
+        },(err) =>{});
     }
 
     // 跳转个人信息

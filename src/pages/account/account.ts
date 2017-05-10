@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import {DomSanitizer} from '@angular/platform-browser'; //SafeResourceUrl
+import { Storage } from '@ionic/storage';
+import { Auth } from '../../providers/auth';
 
 @Component({
   selector: 'page-account',
@@ -8,18 +8,32 @@ import {DomSanitizer} from '@angular/platform-browser'; //SafeResourceUrl
 })
 export class AccountPage {
 
-  	screenWidth:any = window.screen.availWidth;
- 	screenHeight:any = window.screen.availHeight;
+  params: any = {data:{}};
+  iconType:boolean = true;
 
-  	constructor(public navCtrl: NavController, public navParams: NavParams, public sanitizer: DomSanitizer) {}
+  constructor (public storage: Storage,
+               public auth: Auth)
+  {
+    this.storage.get('user').then((user) => {
+         this.params.data = user;
+         console.log(this.params.data)
+    });
+  }
 
-  	ionViewDidLoad() {
-    	console.log('ionViewDidLoad ChartPage');
-  	}
 
-  	updateVideoUrl(id: string) {
-        let dangerousVideoUrl = 'https://html5up.net/uploads/demos/story/';
-        return this.sanitizer.bypassSecurityTrustResourceUrl(dangerousVideoUrl);
-	}
+  editCompany(){
+    this.iconType = !this.iconType;
+    if(this.iconType){
+      this.auth.authparamPut('/restapi/user/'+this.params.data.id+'/enterprise', this.params.data, true).then((result) => {
+            this.storage.set('user', this.params.data);
+            this.auth.showMessage("修改成功")
+        },(err) =>{
+           
+        });
+    }
+  }
 
+  ionViewDidLoad() {
+     console.log('ionViewDidLoad accountPage');
+  }
 }
