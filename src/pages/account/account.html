@@ -1,16 +1,37 @@
 <ion-header>
   <ion-navbar color="headers">
     <ion-title text-center>
-      绑定账号
+      账号绑定
     </ion-title>
     <ion-buttons end>
-      <button ion-button color="dark">
-          <ion-icon name="ios-settings-outline"></ion-icon>
+        <button ion-button (click)="editCompany()">
+          <ion-icon [name]="iconType?'md-create':'md-checkmark'"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-	正在更新.....
+<ion-content class="content">
+  <ion-list>
+    <p padding-left>
+      绑定手机
+    </p>
+    <ion-list>
+      <ion-item tappable (click)="onEvent('onCompany')">
+         {{params.data.relationManMobilePhone}}
+        <ion-icon name="md-create" item-right></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <p padding-left>
+      绑定邮箱
+    </p>
+    <ion-list>
+      <ion-item tappable (click)="onEvent('onCompany')">
+        {{params.data.relationManEmail}}
+        <ion-icon name="md-create" item-right></ion-icon>
+      </ion-item>
+    </ion-list>
+
+  </ion-list>
 </ion-content>

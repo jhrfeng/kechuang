@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
+import { IonJPushModule } from 'ionic2-jpush';
 
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
@@ -116,6 +117,7 @@ import { Member, Fname, Type } from '../pipes/member';
   ],
   imports: [
     CityPickerModule,
+    IonJPushModule,
     IonicModule.forRoot(MyApp, {
         backButtonText: '',
         modalEnter: 'modal-slide-in',
