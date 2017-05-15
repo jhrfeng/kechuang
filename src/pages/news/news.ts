@@ -1,6 +1,7 @@
 import 'rxjs';
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { JPushService } from 'ionic2-jpush';
 // declare var window;
 
@@ -10,47 +11,59 @@ import { JPushService } from 'ionic2-jpush';
 })
 export class NewsPage {
 
-  	alias: string = '';
+  alias: string = '';
 	msgList:Array<any>=[];
 
-	constructor(private platform: Platform, private jPushPlugin: JPushService) 
+	constructor(public navCtrl: NavController,
+              private platform: Platform, 
+              private jPushPlugin: JPushService,
+              public storage: Storage) 
 	{
-        platform.ready().then( () =>{
+
+    this.storage.get('news').then((newsList) => {
+      if(newsList)
+        this.msgList = newsList.split(";");
+      
+    })
+        // platform.ready().then( () =>{
        
-            this.jPushPlugin.openNotification()
-               .subscribe( res => {
-                 console.log('收到推送');
-                 console.log(res)
-               });
+        //     this.jPushPlugin.openNotification()
+        //        .subscribe( res => {
+        //          console.log('收到推送1');
+        //          console.log(res)
+        //          this.navCtrl.push(NewsPage)
+        //        });
        
-            this.jPushPlugin.receiveNotification()
-               .subscribe( res => {
-                 console.log('收到推送');
-                 console.log(res)
-               });
+        //     this.jPushPlugin.receiveNotification()
+        //        .subscribe( res => {
+        //          console.log('收到推送2');
+        //          console.log(res)
+        //          this.navCtrl.push(NewsPage)
+        //        });
        
-            this.jPushPlugin.receiveMessage()
-               .subscribe( res => {
-                 console.log('收到推送');
-                 console.log(res)
-               });
+        //     this.jPushPlugin.receiveMessage()
+        //        .subscribe( res => {
+        //          console.log('收到推送3');
+        //          console.log(res)
+        //          this.navCtrl.push(NewsPage)
+        //        });
        
-           })
+        //    })
      }
  
     /**
     * 注册极光
     */
-    init() {
-    	this.jPushPlugin.init().then(res => alert(res)).catch(err => alert(err))
-    }
+    // init() {
+    // 	this.jPushPlugin.init().then(res => alert(res)).catch(err => alert(err))
+    // }
  
-    /**
-    * 获取ID
-    */
-    getRegistrationID() {
-     	this.jPushPlugin.getRegistrationID().then(res => alert(res)).catch(err => alert(err))
-    }
+    // /**
+    // * 获取ID
+    // */
+    // getRegistrationID() {
+    //  	this.jPushPlugin.getRegistrationID().then(res => alert(res)).catch(err => alert(err))
+    // }
      
 	// constructor(public navCtrl: NavController) {
  // 		this.getMessage();

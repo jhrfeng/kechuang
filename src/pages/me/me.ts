@@ -57,6 +57,7 @@ export class MePage {
             }
             ,
             'onLogout': () => { 
+                this.logout();
                 this.navCtrl.push(LoginPage, {type:'MePage'});
             }
         }

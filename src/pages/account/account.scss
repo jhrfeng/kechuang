@@ -13,4 +13,11 @@ page-account {
 	.item-md ion-icon[item-right] {
 	    padding-top: 1rem;
 	}
+	.button-outline-md-dark {
+	    border-color: #fff;
+	}
+	.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child {
+	    border-bottom-color: #ddd;
+	    box-shadow: none
+	}
 }

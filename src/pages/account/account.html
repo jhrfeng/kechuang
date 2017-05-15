@@ -4,8 +4,8 @@
       账号绑定
     </ion-title>
     <ion-buttons end>
-        <button ion-button (click)="editCompany()">
-          <ion-icon [name]="iconType?'md-create':'md-checkmark'"></ion-icon>
+      <button ion-button color="dark">
+          <ion-icon name="ios-settings-outline"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -17,19 +17,33 @@
       绑定手机
     </p>
     <ion-list>
-      <ion-item tappable (click)="onEvent('onCompany')">
-         {{params.data.relationManMobilePhone}}
-        <ion-icon name="md-create" item-right></ion-icon>
+      <ion-item>
+        <ion-input [disabled]="true"
+        [(ngModel)]="params.data.relationManMobilePhone"></ion-input>
+        <button ion-button icon-only outline 
+        color="dark" item-right (click)="editMobile()">
+          <ion-icon [name]="iconType1?'md-create':'md-checkmark'" ></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item [hidden]="iconType1">
+        <ion-input [(ngModel)]="params.data.code" placeholder="请输入验证码" ></ion-input>
+        <button ion-button item-right (click)="getMobile()">
+          获取验证码
+        </button>
       </ion-item>
     </ion-list>
 
     <p padding-left>
       绑定邮箱
     </p>
-    <ion-list>
-      <ion-item tappable (click)="onEvent('onCompany')">
-        {{params.data.relationManEmail}}
-        <ion-icon name="md-create" item-right></ion-icon>
+    <ion-list no-lines>
+      <ion-item no-lines>
+        <ion-input [disabled]="iconType2"
+        [(ngModel)]="params.data.relationManEmail"></ion-input>
+        <button ion-button icon-only outline 
+        color="dark" item-right (click)="editEmail()">
+          <ion-icon [name]="iconType2?'md-create':'md-checkmark'" ></ion-icon>
+        </button>
       </ion-item>
     </ion-list>
 

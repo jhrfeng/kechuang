@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { Auth } from '../../providers/auth';
-
+import { JPushService } from 'ionic2-jpush';
 import { RegisterPage } from '../register/register';
 import { ForgetPage } from '../forget/forget';
 import { HomePage } from '../home/home';
@@ -9,6 +10,7 @@ import { MePage } from '../me/me';
 import { ExactPage } from '../exact/exact';
 import { LixiangPage } from '../lixiang/lixiang';
 
+declare var window;
 
 
 @Component({
@@ -24,7 +26,9 @@ export class LoginPage {
  				public navParams: NavParams,
  				public authService: Auth, 
  				public loadingCtrl: LoadingController, 
- 				public alertCtrl: AlertController) 
+ 				public alertCtrl: AlertController,
+ 				public storage: Storage,
+ 				public jPushPlugin: JPushService) 
  	{
  		this.params = {data:{username:'', password:''}, events:{}};
  		this.params.events = {
@@ -55,7 +59,17 @@ export class LoginPage {
 
 	    this.authService.login(credentials).then((result) => {
 	        this.loading.dismiss();
-	        console.log(this.navParams.get('type'))
+	        // 获取登录信息
+	        this.authService.authGet('/restapi/user/me', null, false).then((result) => {
+	            var user = JSON.parse(result["_body"]);
+				if(window.plugins && 　window.plugins.jPushPlugin){
+					let tags = [user.type];
+					this.jPushPlugin.setTags(tags);
+					this.jPushPlugin.setAlias(user.id);
+				}
+	        },(err) =>{
+	            if(err) this.navCtrl.push(LoginPage, {type: "MePage"})
+	        });
 	        if(this.navParams.get('type') == 'HomePage')
 	        	this.navCtrl.setRoot(HomePage);
 	        if(this.navParams.get('type') == 'MePage')

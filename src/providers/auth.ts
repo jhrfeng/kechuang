@@ -66,7 +66,6 @@ export class Auth {
   	}
 
 	  authGet(api, param, show){
-      console.log(param)
   		return new Promise((resolve, reject) => {
       
         this.storage.get('token').then((value) => {
@@ -79,7 +78,6 @@ export class Auth {
             		api+= key + '=' + param[key] + '&';
             	}
             	api = api.substring(0, api.lastIndexOf('&'));
-            	console.log(api)
             }
             if(show) this.showLoader("请求中...");
             this.http.get(REQUEST_URL + api, {headers: headers})
@@ -190,7 +188,6 @@ export class Auth {
               for(var key in details){
                 params+= key + '=' + details[key] + '&';
               }
-              console.log(params)
             }
      
             if(show) this.showLoader("请求中...");
@@ -241,7 +238,6 @@ export class Auth {
 	 			else
 	 				reject(data);
 	        }, (err) => {
-	        	console.log(err)
 	            reject(err);
 	        });
 	 
