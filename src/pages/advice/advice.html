@@ -1,0 +1,280 @@
+<ion-header>
+  <ion-navbar color="headers">
+    <ion-title text-center>
+      意见反馈
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button color="dark">
+          <ion-icon name="ios-settings-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content" padding>
+	<ion-list>
+		<ion-item lines>
+	    	<ion-input placeholder="请输入手机号" 
+	    	[(ngModel)]="about.phone" clearInput></ion-input>
+	 	</ion-item>
+	  	<ion-item lines>
+	    	<ion-input placeholder="请输入邮箱" 
+	    	[(ngModel)]="about.email" clearInput></ion-input>
+	 	</ion-item>
+
+	  	<ion-item>
+	  		<ion-label style="padding-left: 10px;">意见类型</ion-label>
+		    <ion-select [(ngModel)]="about.type" 
+		    (ionChange)="addConcern($event)"
+		    okText="确认" 
+		    cancelText="取消">
+		    	<ion-option  
+		    		*ngFor="let name of params.dataList" 
+		    		[value]="name.id" 
+		    		>{{name.name}}</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item lines>
+	    	<ion-textarea rows='10' 
+	    	[(ngModel)]="about.message" placeholder="请填写意见内容">
+	    	</ion-textarea>
+	  	</ion-item>
+	</ion-list>
+
+	<button ion-button full (click)="submit(about)">提  交</button>
+</ion-content>
+
+
+<!-- <ion-content class="content">
+	<ion-list>
+		<ion-item>
+		    <ion-label fixed>企业名称</ion-label>
+		    <ion-input type="text"  ></ion-input>
+		</ion-item>
+
+		<ion-item>
+		    <ion-label fixed>所属行业</ion-label>
+		    <ion-input type="text"  ></ion-input>
+		</ion-item>
+
+		<ion-item>
+		    <ion-label fixed>企业地址</ion-label>
+		    <ion-input type="text"  ></ion-input>
+		</ion-item>
+
+		<ion-item>
+		    <ion-label fixed>联系人</ion-label>
+		    <ion-input type="text"  ></ion-input>
+		</ion-item>
+
+		<ion-item>
+		    <ion-label fixed>手机</ion-label>
+		    <ion-input type="text"  ></ion-input>
+		</ion-item>
+
+		<ion-item>
+		    <ion-label fixed>联系电话</ion-label>
+		    <ion-input type="text"  ></ion-input>
+		</ion-item>
+
+		<ion-item>
+		    <ion-label fixed>Email</ion-label>
+		    <ion-input type="text"  ></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>新技术研发投入</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">投入多</ion-option>
+			    <ion-option value="male">投入少</ion-option>
+			    <ion-option value="male">无</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>企业类型</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">重点骨干企业</ion-option>
+			    <ion-option value="male">高新技术企业</ion-option>
+			    <ion-option value="male">科技型小微企业</ion-option>
+			    <ion-option value="male">其他</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>行业专利数量</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">较多</ion-option>
+			    <ion-option value="male">较少</ion-option>
+			    <ion-option value="male">无</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>技术创新，转型升级障碍</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">缺乏创新方向指导</ion-option>
+			    <ion-option value="male">缺乏技术人才</ion-option>
+			    <ion-option value="male">技术对接难</ion-option>
+			    <ion-option value="male">人才有效匹配途径少</ion-option>
+			    <ion-option value="male">检索相关文献困难</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>技术问题解决途径</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">合作研发</ion-option>
+			    <ion-option value="male">委托开发</ion-option>
+			    <ion-option value="male">找专家咨询</ion-option>
+			    <ion-option value="male">参考文献自主研发</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>通过科技部门或中介对接</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">通过朋友介绍</ion-option>
+			    <ion-option value="male">通过网上发布技术需求</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>需要哪方面人才</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">行业学术专家</ion-option>
+			    <ion-option value="male">行业技术专家</ion-option>
+			    <ion-option value="male">技术骨干</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>使用过哪些技术创新，成果转化平台</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">科学家在线</ion-option>
+			    <ion-option value="male">浙江网上技术市场</ion-option>
+			    <ion-option value="male">114产学研</ion-option>
+			     <ion-option value="male">科易网</ion-option>
+			     <ion-option value="male">没有</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>现有服务平台存在的问题</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">信息量少</ion-option>
+			    <ion-option value="male">缺乏智能搜索手段</ion-option>
+			    <ion-option value="male">人才匹配效果不好</ion-option>
+			     <ion-option value="male">人才推荐不透明</ion-option>
+			     <ion-option value="male">响应不及时</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>平台数据量是否满足科学文献和人才的搜索需求</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">满足</ion-option>
+			    <ion-option value="male">基本满足</ion-option>
+			    <ion-option value="male">还需采集更多的数据</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>搜索结果是否相关</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">相关</ion-option>
+			    <ion-option value="male">基本相关</ion-option>
+			    <ion-option value="male">不相关</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>人才推荐结果是否匹配您的技术需要</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">匹配性好</ion-option>
+			    <ion-option value="male">基本匹配</ion-option>
+			    <ion-option value="male">一般</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>人才社会网络，能力模型，技术研究趋势等是否有用</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">有用</ion-option>
+			    <ion-option value="male">一般</ion-option>
+			    <ion-option value="male">没有</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>平台对企业产学研对接是否有所帮助</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">有帮助</ion-option>
+			    <ion-option value="male">有一点帮助</ion-option>
+			    <ion-option value="male">没有帮助</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>平台是否有助于企业研发，寻找相关人才</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">有帮助</ion-option>
+			    <ion-option value="male">有一点帮助</ion-option>
+			    <ion-option value="male">没有帮助</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>平台使用是否便捷</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">非常便捷</ion-option>
+			    <ion-option value="male">便捷</ion-option>
+			    <ion-option value="male">一般</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>使用本平台（或相似平台）的频率</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">每天</ion-option>
+			    <ion-option value="male">每周</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>是否愿意付费使用</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">是</ion-option>
+			    <ion-option value="male">否</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>是否希望政府为企业购买平台服务</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			     <ion-option value="female">是</ion-option>
+			    <ion-option value="male">否</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>你还希望平台提供哪些创新服务</ion-label>
+			<ion-select okText="确认" cancelText="取消" >
+			    <ion-option value="female">人才联系方式</ion-option>
+			    <ion-option value="male">文献全文下载</ion-option>
+			    <ion-option value="male">在线咨询服务</ion-option>
+			     <ion-option value="male">线下对接商务服务</ion-option>
+			     <ion-option value="male">科技活动，成果的个性化推送</ion-option>
+			</ion-select>
+		</ion-item>
+
+	  	<ion-item>
+		    <ion-label fixed>请问平台提供您宝贵意见和建议</ion-label>
+		    <ion-textarea rows='10' >
+		    	
+		    </ion-textarea>
+		</ion-item>    
+	</ion-list>
+
+</ion-content>
+ -->

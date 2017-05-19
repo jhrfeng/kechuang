@@ -28,6 +28,7 @@ import { ApplyPage } from '../pages/apply/apply';
 import { PersonDetailPage } from '../pages/person-detail/person-detail';
 import { ChartPage } from '../pages/chart/chart';
 import { NewsPage } from '../pages/news/news';
+import { AdvicePage } from '../pages/advice/advice';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -90,6 +91,7 @@ import { Member, Fname, Type } from '../pipes/member';
     ApplyPage,
     ChartPage,
     NewsPage,
+    AdvicePage,
     PersonDetailPage,
     LineInputComponent,
     PwdInputComponent,
@@ -151,6 +153,7 @@ import { Member, Fname, Type } from '../pipes/member';
     ApplyPage,
     ChartPage,
     NewsPage,
+    AdvicePage,
     PersonDetailPage,
     LineInputComponent,
     PwdInputComponent,

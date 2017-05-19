@@ -12,52 +12,55 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-navbar color="dark">
-    <ion-segment [(ngModel)]="pet" color="whites">
-    	<ion-segment-button value="4" (ionSelect)="selectPage(4)">
-        	人才
-      	</ion-segment-button>
-      	<ion-segment-button value="1" (ionSelect)="selectPage(1)">
-        	论文
-      	</ion-segment-button>
-      	<ion-segment-button value="2" (ionSelect)="selectPage(2)">
-        	项目
-      	</ion-segment-button>
-      	<ion-segment-button value="3" (ionSelect)="selectPage(3)">
-        	专利
-      	</ion-segment-button>
-    </ion-segment>
-  </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-toolbar no-border-top color="dark" [hidden]="!isSearch">
+    <ion-segment [(ngModel)]="pet" color="whites" >
+      <ion-segment-button value="4" (ionSelect)="selectPage(4)">
+          人才
+        </ion-segment-button>
+        <ion-segment-button value="1" (ionSelect)="selectPage(1)">
+          论文
+        </ion-segment-button>
+        <ion-segment-button value="2" (ionSelect)="selectPage(2)">
+          项目
+        </ion-segment-button>
+        <ion-segment-button value="3" (ionSelect)="selectPage(3)">
+          专利
+        </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
-  <talent-search-1
-    *ngIf="params.istype==1"
-    [data]="params.data1" 
-    [events]="params.events">
-  </talent-search-1>
+  <background [hidden]="isSearch" [data]="params.img"></background>
 
-  <talent-search-2
-    *ngIf="params.istype==2"
-    [data]="params.data2" 
-    [events]="params.events">
-  </talent-search-2>
+  <div [hidden]="!isSearch">
+    <talent-search-1
+      *ngIf="params.istype==1"
+      [data]="params.data1" 
+      [events]="params.events">
+    </talent-search-1>
 
-  <talent-search-3
-    *ngIf="params.istype==3"
-    [data]="params.data3" 
-    [events]="params.events">
-  </talent-search-3>
+    <talent-search-2
+      *ngIf="params.istype==2"
+      [data]="params.data2" 
+      [events]="params.events">
+    </talent-search-2>
 
-	<talent-search-4
-    *ngIf="params.istype==4"
-    [data]="params.data4" 
-    [events]="params.events">
-  </talent-search-4>
+    <talent-search-3
+      *ngIf="params.istype==3"
+      [data]="params.data3" 
+      [events]="params.events">
+    </talent-search-3>
 
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  	<talent-search-4
+      *ngIf="params.istype==4"
+      [data]="params.data4" 
+      [events]="params.events">
+    </talent-search-4>
 
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
 </ion-content>

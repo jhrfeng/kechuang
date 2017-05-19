@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { NewsPage } from '../news/news';
-
+import { AdvicePage } from '../advice/advice';
 
 @Component({
   selector: 'page-apply',
@@ -13,6 +13,10 @@ export class ApplyPage {
 
   news(){
   	this.navCtrl.push(NewsPage);
+  }
+
+  advice(){
+  	this.navCtrl.push(AdvicePage);
   }
 
   ionViewDidLoad() {

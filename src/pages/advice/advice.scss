@@ -1,0 +1,22 @@
+page-advice {
+	.list-md {
+	    background: #fff;
+	}
+
+	ion-list{
+		.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+		    border-bottom-color: #dedede;
+		}
+	}
+
+
+	ion-row{
+		border-bottom: 1px solid #ddd;
+		ion-col {
+			font-size: 1.5rem;
+		}
+		.col{
+			padding: 10px 20px;
+		}
+	}
+}

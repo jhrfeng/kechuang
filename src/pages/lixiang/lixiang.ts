@@ -12,6 +12,7 @@ import { ChartPage } from '../chart/chart';
 })
 export class LixiangPage {
 
+  isSearch = false;
   params: any;
   userid: any;
   pet:any;
@@ -34,7 +35,8 @@ export class LixiangPage {
                     data4:{docs:[], numFound:0}, 
                     events:{},
                     start:{paper:0, project:0, patent:0, all:0}, //分页查询
-                    istype:1
+                    istype:1,
+                    img:"assets/img/bg3.jpg"
 
                   };
     this.params.events = {
@@ -50,6 +52,7 @@ export class LixiangPage {
 	}
 
   search(){
+    this.isSearch = true;
     this.pet = "1";
     // 检查搜索次数
     this.authService.authPost('/query/analyse/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {

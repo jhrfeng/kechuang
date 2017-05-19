@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 
 @Component({
   selector: 'background',
@@ -6,11 +6,10 @@ import { Component } from '@angular/core';
 })
 export class BackgroundComponent {
 
-  text: string;
-
+   @Input('data') data: any;
+  
   constructor() {
     console.log('Hello Background Component');
-    this.text = 'Hello World';
   }
 
 }

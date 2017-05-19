@@ -31,7 +31,7 @@
         </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-  <background [hidden]="isSearch"></background>
+  <background [hidden]="isSearch" [data]="params.img"></background>
 
   <div [hidden]="!isSearch">
     <smart-search-1

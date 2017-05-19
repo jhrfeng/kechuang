@@ -12,6 +12,7 @@ import { PersonDetailPage } from '../person-detail/person-detail';
 })
 export class ExactPage {
 
+	isSearch = false;
 	searchVo:any = {keyWord:""};
 	params: any;
 	userid: any;
@@ -32,7 +33,8 @@ export class ExactPage {
 	                    data4:{list:[], total:0}, 
 	                    events:{},
 	                    start:{paper:1, project:1, patent:1, expert:1}, //分页查询
-	                    istype:4 // 默认人才
+	                    istype:4, // 默认人才
+                    	img:"assets/img/bg2.jpg"
 	                  };
 	    this.params.events = {
 	       'onDetail': (item: any) => {
@@ -53,6 +55,7 @@ export class ExactPage {
 	}
 
   	search(){
+  		this.isSearch = true;
   		this.pet = "4";
   		// 检查搜索次数
 	    this.authService.authPost('/query/advance/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {

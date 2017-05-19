@@ -36,7 +36,8 @@ export class HomePage {
                     data4:{docs:[], numFound:0}, 
                     events:{},
                     start:{paper:0, project:0, patent:0, all:0}, //分页查询
-                    istype:1
+                    istype:1,
+                    img:"assets/img/bg5.png"
 
                   };
     this.params.events = {
