@@ -37,7 +37,7 @@ export class HomePage {
                     events:{},
                     start:{paper:0, project:0, patent:0, all:0}, //分页查询
                     istype:1,
-                    img:"assets/img/bg5.png"
+                    img:"assets/img/bg1.jpg"
 
                   };
     this.params.events = {

@@ -86,13 +86,15 @@ export class Auth {
                     resolve(res);
                 }, (err) => {
                 	this.loading.dismiss();
-                    if(err["status"]==401){
-                    	reject(err);
-                    	this.showLoader("登录过期，请重新登录");
-                    	setTimeout(() => {
-					        this.loading.dismiss();
-					     }, 1000);
-                    }
+                  if(err["status"]==500)
+                    this.showError("服务器处理异常");
+                  if(err["status"]==401){
+                  	reject(err);
+                  	this.showLoader("登录过期，请重新登录");
+                  	setTimeout(() => {
+    					        this.loading.dismiss();
+    					      }, 1000);
+                  }else{reject(err)}
                 }); 
 	          });         
 	 
@@ -131,6 +133,9 @@ export class Auth {
                   resolve(res);
               }, (err) => {
                 this.loading.dismiss();
+                if(err["status"]==500){
+                  this.showError("服务器处理异常");
+                }
                 if(err["status"]==401){
                   reject(err);
                   this.showLoader("登录过期，请重新登录");
@@ -138,7 +143,7 @@ export class Auth {
                     this.loading.dismiss();
                  }, 1000);
 
-                }else{reject(err)}
+                }else{this.showLoader("服务器处理异常");reject(err)}
             }); 
         });     
 
@@ -160,6 +165,8 @@ export class Auth {
                   resolve(res);
               }, (err) => {
               	this.loading.dismiss();
+                if(err["status"]==500)
+                    this.showError("服务器处理异常");
                 if(err["status"]==401){
                 	reject(err);
                 	this.showLoader("登录过期，请重新登录");

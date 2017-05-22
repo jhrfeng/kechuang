@@ -30,7 +30,7 @@ export class AdvicePage {
 
     submit(about){
       if(about.message==null || about.message==""){
-        this.auth.showError("帮助内容不能为空")
+        this.auth.showError("意见内容不能为空")
         return false;
       }
       if(this.auth.validatemobile(about.phone) 

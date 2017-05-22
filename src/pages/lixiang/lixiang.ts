@@ -65,6 +65,13 @@ export class LixiangPage {
         this.searchProject();
         this.searchPatent();
         this.searchAll();
+      
+        // this.authService.authGet('/query/analyse/'+this.searchVo.keyWord, null, false).then((result) => {
+        //   var data = JSON.parse(result["_body"]);
+        //   console.log(data)
+        // },(err) =>{ });
+      
+
       }
     },(err) =>{
       if(err) this.navCtrl.push(LoginPage, {type: "LixiangPage"})

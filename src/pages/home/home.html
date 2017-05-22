@@ -3,11 +3,11 @@
     <ion-input
       placeholder="请输入科技关键词 多个词用空格隔开"
       [(ngModel)]="searchVo.keyWord"
-      type="search"
+      type="text"
       [clearInput]="true"
     ></ion-input>
     <ion-buttons end>
-      <button ion-button icon-only (click)="search(1)">
+      <button ion-button icon-only color="primary" (click)="search(1)">
         <ion-icon name="md-search"></ion-icon>
       </button>
     </ion-buttons>
