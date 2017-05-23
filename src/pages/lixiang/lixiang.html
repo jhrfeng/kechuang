@@ -17,9 +17,9 @@
 <ion-content class="content">
   <ion-toolbar class="navbar" no-border-top color="dark" [hidden]="!isSearch">
       <ion-row text-center>
-        <ion-col tappable (click)="openChart1()">相关机构</ion-col>
-        <ion-col tappable (click)="openChart2()">相关学者</ion-col>
-        <ion-col tappable (click)="openChart3()">研究走势</ion-col>
+        <ion-col tappable (click)="openChart1()"><img src="assets/img/l1.png"></ion-col><!-- 相关机构 -->
+        <ion-col tappable (click)="openChart2()"><img src="assets/img/l2.png"></ion-col><!-- 相关学者 -->
+        <ion-col tappable (click)="openChart3()"><img src="assets/img/l3.png"></ion-col><!-- 研究走势 -->
       </ion-row>
     <ion-segment [(ngModel)]="pet" color="whites" [hidden]="!isSearch">
         <ion-segment-button value="1" (ionSelect)="selectPage(1)">

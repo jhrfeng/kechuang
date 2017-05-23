@@ -17,11 +17,15 @@ page-lixiang {
 		}
 	}
 	.navbar{
+		img{
+			height: 50px;
+			width: 50px;
+		}
 		.col{
 			// color: #fff;
    //  		border: 1px solid #d0d0d0;
-   			color: color($colors, toptab);
-   			border: 1px solid color($colors, toptab);
+   			// color: color($colors, toptab);
+   			// border: 1px solid color($colors, toptab);
 		}
 		ion-row[text-center]{
 			.col:first-child{
@@ -33,7 +37,7 @@ page-lixiang {
 		}
 	}
 	.lixiang{
-		padding-top: 25px;
+		padding-top: 55px;
 		.col:first-child{
 			margin-right: 50%;
 		}
