@@ -15,12 +15,7 @@
 </ion-header>
 
 <ion-content class="content">
-  <ion-toolbar class="navbar" no-border-top color="dark" [hidden]="!isSearch">
-      <ion-row text-center>
-        <ion-col tappable (click)="openChart1()"><img src="assets/img/l1.png"></ion-col><!-- 相关机构 -->
-        <ion-col tappable (click)="openChart2()"><img src="assets/img/l2.png"></ion-col><!-- 相关学者 -->
-        <ion-col tappable (click)="openChart3()"><img src="assets/img/l3.png"></ion-col><!-- 研究走势 -->
-      </ion-row>
+  <ion-toolbar no-border-top color="dark" [hidden]="!isSearch">
     <ion-segment [(ngModel)]="pet" color="whites" [hidden]="!isSearch">
         <ion-segment-button value="1" (ionSelect)="selectPage(1)">
           论文
@@ -36,6 +31,21 @@
         </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+
+  <ion-row class="navbar" text-center [hidden]="!isContains">
+    <ion-col tappable (click)="openChart1()">
+      <img src="assets/img/l1.png"><br>
+      相关机构
+    </ion-col><!-- 相关机构 -->
+    <ion-col tappable (click)="openChart2()">
+      <img src="assets/img/l2.png"><br>
+       相关学者
+    </ion-col><!-- 相关学者 -->
+    <ion-col tappable (click)="openChart3()">
+      <img src="assets/img/l3.png"><br>
+      研究走势
+    </ion-col><!-- 研究走势 -->
+  </ion-row>
 
   <background [hidden]="isSearch" [data]="params.img"></background>
 

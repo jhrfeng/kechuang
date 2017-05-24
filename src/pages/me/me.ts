@@ -64,9 +64,8 @@ export class MePage {
         this.authService.authGet('/restapi/user/me', null, true).then((result) => {
             this.params.data = JSON.parse(result["_body"]);
             this.storage.set('user', this.params.data);
-            console.log(this.params.data)
         },(err) =>{
-            if(err) this.navCtrl.push(LoginPage, {type: "MePage"})
+            //if(err)  this.authService.showError("登录过期，请重新登录")//this.navCtrl.push(LoginPage, {type: "MePage"})
         });
     }
 

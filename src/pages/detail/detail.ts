@@ -53,10 +53,11 @@ export class DetailPage {
 	    	this.params.data = JSON.parse(result["_body"]);
 	    	if(this.detailType=='paper'){ // 关键词
 	    		this.params.keywords = this.params.data.keywords.split(",");
+	    		console.log(this.params.keywords, this.params.keywords.length, this.params.keywords[0]=="")
 	    	}
 	    	else if(this.detailType=='project'){ // 关键词
 	    		this.params.keywords = this.params.data.keywordCH.split(";");
-	    		console.log(this.params.keywords)
+	    		console.log(this.params.keywords, this.params.keywords.length, this.params.keywords[0]=="")
 	    	}
 	    	
 	    	// 收藏列表

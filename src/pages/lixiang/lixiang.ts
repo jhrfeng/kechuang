@@ -12,6 +12,7 @@ import { ChartPage } from '../chart/chart';
 })
 export class LixiangPage {
 
+  isContains = false;
   isSearch = false;
   params: any;
   userid: any;
@@ -60,18 +61,19 @@ export class LixiangPage {
       if(times!=1){
         this.authService.showMessage("您的搜索次数已使用完毕，请充值！")
       }else{
+       
+        this.authService.authGet('/query/analyse/'+this.searchVo.keyWord, null, false).then((result) => {
+          var data = JSON.parse(result["_body"]);
+          this.isContains = data["isContains"];
+          console.log(data["isContains"]==true)
+        },(err) =>{ });
+
         this.searchVo.start = 0; // 重置搜索分页下标
         this.searchPaper();
         this.searchProject();
         this.searchPatent();
         this.searchAll();
       
-        // this.authService.authGet('/query/analyse/'+this.searchVo.keyWord, null, false).then((result) => {
-        //   var data = JSON.parse(result["_body"]);
-        //   console.log(data)
-        // },(err) =>{ });
-      
-
       }
     },(err) =>{
       if(err) this.navCtrl.push(LoginPage, {type: "LixiangPage"})

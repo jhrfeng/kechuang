@@ -10,16 +10,11 @@ page-lixiang {
 		background: #3e4a51;
 	}
 	$text-input-placeholder-color: #fff;
-	.content {
-		.toolbar-md {
-		    // margin-top: 56px;
-		    position: fixed;
-		}
-	}
 	.navbar{
+		margin-top: 8px;
 		img{
-			height: 50px;
-			width: 50px;
+			height: 55px;
+			width: 55px;
 		}
 		.col{
 			// color: #fff;
@@ -37,7 +32,7 @@ page-lixiang {
 		}
 	}
 	.lixiang{
-		padding-top: 55px;
+		margin-top: -55px;
 		.col:first-child{
 			margin-right: 50%;
 		}
