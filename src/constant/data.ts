@@ -1,4 +1,4 @@
-export let REQUEST_URL = "http://mportal.hdu.edu.cn";
+export let REQUEST_URL = 'http://202.107.204.57'; //"http://mportal.hdu.edu.cn";
 
 export let REQUEST_URL_DETAIL = REQUEST_URL + "/#/search/";
 

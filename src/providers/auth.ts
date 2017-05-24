@@ -258,7 +258,7 @@ export class Auth {
           headers.append('Content-Type', 'application/json');
    
           this.http.post(REQUEST_URL + '/restapi/account/sendSMS', 
-  			JSON.stringify({user: {relationManMobilePhone:relationManMobilePhone}}), {headers: headers})
+  			JSON.stringify({phone:relationManMobilePhone}), {headers: headers})
             .subscribe(res => {
    			let data = res;
    			if(data.status==200 && data.ok)

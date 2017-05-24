@@ -85,6 +85,7 @@ export class PersonalEditPage {
   		this.auth.authparamPut('/restapi/user/'+this.params.data.id+'/personal', this.params.data, true).then((result) => {
             this.storage.set('user', this.params.data);
             this.auth.showMessage("修改成功")
+            this.navCtrl.pop();
         },(err) =>{
            
         });

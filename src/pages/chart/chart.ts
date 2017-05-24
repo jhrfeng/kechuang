@@ -33,27 +33,28 @@ export class ChartPage {
 
   	chartUrl() {
         if(this.item.type == 'socialNetwork'){
-          let url =  REQUEST_URL + '/#/socialNetwork/' + this.item.token + '/' + this.item.expertid;
+          let url =  REQUEST_URL + '/tpl/html5/socialNetwork.html?expertId=' + this.item.expertid + '&token=' + this.item.token;
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'radarGraphic'){
-          let url =  REQUEST_URL + '/#/radarGraphic/' + this.item.token + '/' + this.item.expertid;
+          let url =  REQUEST_URL + '/tpl/html5/radarGraphic.html?expertId=' + this.item.expertid + '&token=' + this.item.token;
+          // let url =  REQUEST_URL + '/#/radarGraphic/' + this.item.token + '/' + this.item.expertid;
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'relevantInstitutions'){
-          let url =  REQUEST_URL + '/#/relevantInstitutions/' + this.item.token + '/' + this.item.keyword + '/relevantInstitutions';
+          let url =  REQUEST_URL + '/tpl/html5/relevantInstitutions.html?token=' + this.item.token + '&keyword=' + this.item.keyword;
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'relevantExperts'){
-          let url =  REQUEST_URL + '/#/relevantExperts/' + this.item.token + '/' + this.item.keyword + '/relevantExperts';
+          let url =  REQUEST_URL + '/tpl/html5/relevantExperts.html?token=' + this.item.token + '&keyword=' + this.item.keyword;
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'resarchTrends'){
-          let url =  REQUEST_URL + '/#/researchTrends/' + this.item.token + '/' + this.item.keyword + '/researchTrends';
+          let url =  REQUEST_URL + '/tpl/html5/researchTrends.html?token=' + this.item.token + '/' + this.item.keyword + '/researchTrends';
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
