@@ -47,6 +47,13 @@ export class Auth {
       alert.present(prompt);
     }
 
+    loadings(){
+      this.showLoader("获取中")
+      setTimeout(() => {
+        this.loading.dismiss();
+      }, 2500);
+    }
+
   	checkAuthentication(){
   		return new Promise((resolve, reject) => {
        

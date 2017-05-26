@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {DomSanitizer} from '@angular/platform-browser'; //SafeResourceUrl
 import { Storage } from '@ionic/storage';
+import { Auth } from '../../providers/auth';
 import { REQUEST_URL } from '../../constant/data';
 
 @Component({
@@ -17,7 +18,8 @@ export class ChartPage {
   	constructor(public navCtrl: NavController, 
                 public navParams: NavParams, 
                 public sanitizer: DomSanitizer,
-                public storage: Storage) 
+                public storage: Storage,
+                public auth: Auth) 
     {
       this.storage.get('token').then((token) => {//获取当前登录人id
         this.item.token = token;
@@ -32,6 +34,7 @@ export class ChartPage {
   	}
 
   	chartUrl() {
+        // this.auth.loadings();
         if(this.item.type == 'socialNetwork'){
           let url =  REQUEST_URL + '/tpl/html5/socialNetwork.html?expertId=' + this.item.expertid + '&token=' + this.item.token;
           console.log(url);
@@ -44,17 +47,18 @@ export class ChartPage {
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'relevantInstitutions'){
-          let url =  REQUEST_URL + '/tpl/html5/relevantInstitutions.html?token=' + this.item.token + '&keyword=' + this.item.keyword;
+          // this.auth.loadings();
+          let url =  REQUEST_URL + '/tpl/html5/relevantInstitutions.html?token=' + this.item.token + '&keyword=' + this.item.keyword +'&id=relevantInstitutions';
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'relevantExperts'){
-          let url =  REQUEST_URL + '/tpl/html5/relevantExperts.html?token=' + this.item.token + '&keyword=' + this.item.keyword;
+          let url =  REQUEST_URL + '/tpl/html5/relevantExperts.html?token=' + this.item.token + '&keyword=' + this.item.keyword + '&id=relevantExperts';
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
         else if(this.item.type == 'resarchTrends'){
-          let url =  REQUEST_URL + '/tpl/html5/researchTrends.html?token=' + this.item.token + '/' + this.item.keyword + '/researchTrends';
+          let url =  REQUEST_URL + '/tpl/html5/researchTrends.html?token=' + this.item.token + '&keyword=' + this.item.keyword + '&id=researchTrends';
           console.log(url);
           return this.sanitizer.bypassSecurityTrustResourceUrl(url);
         }
