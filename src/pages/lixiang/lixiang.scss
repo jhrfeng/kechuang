@@ -2,6 +2,14 @@ page-lixiang {
 	.toolbar-md {
 	    min-height: 57px;
 	}
+	.searchbar-md .searchbar-search-icon{
+		display: none;
+	}
+	.searchbar-md .searchbar-input {
+		padding: 6px 5px;
+		background-color: #3e4a51;
+		color: #fff;
+	}
 	ion-input{
 		margin-left: 10px;
 		height: 40px;

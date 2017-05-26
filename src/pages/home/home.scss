@@ -6,7 +6,13 @@ page-home {
 		color: #fff;
 		background: #3e4a51;
 	}
-	$text-input-placeholder-color: #fff;
+	.searchbar-md .searchbar-search-icon{
+		display: none;
+	}
+	.searchbar-md .searchbar-input {
+		background-color: #3e4a51;
+		color: #fff;
+	}
 	.content {
 		.toolbar-md {
 		    position: fixed;

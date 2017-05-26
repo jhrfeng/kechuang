@@ -11,7 +11,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-	<iframe [src]="chartUrl()" 
+	<iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(charUrl)" 
 		frameborder="0" 
 		width="100%" 
 		height="{{screenHeight + 'px'}}" 

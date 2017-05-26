@@ -1,4 +1,11 @@
 page-exact {
+	.searchbar-md .searchbar-search-icon{
+		display: none;
+	}
+	.searchbar-md .searchbar-input {
+		background-color: #3e4a51;
+		color: #fff;
+	}
 	ion-input{
 		margin-left: 10px;
 		height: 40px;
