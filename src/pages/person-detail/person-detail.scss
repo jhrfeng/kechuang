@@ -35,11 +35,15 @@ page-person-detail {
 	}
 
 	.toolbar-content{
+		img{
+			height: 55px;
+			width: 55px;
+		}
 		.row{
 			margin: 10px;
 		}
 		.col{
-			border: 1px solid color($colors, dark);
+			// border: 1px solid color($colors, dark);
 		}
 	}
 

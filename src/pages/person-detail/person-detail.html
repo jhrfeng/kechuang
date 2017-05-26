@@ -29,9 +29,17 @@
   		</ion-item>
   		
   		<ion-row text-center>
-  			<ion-col [hidden]="params.introduction==null" tappable (click)="openChart()">简介</ion-col>
-        <ion-col tappable (click)="openChart1()">自我网络</ion-col>
-  			<ion-col tappable (click)="openChart2()">综合表征</ion-col>
+  			<ion-col [hidden]="params.introduction==null" 
+        tappable (click)="openChart()">
+        <img src="assets/img/p1.png"><br>
+        简介
+        </ion-col>
+        <ion-col tappable (click)="openChart1()">
+        <img src="assets/img/p2.png"><br>
+        自我网络</ion-col>
+  			<ion-col tappable (click)="openChart2()">
+        <img src="assets/img/p3.png"><br>
+        综合表征</ion-col>
   		</ion-row>
 	    <ion-segment [(ngModel)]="pet" color="primary">
 	      <ion-segment-button value="1" tappabled

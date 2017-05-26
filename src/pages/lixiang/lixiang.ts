@@ -55,19 +55,16 @@ export class LixiangPage {
   search(){
     this.isSearch = true;
     this.pet = "1";
+    this.authService.authGet('/query/analyse/'+this.searchVo.keyWord, null, false).then((result) => {
+      var data = JSON.parse(result["_body"]);
+      this.isContains = data["isContains"];
+    },(err) =>{ });
     // 检查搜索次数
     this.authService.authPost('/query/analyse/checkTimes', {keyWord: this.searchVo.keyWord, id:this.userid}, true).then((result) => {
       var times = JSON.parse(result["_body"]);
       if(times!=1){
         this.authService.showMessage("您的搜索次数已使用完毕，请充值！")
       }else{
-       
-        this.authService.authGet('/query/analyse/'+this.searchVo.keyWord, null, false).then((result) => {
-          var data = JSON.parse(result["_body"]);
-          this.isContains = data["isContains"];
-          console.log(data["isContains"]==true)
-        },(err) =>{ });
-
         this.searchVo.start = 0; // 重置搜索分页下标
         this.searchPaper();
         this.searchProject();
