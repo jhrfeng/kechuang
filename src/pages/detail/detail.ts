@@ -53,11 +53,9 @@ export class DetailPage {
 	    	this.params.data = JSON.parse(result["_body"]);
 	    	if(this.detailType=='paper'){ // 关键词
 	    		this.params.keywords = this.params.data.keywords.split(",");
-	    		console.log(this.params.keywords, this.params.keywords.length, this.params.keywords[0]=="")
 	    	}
 	    	else if(this.detailType=='project'){ // 关键词
 	    		this.params.keywords = this.params.data.keywordCH.split(";");
-	    		console.log(this.params.keywords, this.params.keywords.length, this.params.keywords[0]=="")
 	    	}
 	    	
 	    	// 收藏列表
@@ -70,7 +68,6 @@ export class DetailPage {
 	    // 多少人看过
 	    this.authService.authPut('/query/'+this.detailType+'/readCount/'+this.itemid ).then((result) => {
 	    	this.params.readCount = JSON.parse(result["_body"]);
-	    	console.log(this.params.readCount)
 	    },(err) =>{
 	      	
 	    });
@@ -82,6 +79,8 @@ export class DetailPage {
 	    	for(var index in relateds){
 	    		this.params.relateds.push(relateds[index])
 	    	}
+	    	this.removeByValue(this.params.relateds, null);
+	    	console.log(this.params.relateds)
 	    },(err) =>{
 	      
 	    });
@@ -151,5 +150,15 @@ export class DetailPage {
 	      
 	    });
   	}
+
+  	// 判断返回的list数组中是否有空对象
+	removeByValue(arr, val) { 
+	  for(var i=0; i<arr.length; i++) {
+	    if(arr[i] == val) {
+	      arr.splice(i, 1);
+	      --i;
+	    }
+	  }
+	}
 
 }

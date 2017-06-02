@@ -99,6 +99,7 @@ export class FollowPage {
 	  	for(var i=0; i<arr.length; i++) {
 	    	if(arr[i].professionId == val.professionId) {
 	      		arr.splice(i, 1);
+	      		--i;
 	      		break;
 	    	}
 	   }
