@@ -1,31 +1,13 @@
-<!--Theme Wizard Simple + icon-->
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title text-left>{{data.toolBarTitle}}</ion-title>
-  </ion-navbar>
-</ion-header>
-<!--Content -->
-<ion-content>
-  <ion-slides #wizardSlider (ionSlideDidChange)="slideHasChanged()" pager="true">
-    <ion-slide *ngFor="let item of data.items;">
-      <ion-icon icon-large>
-        <i class="icon {{item.iconSlider}}"></i>
-      </ion-icon>
-      <h1 wizard-title>{{item.title}}</h1>
-      <p wizard-body-text>{{item.description}}</p>
-    </ion-slide>
-  </ion-slides>
-  <!--Button section-->
-  <button ion-button button-clear clear left (click)="changeSlide(-1)" *ngIf="show('prev')">
-      {{data.btnPrev}}
-  </button>
-  <button ion-button button-clear clear right (click)="changeSlide(1)" *ngIf="show('next')">
-      {{data.btnNext}}
-  </button>
-  <button ion-button button-clear clear right (click)="onEvent('onFinish')" *ngIf="show('finish')">
-      {{data.btnFinish}}
-  </button>
-</ion-content>
+<ion-slides (ionSlideDidChange)="slideChanged()">
+  <ion-slide>
+    <img src="assets/img/s1.jpg" >
+  </ion-slide>
+  <ion-slide>
+    <img src="assets/img/s2.jpg" >
+  </ion-slide>
+  <ion-slide>
+    <!-- <p (click)="jump()"><span>跳过</span></p> -->
+    <img src="assets/img/s3.jpg" >
+    <button ion-button outline (click)="jump()">点击开启</button>
+  </ion-slide>
+</ion-slides>

@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Slides } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
     selector: 'wizard',
@@ -8,44 +10,17 @@ import { ViewChild } from '@angular/core';
 })
 
 export class Wizard {
-    @Input() data: any;
-    @Input() events: any;
-    @ViewChild('wizardSlider') slider: Slides;
-    sliderOptions = { pager: true };
 
-    constructor() { }
+    @ViewChild(Slides) slides: Slides;
 
-    changeSlide(index: number): void {
-        if (index > 0) {
-            this.slider.slideNext(300);
-        } else {
-            this.slider.slidePrev(300);
-        }
+    constructor(public navCtrl: NavController) { }
+
+    slideChanged() {
+        // let currentIndex = this.slides.getActiveIndex();
     }
 
-    slideHasChanged(index: number): void {
-        console.log(this.slider.getActiveIndex());
-
+    jump(){
+        this.navCtrl.setRoot(TabsPage);
     }
 
-    show(value: string): boolean {
-        let result: boolean = false;
-        try {
-            if (value == 'prev') {
-                result = !this.slider.isBeginning();
-            } else if (value == 'next') {
-                result = this.slider.getActiveIndex() < (this.slider.length() - 1);
-            } else if (value == 'finish') {
-                result = this.slider.isEnd();
-            }
-        } catch (e) { }
-        return result;
-    }
-
-    onEvent(event: string) {
-        if (this.events[event]) {
-            this.events[event]();
-        }
-        console.log(event);
-    }
 }

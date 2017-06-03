@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
-// import { NewsPage } from '../pages/news/news';
+import { Wizard } from '../pages/wizard/wizard';
 import { JPushService } from 'ionic2-jpush';
 
 declare var window;
@@ -14,13 +14,21 @@ declare var window;
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = TabsPage;
+
+  rootPage = Wizard;
+  @ViewChild('myNav') nav: NavController
 
   constructor(platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
     public storage: Storage,
     public jPushPlugin: JPushService) {
+
+    this.storage.get('token').then((token) => {
+      if(token){
+          this.nav.setRoot(TabsPage);
+      }
+    })
 
     platform.ready().then(() => {
       statusBar.styleDefault();
@@ -29,11 +37,8 @@ export class MyApp {
 
       this.jPushPlugin.receiveNotification()
          .subscribe( res => {
-           console.log(res)
            this.newList(res.alert);
          });
-
-      // this.getRegistrationID();
     });
   }
 
@@ -45,15 +50,8 @@ export class MyApp {
     }
   }
 
-  // getRegistrationID() {
-  //    this.jPushPlugin.getRegistrationID()
-  //    .then(res => { console.log(res)})
-  //    .catch(err => alert(err))
-  // }
-
   newList(lastnew){
     this.storage.get('news').then((newsList) => {
-      console.log(lastnew, newsList)
       if(newsList){
         newsList += ";"+lastnew;
         this.storage.set('news',newsList);
@@ -63,4 +61,3 @@ export class MyApp {
   }
 
 }
-0
