@@ -29,6 +29,7 @@ import { PersonDetailPage } from '../pages/person-detail/person-detail';
 import { ChartPage } from '../pages/chart/chart';
 import { NewsPage } from '../pages/news/news';
 import { AdvicePage } from '../pages/advice/advice';
+import { Wizard } from '../pages/wizard/wizard';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -93,6 +94,7 @@ import { Member, Fname, Type } from '../pipes/member';
     NewsPage,
     AdvicePage,
     PersonDetailPage,
+    Wizard,
     LineInputComponent,
     PwdInputComponent,
     RegInputComponent,
@@ -124,6 +126,7 @@ import { Member, Fname, Type } from '../pipes/member';
         backButtonText: '',
         modalEnter: 'modal-slide-in',
         modalLeave: 'modal-slide-out',
+        iconMode: 'md',
         // pageTransition: 'ios',
         tabsHideOnSubPages: true
     }),
@@ -155,6 +158,7 @@ import { Member, Fname, Type } from '../pipes/member';
     NewsPage,
     AdvicePage,
     PersonDetailPage,
+    Wizard,
     LineInputComponent,
     PwdInputComponent,
     RegInputComponent,
