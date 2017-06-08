@@ -66,7 +66,7 @@ export class MePage {
             this.storage.set('user', this.params.data);
         },(err) =>{
             this.storage.set('token', null);
-            this.navCtrl.setRoot(LoginPage, {type: "MePage"})
+            this.navCtrl.push(LoginPage, {type: "MePage"})
             //if(err)  this.authService.showError("登录过期，请重新登录")//this.navCtrl.push(LoginPage, {type: "MePage"})
         });
     }
@@ -92,7 +92,7 @@ export class MePage {
             if(user){
                 this.params.data = user;
             }else{
-                this.navCtrl.setRoot(LoginPage, {type: "MePage"})
+                this.navCtrl.push(LoginPage, {type: "MePage"})
             }
         })
     }

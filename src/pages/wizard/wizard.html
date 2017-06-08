@@ -1,13 +1,13 @@
 <ion-slides (ionSlideDidChange)="slideChanged()">
-  <ion-slide>
-    <img src="assets/img/s1.jpg" >
+  <ion-slide class="slide-1">
+    <!-- <img src="assets/img/s1.jpg" > -->
   </ion-slide>
-  <ion-slide>
-    <img src="assets/img/s2.jpg" >
+  <ion-slide class="slide-2">
+    <!-- <img src="assets/img/s2.jpg" > -->
   </ion-slide>
-  <ion-slide>
+  <ion-slide class="slide-3">
     <!-- <p (click)="jump()"><span>跳过</span></p> -->
-    <img src="assets/img/s3.jpg" >
-    <button ion-button outline (click)="jump()">点击开启</button>
+    <!-- <img src="assets/img/s3.jpg" > -->
+    <button ion-button outline type="button" tappable (click)="jump()">点击开启</button>
   </ion-slide>
 </ion-slides>

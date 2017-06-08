@@ -15,7 +15,7 @@ declare var window;
 })
 export class MyApp {
 
-  rootPage = Wizard;
+  // rootPage = Wizard;
   @ViewChild('myNav') nav: NavController
 
   constructor(platform: Platform, 
@@ -23,14 +23,17 @@ export class MyApp {
     splashScreen: SplashScreen,
     public storage: Storage,
     public jPushPlugin: JPushService) {
-
     this.storage.get('token').then((token) => {
       if(token){
           this.nav.setRoot(TabsPage);
+      }else{
+          this.nav.setRoot(Wizard);
       }
     })
 
     platform.ready().then(() => {
+      console.log('02')
+     
       statusBar.styleDefault();
       splashScreen.hide();
       this.initJPush();
@@ -57,6 +60,16 @@ export class MyApp {
         this.storage.set('news',newsList);
       }
       else this.storage.set('news',lastnew);
+    })
+  }
+
+  ionViewDidLoad(){
+    console.log('........')
+    this.nav.setRoot(TabsPage);
+    this.storage.get('token').then((token) => {
+      if(token){
+          this.nav.setRoot(TabsPage);
+      }
     })
   }
 

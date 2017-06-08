@@ -8,13 +8,29 @@ wizard{
   }
 
   .button-md{
-    margin-top: -250px;
+      margin-top: 100%;
   }
 
   .button-outline-md {
       border-color: #fefefe;
       color: #fefefe;
       width: 200px;
+  }
+
+  .slide-1{
+    background-image: url(../assets/img/s1.jpg);
+    background-position: center center;
+    background-size: cover;
+  }
+  .slide-2{
+    background-image: url(../assets/img/s2.jpg);
+    background-position: center center;
+    background-size: cover;
+  }
+  .slide-3{
+    background-image: url(../assets/img/s3.jpg);
+    background-position: center center;
+    background-size: cover;
   }
 
 }
