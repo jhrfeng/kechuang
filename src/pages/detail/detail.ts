@@ -13,7 +13,7 @@ export class DetailPage {
 
 	detailType:string; //来源类型
 	collectionList: any; //收藏列表
-	params: any;
+	params: any = {data:{collection:null}, relateds:[], keywords:[], readCount:0};
   	userid: any;
   	itemid: any;
   	itemName: any;
@@ -45,8 +45,6 @@ export class DetailPage {
   			this.itemName = this.navParams.get('item').name;
   		}
   		this.detailType = this.navParams.get('item').type;
-  		
-  		this.params = {data:{}, relateds:[], keywords:[], readCount:0};
 
   		// 详细信息
   		this.authService.authGet('/query/'+this.detailType+'/'+this.itemid , null, true).then((result) => {

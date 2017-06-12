@@ -1,4 +1,4 @@
-<div class="tag"  [hidden]="keywords[0]==''">
+<!-- <div class="tag"  [hidden]="keywords[0]==''">
 	<ion-row>
 	<ion-col>
 		<i *ngFor="let keyword of keywords;let i = index;" style="margin-top: 10px;">
@@ -7,13 +7,22 @@
 		</i>
 	</ion-col>
 	</ion-row>
-</div>
+</div> -->
 
 <ion-list class="main">
 	<ion-row>
 	<ion-col width-20>标题</ion-col>
 	<ion-col>{{data.papername}}</ion-col>
 	</ion-row>
+
+	<ion-row [hidden]="keywords[0]==''">
+	<ion-col width-20>关键词</ion-col>
+	<ion-col>
+		<span *ngFor="let keyword of keywords;let i = index;"
+			style="color:#2196F3" >{{keyword}}</span>
+	</ion-col>
+	</ion-row>
+	
 	<ion-row>
 	<ion-col width-20>作者</ion-col>
 	<ion-col>
@@ -50,9 +59,9 @@
 	<ion-row>
 	<ion-col width-50>{{readCount}}人看过</ion-col>
 	<ion-col text-right>
-		<button ion-button icon-left clear small (click)="onEvent('onCollect', data.id)">
+		<!-- <button ion-button icon-left clear small (click)="onEvent('onCollect', data.id)">
 	        <ion-icon name="{{data?.collection?'ios-heart':'ios-heart-outline'}}"></ion-icon>
-	    </button>
+	    </button> -->
 	</ion-col>
 	</ion-row>
 </ion-list>

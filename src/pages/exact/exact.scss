@@ -1,7 +1,4 @@
 page-exact {
-	.content{
-		background: #000;
-	}
 	.searchbar-md .searchbar-search-icon{
 		display: none;
 	}
@@ -20,4 +17,9 @@ page-exact {
 		background: #3e4a51;
 	}
 	$text-input-placeholder-color: #fff;
+	.content {
+		.toolbar-md {
+		    position: fixed;
+		}
+	}
 }
