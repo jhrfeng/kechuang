@@ -127,6 +127,7 @@ import { Member, Fname, Type } from '../pipes/member';
         modalEnter: 'modal-slide-in',
         modalLeave: 'modal-slide-out',
         iconMode: 'md',
+        mode:'md',
         // pageTransition: 'ios',
         tabsHideOnSubPages: true
     }),
