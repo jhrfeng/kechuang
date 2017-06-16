@@ -47,21 +47,21 @@ export class MyApp {
 
   initJPush() {
     //启动极光推送
-    if(this.platform.is("ios") || this.platform.is("android")){
-      window.plugins.jPushPlugin.init();
-      if(this.platform.is("ios")){
-        window.plugins.jPushPlugin.setDebugModeFromIos();
-        window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
-      }else{
-        window.plugins.jPushPlugin.setDebugMode(true);
-        window.plugins.jPushPlugin.setStatisticsOpen(true);
-      }
-    }
-
-    // if (window.plugins && 　window.plugins.jPushPlugin) {
+    // if(this.platform.is("ios") || this.platform.is("android")){
     //   window.plugins.jPushPlugin.init();
-    //   // this.jPushPlugin.setAlias("A");
+    //   if(this.platform.is("ios")){
+    //     window.plugins.jPushPlugin.setDebugModeFromIos();
+    //     window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
+    //   }else{
+    //     window.plugins.jPushPlugin.setDebugMode(true);
+    //     window.plugins.jPushPlugin.setStatisticsOpen(true);
+    //   }
     // }
+
+    if (window.plugins && 　window.plugins.jPushPlugin) {
+      window.plugins.jPushPlugin.init();
+      // this.jPushPlugin.setAlias("A");
+    }
   }
 
   newList(lastnew){
