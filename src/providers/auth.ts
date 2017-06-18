@@ -89,7 +89,7 @@ export class Auth {
             // if(show) this.showLoader("请求中...");
             this.http.get(REQUEST_URL + api, {headers: headers})
                 .subscribe(res => {
-                	if(show) this.loading.dismiss();
+                	// if(show) this.loading.dismiss();
                     resolve(res);
                 }, (err) => {
                 	// this.loading.dismiss();
