@@ -27,7 +27,7 @@ plugins/android.json
 plugins/ios.json
 www/
 $RECYCLE.BIN/
-resources/
+platforms/
 hooks/
 bak/
 

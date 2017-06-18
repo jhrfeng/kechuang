@@ -19,7 +19,7 @@
 
 <ion-content class="content">
   <ion-toolbar no-border-top color="dark" [hidden]="!isSearch">
-    <ion-segment mode="ios" [(ngModel)]="pet" color="whites" [hidden]="!isSearch">
+    <ion-segment [(ngModel)]="pet" color="whites" [hidden]="!isSearch">
         <ion-segment-button value="1" (ionSelect)="selectPage(1)">
           论文
         </ion-segment-button>
@@ -60,7 +60,7 @@
       [data]="params.data4" 
       [events]="params.events">
     </smart-search-4>
-    
+
   </div>
   
 </ion-content>
