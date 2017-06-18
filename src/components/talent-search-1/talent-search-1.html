@@ -12,3 +12,6 @@
     <p class="source" text-nowrap>《{{item.journalname}}》 <span>{{item.journalNO}}</span></p>
 </ion-item>
 
+<ion-infinite-scroll (ionInfinite)="onEvent('doInfinite', $event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>

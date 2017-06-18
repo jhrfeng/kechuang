@@ -48,6 +48,9 @@ export class LixiangPage {
       },
       'onDetail': (item: any) => {
           this.navCtrl.push(DetailPage, {item: item});
+      },
+      'doInfinite': (infiniteScroll) => {
+        this.doInfinite(infiniteScroll);
       }
     }
 	}

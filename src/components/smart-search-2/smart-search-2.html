@@ -15,3 +15,6 @@
     <p class="source" text-nowrap>{{item.unit}} <span>{{item.year}}年</span></p>
 </ion-item>
 
+<ion-infinite-scroll (ionInfinite)="onEvent('doInfinite', $event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>

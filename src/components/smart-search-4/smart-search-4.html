@@ -29,3 +29,6 @@
     </ion-item>
 </div>
 
+<ion-infinite-scroll (ionInfinite)="onEvent('doInfinite', $event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>

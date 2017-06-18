@@ -50,6 +50,9 @@ export class ExactPage {
 	       },
 	       'onInventor': (item: any) => {
 	       		console.log(item);
+	       },
+	       'doInfinite': (infiniteScroll) => {
+	          this.doInfinite(infiniteScroll);
 	       }
 	    }
 	}

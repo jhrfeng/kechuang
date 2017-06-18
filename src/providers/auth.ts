@@ -86,22 +86,25 @@ export class Auth {
             	}
             	api = api.substring(0, api.lastIndexOf('&'));
             }
-            if(show) this.showLoader("请求中...");
+            // if(show) this.showLoader("请求中...");
             this.http.get(REQUEST_URL + api, {headers: headers})
                 .subscribe(res => {
                 	if(show) this.loading.dismiss();
                     resolve(res);
                 }, (err) => {
-                	this.loading.dismiss();
-                  if(err["status"]==500)
+                	// this.loading.dismiss();
+                  reject(err);
+                 /* if(err["status"]==500){
                     this.showError("服务器处理异常");
+                    resolve({_body:{isContains:false}});//"'_body':0}"
+                  }
                   if(err["status"]==401){
                   	reject(err);
                   	this.showLoader("登录过期，请重新登录");
                   	setTimeout(() => {
     					        this.loading.dismiss();
     					      }, 1000);
-                  }else{reject(err)}
+                  }*/
                 }); 
 	          });         
 	 
