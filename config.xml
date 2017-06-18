@@ -47,5 +47,8 @@
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-sqlite-storage" spec="~2.0.3" />
+    <plugin name="jpush-phonegap-plugin" spec="https://github.com/jpush/jpush-phonegap-plugin.git">
+        <variable name="APP_KEY" value="eae49b7b6b74182df9eb211a" />
+    </plugin>
     <engine name="ios" spec="~4.4.0" />
 </widget>

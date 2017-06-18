@@ -56,18 +56,28 @@ module.exports = [
             "cordova.plugins.Keyboard"
         ],
         "runs": true
+    },
+    {
+        "id": "jpush-phonegap-plugin.JPushPlugin",
+        "file": "plugins/jpush-phonegap-plugin/www/JPushPlugin.js",
+        "pluginId": "jpush-phonegap-plugin",
+        "clobbers": [
+            "JPush"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-console": "1.0.5",
-    "cordova-plugin-device": "1.1.4",
+    "cordova-plugin-console": "1.0.7",
+    "cordova-plugin-device": "1.1.6",
+    "cordova-plugin-jcore": "1.1.4",
     "cordova-plugin-splashscreen": "4.0.3",
-    "cordova-plugin-statusbar": "2.2.1",
-    "cordova-plugin-whitelist": "1.3.1",
+    "cordova-plugin-statusbar": "2.2.3",
+    "cordova-plugin-whitelist": "1.3.2",
     "cordova-sqlite-storage": "2.0.4",
-    "ionic-plugin-keyboard": "2.2.1"
+    "ionic-plugin-keyboard": "2.2.1",
+    "jpush-phonegap-plugin": "3.1.7"
 };
 // BOTTOM OF METADATA
 });

@@ -125,6 +125,7 @@ export class HomePage {
   }
 
   doInfinite(infiniteScroll) {
+    console.log('......')
     setTimeout(() => {
       //  start:{paper:0, project:0, patent:0, all:0}, //分页查询
       if(this.params.istype==1){  // 论文
