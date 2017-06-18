@@ -9,25 +9,26 @@
         <ion-icon name="ios-arrow-down"></ion-icon>
     </ion-col>
 </ion-row>
-
-<div *ngFor="let item of data.docs; let i = index;" (click)="onEvent('onDetail', item)">
-    <ion-item text-nowrap *ngIf="item.type=='paper'" >
-      <p class="title" text-nowrap>{{item.name}}</p>
-      <p class="tag">{{item.member | fname}}</p>
-      <p class="source" text-nowrap>《{{item.journal_name}}》 <span>{{item.journal_no}}</span></p>
-    </ion-item>
-    <ion-item text-nowrap *ngIf="item.type=='project'" >
-      <p class="title" text-nowrap>{{item.name}}</p>
-      <p class="tag">{{item.member | fname}}</p>
-      <p class="source" text-nowrap>{{item.unit}} <span>{{item.year}}年</span></p>
-    </ion-item>
-    <ion-item *ngIf="item.type=='patent'" text-nowrap>
-      <p class="title" text-nowrap>{{item.name}}</p>
-      <p class="tag3">发明者  <span>{{item.member}}</span></p>
-      <p class="tag3">申请者  <span>{{item.unit}}</span></p>
-      <p class="source3" text-nowrap>公开号 <span>{{item.publication_no}}</span></p>
-    </ion-item>
-</div>
+<ion-list>
+  <div *ngFor="let item of data.docs; let i = index;" (click)="onEvent('onDetail', item)">
+      <ion-item text-nowrap *ngIf="item.type=='paper'" >
+        <p class="title" text-nowrap>{{item.name}}</p>
+        <p class="tag">{{item.member | fname}}</p>
+        <p class="source" text-nowrap>《{{item.journal_name}}》 <span>{{item.journal_no}}</span></p>
+      </ion-item>
+      <ion-item text-nowrap *ngIf="item.type=='project'" >
+        <p class="title" text-nowrap>{{item.name}}</p>
+        <p class="tag">{{item.member | fname}}</p>
+        <p class="source" text-nowrap>{{item.unit}} <span>{{item.year}}年</span></p>
+      </ion-item>
+      <ion-item *ngIf="item.type=='patent'" text-nowrap>
+        <p class="title" text-nowrap>{{item.name}}</p>
+        <p class="tag3">发明者  <span>{{item.member}}</span></p>
+        <p class="tag3">申请者  <span>{{item.unit}}</span></p>
+        <p class="source3" text-nowrap>公开号 <span>{{item.publication_no}}</span></p>
+      </ion-item>
+  </div>
+</ion-list>
 
 <ion-infinite-scroll (ionInfinite)="onEvent('doInfinite', $event)">
   <ion-infinite-scroll-content></ion-infinite-scroll-content>

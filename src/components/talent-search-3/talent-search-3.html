@@ -5,7 +5,7 @@
 </ion-col>
 <ion-col></ion-col>
 </ion-row>
-
+<ion-list>
 <ion-item *ngFor="let item of data.list; let i = index;" tappable (click)="onEvent('onDetail', item)">
     <p class="title">{{item.name}}</p>
     <p class="tag">发明者 <span>{{item.inventor}}</span></p>
@@ -14,7 +14,7 @@
     </p> -->
     <p class="tag">申请者  <span>{{item.applicant}}</span></p>
 </ion-item>
-
+</ion-list>
 <ion-infinite-scroll (ionInfinite)="onEvent('doInfinite', $event)">
   <ion-infinite-scroll-content></ion-infinite-scroll-content>
 </ion-infinite-scroll>
