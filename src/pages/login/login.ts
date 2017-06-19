@@ -44,7 +44,6 @@ export class LoginPage {
         }
  	}
 
-
 	login(){
 	    if(this.params.data.username=='' || this.params.data.password==''){
 	      this.showError("手机号或密码不能为空");
@@ -63,10 +62,17 @@ export class LoginPage {
 	        this.authService.authGet('/restapi/user/me', null, false).then((result) => {
 	            var user = JSON.parse(result["_body"]);
 				if(window.plugins && 　window.plugins.jPushPlugin){
-					let tags = [user.type];
-					this.jPushPlugin.setTags(tags);
-					this.jPushPlugin.setAlias(user.id);
+					window.plugins.jPushPlugin.getRegistrationID(function(data) {
+						console.log("JPushPlugin:registrationID is " + data)
+					})
+					let tags = [user.type+''];
+					//this.jPushPlugin.setTags(tags);
+					//this.jPushPlugin.setAlias(user.id);
+					//window.plugins.jPushPlugin.setTagsWithAlias(tags, user.id+'')
+					window.plugins.jPushPlugin.setTags(tags)
+					window.plugins.jPushPlugin.setAlias(user.id+'')
 				}
+			
 	        },(err) =>{
 	            if(err) this.navCtrl.push(LoginPage, {type: "MePage"})
 	        });

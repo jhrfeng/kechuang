@@ -50,6 +50,7 @@ export class MyApp {
     if(this.platform.is("ios") || this.platform.is("android")){
       window.plugins.jPushPlugin.init();
       if(this.platform.is("ios")){
+        window.plugins.jPushPlugin.startJPushSDK()
         window.plugins.jPushPlugin.setDebugModeFromIos();
         window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
       }else{
@@ -57,10 +58,6 @@ export class MyApp {
         window.plugins.jPushPlugin.setStatisticsOpen(true);
       }
     }
-    // if (window.plugins && 　window.plugins.jPushPlugin) {
-    //   window.plugins.jPushPlugin.init();
-    //   // this.jPushPlugin.setAlias("A");
-    // }
   }
 
   newList(lastnew){
