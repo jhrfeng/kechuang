@@ -25,17 +25,14 @@ page-lixiang {
 		background: #3e4a51;
 	}
 	$text-input-placeholder-color: #fff;
+	.subheader{
+		margin-top: 56px;
+	}
 	.navbar{
-		margin-top: 8px;
+		margin-top: 56px;
 		img{
 			height: 55px;
 			width: 55px;
-		}
-		.col{
-			// color: #fff;
-   //  		border: 1px solid #d0d0d0;
-   			// color: color($colors, toptab);
-   			// border: 1px solid color($colors, toptab);
 		}
 		ion-row[text-center]{
 			.col:first-child{
@@ -47,7 +44,6 @@ page-lixiang {
 		}
 	}
 	.lixiang{
-		margin-top: -55px;
 		.col:first-child{
 			margin-right: 50%;
 		}

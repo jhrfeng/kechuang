@@ -3,12 +3,6 @@
   <ion-searchbar 
     [(ngModel)]="searchVo.keyWord" 
     placeholder="请输入科技关键词 多个词用空格隔开"></ion-searchbar>
-   <!--  <ion-input
-      placeholder="请输入科技关键词 多个词用空格隔开"
-      [(ngModel)]="searchVo.keyWord"
-      type="text"
-      [clearInput]="true"
-    ></ion-input> -->
     <ion-buttons end>
       <button ion-button icon-only color="primary" (click)="search(1)">
         <ion-icon name="md-search"></ion-icon>
@@ -16,8 +10,7 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-
-<ion-content class="content">
+<ion-header class="subheader">
   <ion-toolbar no-border-top color="dark" [hidden]="!isSearch">
     <ion-segment [(ngModel)]="pet" color="whites" [hidden]="!isSearch">
         <ion-segment-button value="1" (ionSelect)="selectPage(1)">
@@ -34,6 +27,10 @@
         </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+
   <background [hidden]="isSearch" [data]="params.img"></background>
 
   <div [hidden]="!isSearch">
