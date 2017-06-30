@@ -91,9 +91,10 @@ export class MePage {
         this.storage.get('user').then((user) => {
             if(user){
                 this.params.data = user;
-            }else{
-                this.navCtrl.push(LoginPage, {type: "MePage"})
             }
+            // else{
+            //     this.navCtrl.push(LoginPage, {type: "MePage"})
+            // }
         })
     }
 

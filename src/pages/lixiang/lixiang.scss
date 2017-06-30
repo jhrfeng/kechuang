@@ -26,7 +26,7 @@ page-lixiang {
 	}
 	$text-input-placeholder-color: #fff;
 	.navbar{
-		margin-top: 8px;
+		margin-top: 58px;
 		img{
 			height: 55px;
 			width: 55px;
@@ -53,6 +53,11 @@ page-lixiang {
 		}
 		.col:last-child{
 			display: none;
+		}
+	}
+	.content {
+		.toolbar-md,.toolbar-ios {
+		    position: fixed;
 		}
 	}
 }

@@ -50,10 +50,12 @@ export class DetailPage {
   		this.authService.authGet('/query/'+this.detailType+'/'+this.itemid , null, true).then((result) => {
 	    	this.params.data = JSON.parse(result["_body"]);
 	    	if(this.detailType=='paper'){ // 关键词
-	    		this.params.keywords = this.params.data.keywords.split(",");
+	    		if(null!=this.params.data.keywords)
+	    			this.params.keywords = this.params.data.keywords.split(",");
 	    	}
 	    	else if(this.detailType=='project'){ // 关键词
-	    		this.params.keywords = this.params.data.keywordCH.split(";");
+	    		if(null!=this.params.data.keywordCH)
+	    			this.params.keywords = this.params.data.keywordCH.split(";");
 	    	}
 	    	
 	    	// 收藏列表
