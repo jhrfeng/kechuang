@@ -48,7 +48,7 @@
 
   <background [hidden]="isSearch" [data]="params.img"></background>
 
-  <div class="lixiang" [hidden]="!isSearch">
+  <div class="lixiang" [ngStyle]="{'margin-top':isContains?'-56px':'0px'}" [hidden]="!isSearch">
     <smart-search-1
       *ngIf="params.istype==1"
       [data]="params.data1" 
