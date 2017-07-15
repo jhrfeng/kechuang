@@ -12,12 +12,12 @@
 <ion-list class="main">
 	<ion-row>
 	<ion-col width-20>标题</ion-col>
-	<ion-col>{{data.papername}}</ion-col>
+	<ion-col class="selectable">{{data.papername}}</ion-col>
 	</ion-row>
 
 	<ion-row [hidden]="keywords[0]==''">
 	<ion-col width-20>关键词</ion-col>
-	<ion-col>
+	<ion-col class="selectable">
 		<span *ngFor="let keyword of keywords;let i = index;"
 			style="color:#2196F3" >{{keyword}}</span>
 	</ion-col>
@@ -35,15 +35,15 @@
 	</ion-row>
 	<ion-row>
 	<ion-col width-20>来源</ion-col>
-	<ion-col>{{data.journalname}}</ion-col>
+	<ion-col class="selectable">{{data.journalname}}</ion-col>
 	</ion-row>
 	<ion-row>
 	<ion-col width-20>期刊号</ion-col>
-	<ion-col>{{data.journalNO}}</ion-col>
+	<ion-col class="selectable">{{data.journalNO}}</ion-col>
 	</ion-row>
 	<ion-row>
 	<ion-col width-20>机构</ion-col>
-	<ion-col>{{data.organization}}</ion-col>
+	<ion-col class="selectable">{{data.organization}}</ion-col>
 	</ion-row>
 	<ion-row>
 	<ion-col width-20>摘要</ion-col>
@@ -51,7 +51,7 @@
 	</ion-row>
 	<ion-row>
 	<ion-col>
-	<p class="pcontent">
+	<p class="pcontent selectable">
 		{{data.paperAbstract}}
 	</p>
 	</ion-col>

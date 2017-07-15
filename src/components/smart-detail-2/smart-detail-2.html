@@ -12,12 +12,12 @@
 <ion-list class="main">
 	<ion-row>
 	<ion-col width-25>标题</ion-col>
-	<ion-col>{{data.name}}</ion-col>
+	<ion-col class="selectable">{{data.name}}</ion-col>
 	</ion-row>
 
 	<ion-row [hidden]="keywords[0]==''">
 	<ion-col width-25>关键词</ion-col>
-	<ion-col>
+	<ion-col class="selectable">
 		<span *ngFor="let keyword of keywords;let i = index;"
 			style="color:#2196F3" >{{keyword}}</span>
 	</ion-col>
@@ -35,19 +35,19 @@
 	</ion-row>
 	<ion-row>
 	<ion-col width-25>单位</ion-col>
-	<ion-col>{{data.unit}}</ion-col>
+	<ion-col class="selectable">{{data.unit}}</ion-col>
 	</ion-row>
 	<ion-row>
 	<ion-col width-25>委托单位</ion-col>
-	<ion-col>{{data.entrustunit}}</ion-col>
+	<ion-col class="selectable">{{data.entrustunit}}</ion-col>
 	</ion-row>
 	<ion-row>
 	<ion-col width-25>时间</ion-col>
-	<ion-col>{{data.starttime}}</ion-col>
+	<ion-col class="selectable">{{data.starttime}}</ion-col>
 	</ion-row>
 	<ion-row>
 	<ion-col width-25>类型</ion-col>
-	<ion-col>{{data.type}}</ion-col>
+	<ion-col class="selectable">{{data.type}}</ion-col>
 	</ion-row>
 	<ion-row>
 	<ion-col width-25>摘要</ion-col>
@@ -55,7 +55,7 @@
 	</ion-row>
 	<ion-row>
 	<ion-col>
-	<p class="pcontent">
+	<p class="pcontent selectable">
 		{{data.abstractCH}}
 	</p>
 	</ion-col>

@@ -444,7 +444,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "科创助手/科创助手.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 9BRW2YYJ84;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -463,8 +463,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.itech.kechuang;
 				PRODUCT_NAME = "科创助手";
-				PROVISIONING_PROFILE = "8fe79b4b-0dab-41b4-9342-953337cce921";
-				PROVISIONING_PROFILE_SPECIFIER = com.itech.kechuang_dev;
+				PROVISIONING_PROFILE = "5af81fe1-d62b-4fe3-ba31-e7de88e5df61";
+				PROVISIONING_PROFILE_SPECIFIER = com.itech.kechuang_dis;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -479,7 +479,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "科创助手/科创助手.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 9BRW2YYJ84;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -496,8 +496,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.itech.kechuang;
 				PRODUCT_NAME = "科创助手";
-				PROVISIONING_PROFILE = "8fe79b4b-0dab-41b4-9342-953337cce921";
-				PROVISIONING_PROFILE_SPECIFIER = com.itech.kechuang_dev;
+				PROVISIONING_PROFILE = "5af81fe1-d62b-4fe3-ba31-e7de88e5df61";
+				PROVISIONING_PROFILE_SPECIFIER = com.itech.kechuang_dis;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
